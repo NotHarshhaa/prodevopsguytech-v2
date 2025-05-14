@@ -1,17 +1,15 @@
 'use client';
 
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from '../context/ThemeContext';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowRight, CheckCircle2, MapPin, Calendar, Code, LineChart, BookOpen, Users, CloudCog, ShieldCheck, GitBranchPlus } from "lucide-react";
+import { ArrowRight, CheckCircle2, MapPin, Calendar, Code, LineChart, BookOpen, Users, CloudCog, GitBranchPlus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export default function GetStartedPage() {
-  const { theme } = useTheme();
-  const [activeTab, setActiveTab] = useState("beginner");
+  const [, setActiveTab ] = useState("beginner");
   
   const pathTypes = [
     {

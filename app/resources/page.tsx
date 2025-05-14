@@ -1,15 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useTheme } from '../context/ThemeContext';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 
 export default function ResourcesPage() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  
   const resources = [
     {
       id: 1,

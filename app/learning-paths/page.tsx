@@ -1,16 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useTheme } from '../context/ThemeContext';
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
 
 export default function LearningPathsPage() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  
   const learningPaths = [
     {
       id: 1,

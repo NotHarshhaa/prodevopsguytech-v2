@@ -1,6 +1,5 @@
 'use client';
 
-import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -9,9 +8,6 @@ import { MessageCircle, BookOpen, Users, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function CommunityPage() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  
   const communityOptions = [
     {
       id: 1,

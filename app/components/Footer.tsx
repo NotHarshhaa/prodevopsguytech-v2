@@ -1,16 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useTheme } from '../context/ThemeContext';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Github, Twitter, Linkedin, Youtube } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export default function Footer() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
   const year = new Date().getFullYear();
 
   return (

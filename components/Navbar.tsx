@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -21,7 +21,6 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Handle scroll events
   useEffect(() => {

@@ -1,8 +1,6 @@
 'use client';
 
 import { useTheme } from '../context/ThemeContext';
-import Link from 'next/link';
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { LightbulbIcon, Users, BookOpen } from "lucide-react";
 

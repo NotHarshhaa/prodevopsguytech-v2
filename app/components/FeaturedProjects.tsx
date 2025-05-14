@@ -95,7 +95,7 @@ export default function FeaturedProjects() {
   );
 }
 
-function ProjectCard({ project, isDark }: { project: typeof projects[0], isDark: boolean }) {
+function ProjectCard({ project }: { project: typeof projects[0], isDark: boolean }) {
   return (
     <a 
       href={project.url}

@@ -1,15 +1,11 @@
 'use client';
 
-import { useTheme } from '../context/ThemeContext';
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Server, Terminal, FileCheck, BookOpen, Users, Upload } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Features() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  
   const features = [
     {
       icon: <Server className="h-6 w-6" />,

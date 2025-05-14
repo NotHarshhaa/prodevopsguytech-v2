@@ -1,6 +1,5 @@
 'use client';
 
-import { useTheme } from '../context/ThemeContext';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,6 @@ import { Mail, MessageSquare, HelpCircle, Twitter, Linkedin, Github, Youtube } f
 import { cn } from "@/lib/utils";
 
 export default function ContactPage() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
   const [preferredContact, setPreferredContact] = useState('email');
   
   return (
