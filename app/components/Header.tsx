@@ -7,11 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, SunIcon, MoonIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,67 +40,114 @@ export default function Header() {
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 py-4",
-        scrolled ? "bg-background/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+        "fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300",
+        scrolled ? "py-2" : "py-4"
       )}
     >
-      <div className="container flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold">
-          ProDevOpsGuy<span className="text-primary">Tech</span>
-        </Link>
-          
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {navItems.map((item) => (
-            <Link 
-              key={item.label}
-              href={item.href}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Link href="/get-started" className="hidden md:inline-flex">
-            <Button>Get Started</Button>
+      <div className={cn(
+        "absolute inset-0 transition-all duration-300",
+        scrolled 
+          ? "bg-background/80 backdrop-blur-md shadow-sm" 
+          : "bg-background/40 backdrop-blur-sm"
+      )} />
+      
+      <div className="container relative">
+        <div className={cn(
+          "flex items-center justify-between rounded-full border border-border/50 px-4 transition-all duration-300",
+          scrolled ? "py-2" : "py-3",
+          "bg-background/50 backdrop-blur-sm"
+        )}>
+          <Link href="/" className="text-xl font-bold relative group">
+            ProDevOpsGuy<span className="text-primary">Tech</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
-        
-          {/* Dark/Light Mode Toggle */}
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-          >
-            {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
-          </Button>
-        
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
+            
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {navItems.map((item) => (
+              <Link 
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "px-3 py-2 text-sm font-medium rounded-md relative group transition-colors",
+                  pathname === item.href 
+                    ? "text-foreground bg-primary/10" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link href="/get-started" className="hidden md:inline-flex">
+              <Button size="sm" className="relative overflow-hidden group">
+                <span className="relative z-10">Get Started</span>
+                <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-4 mt-8">
-                {navItems.map((item) => (
-                  <Link 
-                    key={item.label}
-                    href={item.href} 
-                    className="text-foreground hover:text-primary transition-colors py-2 font-medium"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <Link href="/get-started">
-                  <Button className="w-full mt-2">Get Started</Button>
-                </Link>
-              </nav>
-            </SheetContent>
-          </Sheet>
+            </Link>
+          
+            {/* Dark/Light Mode Toggle */}
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={toggleTheme}
+              className="hover:bg-primary/5 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+            </Button>
+          
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon" className="hover:bg-primary/5 transition-colors">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent 
+                side="right" 
+                className="w-[300px] sm:w-[400px] p-0 border-l border-border/30 backdrop-blur-lg"
+              >
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center p-6 border-b border-border/10">
+                    <span className="font-semibold">Menu</span>
+                  </div>
+                  <nav className="flex-1 overflow-y-auto p-6">
+                    <div className="flex flex-col gap-2">
+                      {navItems.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href} 
+                          className={cn(
+                            "px-4 py-3 rounded-lg transition-all duration-200 relative group",
+                            pathname === item.href 
+                              ? "bg-primary/10 text-foreground" 
+                              : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                          )}
+                        >
+                          <span className="font-medium">{item.label}</span>
+                          <span className={cn(
+                            "absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 rounded-r-full bg-primary transition-all duration-200",
+                            pathname === item.href ? "h-8" : "group-hover:h-8"
+                          )}></span>
+                        </Link>
+                      ))}
+                    </div>
+                  </nav>
+                  <div className="p-6 border-t border-border/10">
+                    <Link href="/get-started" className="block">
+                      <Button className="w-full relative overflow-hidden group">
+                        <span className="relative z-10">Get Started</span>
+                        <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

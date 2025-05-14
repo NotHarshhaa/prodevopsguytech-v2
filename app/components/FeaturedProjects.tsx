@@ -1,130 +1,105 @@
 'use client';
 
-import { useTheme } from '../context/ThemeContext';
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { ArrowRight, Code2, GitBranch } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const projects = [
-  {
-    id: 1,
-    title: 'AWS EKS Cluster with Terraform',
-    description: 'Deploy a production-ready Kubernetes cluster on AWS using Terraform and best practices.',
-    tags: ['AWS', 'Kubernetes', 'Terraform', 'DevOps'],
-    url: 'https://projects.prodevopsguytech.com/aws-eks-terraform'
-  },
-  {
-    id: 2,
-    title: 'CI/CD Pipeline with GitHub Actions',
-    description: 'Build an end-to-end CI/CD pipeline using GitHub Actions for Docker containerized applications.',
-    tags: ['CI/CD', 'GitHub Actions', 'Docker', 'DevOps'],
-    url: 'https://projects.prodevopsguytech.com/github-actions-cicd'
-  },
-  {
-    id: 3,
-    title: 'Infrastructure Monitoring with Prometheus & Grafana',
-    description: 'Set up comprehensive infrastructure monitoring using Prometheus and Grafana dashboards.',
-    tags: ['Monitoring', 'Prometheus', 'Grafana', 'DevOps'],
-    url: 'https://projects.prodevopsguytech.com/prometheus-grafana-monitoring'
-  },
-  {
-    id: 4,
-    title: 'Azure Kubernetes Service (AKS) Deployment',
-    description: 'Deploy and manage applications on Azure Kubernetes Service following cloud-native best practices.',
-    tags: ['Azure', 'Kubernetes', 'Cloud', 'DevOps'],
-    url: 'https://projects.prodevopsguytech.com/azure-aks-deployment'
-  }
-];
-
 export default function FeaturedProjects() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  
   return (
-    <section className="py-16 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-3xl translate-y-1/2 -translate-x-1/3"></div>
-      
-      <div className="container px-4 mx-auto relative z-10">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl font-bold tracking-tight mb-3">Featured Projects</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our real-world DevOps and Cloud projects to enhance your skills with hands-on experience.
-          </p>
-        </div>
-        
-        {/* Mobile Carousel View */}
-        <div className="lg:hidden mb-10">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {projects.map((project) => (
-                <CarouselItem key={project.id} className="md:basis-1/2">
-                  <ProjectCard project={project} isDark={isDark} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-        
-        {/* Desktop Grid View */}
-        <div className="hidden lg:grid grid-cols-2 gap-6 mb-10">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} isDark={isDark} />
-          ))}
-        </div>
-        
-        <div className="text-center animate-fade-in">
-          <a 
-            href="https://projects.prodevopsguytech.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <Button size="lg" variant="default" className="gap-2">
-              View All Projects
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </a>
+    <section className="py-24 px-4 overflow-hidden bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row gap-12 items-start">
+          {/* Main Content */}
+          <div className="flex-1 space-y-8">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Code2 className="h-5 w-5" />
+              <span className="text-sm font-medium">DevOps Projects</span>
+            </div>
+            
+            <div>
+              <h2 className="text-3xl font-bold mb-4">What will you ship?</h2>
+              <p className="text-xl text-muted-foreground">Build and deploy real-world DevOps projects. Learn by doing.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="group relative overflow-hidden border border-border/50 bg-gradient-to-b from-background/50 to-background shadow-md hover:shadow-lg hover:border-border/80 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="p-6 relative">
+                  <div className="flex items-center gap-2 mb-4">
+                    <GitBranch className="h-5 w-5 text-primary" />
+                    <span className="text-sm font-medium">CI/CD Pipeline</span>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">Kubernetes Deployment</h3>
+                  <p className="text-muted-foreground text-sm mb-4">Build a complete CI/CD pipeline with GitHub Actions, Docker, and Kubernetes.</p>
+                  <Button variant="ghost" className="group/btn px-0">
+                    View Project
+                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </div>
+              </Card>
+
+              <Card className="group relative overflow-hidden border border-border/50 bg-gradient-to-b from-background/50 to-background shadow-md hover:shadow-lg hover:border-border/80 transition-all">
+                <div className="absolute inset-0 bg-gradient-to-r from-secondary/10 via-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="p-6 relative">
+                  <div className="flex items-center gap-2 mb-4">
+                    <GitBranch className="h-5 w-5 text-secondary" />
+                    <span className="text-sm font-medium">Infrastructure as Code</span>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">AWS EKS Cluster</h3>
+                  <p className="text-muted-foreground text-sm mb-4">Deploy a production-ready EKS cluster using Terraform and AWS best practices.</p>
+                  <Button variant="ghost" className="group/btn px-0">
+                    View Project
+                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+                  </Button>
+                </div>
+              </Card>
+            </div>
+
+            <div className="pt-6">
+              <Button className="group" variant="outline">
+                View All Projects
+                <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Terminal Preview */}
+          <div className="w-full md:w-[400px] space-y-8">
+            <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background shadow-md overflow-hidden">
+              <div className="p-4 font-mono text-sm bg-muted/50">
+                <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                  <span className="size-3 rounded-full bg-red-500"></span>
+                  <span className="size-3 rounded-full bg-yellow-500"></span>
+                  <span className="size-3 rounded-full bg-green-500"></span>
+                </div>
+                <div className="space-y-1">
+                  <p><span className="text-blue-500">$</span> kubectl get pods</p>
+                  <p className="text-muted-foreground">NAME                     READY   STATUS    RESTARTS   AGE</p>
+                  <p className="text-muted-foreground">web-7f4b9b6b5-x2jd9    1/1     Running   0          2m</p>
+                  <p className="text-muted-foreground">api-6d8f7c9d4-k9p3n    1/1     Running   0          1m</p>
+                  <p className="text-muted-foreground">db-5b4c8f3a2-w7v6m     1/1     Running   0          5m</p>
+                  <p><span className="text-blue-500">$</span> <span className="animate-pulse">█</span></p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background shadow-md p-4">
+              <div className="flex items-start gap-3">
+                <div className="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                  <span className="text-sm font-medium text-emerald-500">S</span>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm mb-1">System</p>
+                  <div className="inline-block rounded-lg bg-muted/50 px-3 py-2">
+                    <p className="text-sm">All pods are running successfully. Cluster health: 100%</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function ProjectCard({ project }: { project: typeof projects[0], isDark: boolean }) {
-  return (
-    <a 
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block group"
-    >
-      <Card className={cn(
-        "h-full border overflow-hidden transition-all", 
-        "hover:shadow-md hover:border-primary/50"
-      )}>
-        <CardContent className="p-6">
-          <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-          <p className="text-muted-foreground mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag, index) => (
-              <Badge key={index} variant="secondary" className="font-normal">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter className="pt-0 px-6 pb-6">
-          <div className="text-primary font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-            View Project
-            <ArrowRight className="h-4 w-4" />
-          </div>
-        </CardFooter>
-      </Card>
-    </a>
   );
 } 
