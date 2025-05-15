@@ -5,102 +5,102 @@ import { Rocket, Settings, BookOpen, Globe, GitBranch, LightbulbIcon, ArrowRight
 
 export default function Features() {
   return (
-    <section className="py-24 px-4 overflow-hidden">
+    <section className="py-12 md:py-24 px-4 overflow-hidden">
       <div className="container mx-auto">
-        <h2 className="text-[2.5rem] font-bold text-center mb-16">Bringing DevOps to every engineer.</h2>
+        <h2 className="text-2xl md:text-[2.5rem] font-bold text-center mb-8 md:mb-16">Bringing DevOps to every engineer.</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-20">
           {/* Real-time DevOps Projects */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <Rocket className="h-6 w-6 text-blue-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Real-time DevOps & Cloud Projects</h3>
             <p className="text-muted-foreground mb-6">Hands-on projects with AWS, Azure, Terraform, Kubernetes, Docker & more.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://projects.prodevopsguytech.com" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
 
           {/* Automation Scripts */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
               <Settings className="h-6 w-6 text-purple-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Automation Scripts</h3>
             <p className="text-muted-foreground mb-6">Ready-to-use scripts for tool installations & configurations to streamline your workflow.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://github.com/topics/devops-automation" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
 
           {/* Interview Resources */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-green-500/10 flex items-center justify-center">
               <BookOpen className="h-6 w-6 text-green-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Interview Resources</h3>
             <p className="text-muted-foreground mb-6">In-depth interview questions and cheat sheets for DevOps and Cloud roles.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://roadmap.sh/devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
 
           {/* Learning Paths */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-orange-500/10 flex items-center justify-center">
               <Globe className="h-6 w-6 text-orange-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Learning Paths</h3>
             <p className="text-muted-foreground mb-6">Curated learning paths designed for beginners to advanced DevOps engineers.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://learn.microsoft.com/en-us/devops/plan/what-is-devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
 
           {/* Version Control */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <GitBranch className="h-6 w-6 text-indigo-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Version Control</h3>
             <p className="text-muted-foreground mb-6">Master Git workflows and best practices for collaborative development.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
 
           {/* Open Source */}
-          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all hover:border-foreground">
+          <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-4 md:p-8 transition-all hover:border-foreground">
             <div className="mb-6 size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center">
               <LightbulbIcon className="h-6 w-6 text-yellow-500" />
             </div>
             <h3 className="text-xl font-semibold mb-3">Open Source Community</h3>
             <p className="text-muted-foreground mb-6">Building a collaborative space for open-source contributions and knowledge sharing.</p>
-            <div className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            <a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-foreground transition-colors">
               <span>Learn more</span>
               <ArrowRight className="h-4 w-4 ml-1" />
-            </div>
+            </a>
           </Card>
         </div>
 
         {/* Git Deploy and Collaborative Sections */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-12 gap-y-8 md:gap-y-16">
           {/* Git Deploy Section */}
           <div>
-            <div className="flex items-center gap-2 text-muted-foreground mb-4">
+            <div className="flex items-center gap-2 text-muted-foreground mb-3 md:mb-4">
               <Terminal className="h-5 w-5" />
               <span className="text-sm font-medium">Git-connected Deploys</span>
             </div>
             
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold mb-3">From localhost to https, in seconds.</h2>
-              <p className="text-xl text-muted-foreground">Deploy from Git or your CLI.</p>
+            <div className="mb-4 md:mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3">From localhost to https, in seconds.</h2>
+              <p className="text-lg md:text-xl text-muted-foreground">Deploy from Git or your CLI.</p>
             </div>
 
             <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md overflow-hidden">
@@ -125,14 +125,14 @@ export default function Features() {
 
           {/* Collaborative Section */}
           <div>
-            <div className="flex items-center gap-2 text-muted-foreground mb-4">
+            <div className="flex items-center gap-2 text-muted-foreground mb-3 md:mb-4">
               <MessageCircle className="h-5 w-5" />
               <span className="text-sm font-medium">Collaborative Learning</span>
             </div>
             
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold mb-3">Every deploy is remarkable.</h2>
-              <p className="text-xl text-muted-foreground">Chat with your team on real, production-grade projects, not just theory. Learn by doing.</p>
+            <div className="mb-4 md:mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3">Every deploy is remarkable.</h2>
+              <p className="text-lg md:text-xl text-muted-foreground">Chat with your team on real, production-grade projects, not just theory. Learn by doing.</p>
             </div>
 
             <div className="space-y-4">
@@ -168,8 +168,8 @@ export default function Features() {
         </div>
 
         {/* Analytics Section */}
-        <div className="mt-20">
-          <div className="flex items-center gap-2 text-muted-foreground mb-4">
+        <div className="mt-12 md:mt-20">
+          <div className="flex items-center gap-2 text-muted-foreground mb-3 md:mb-4">
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M21 21H4.6c-.6 0-1.1-.5-1.1-1.1V3" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M19 15.5L14.5 11 9.5 16 5 11.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -177,12 +177,12 @@ export default function Features() {
             <span className="text-sm font-medium">Infrastructure Monitoring</span>
           </div>
           
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold mb-3">Real-time Infrastructure Analytics</h2>
-            <p className="text-xl text-muted-foreground">Monitor your cloud infrastructure, container health, and deployment metrics in real-time.</p>
+          <div className="mb-4 md:mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3">Real-time Infrastructure Analytics</h2>
+            <p className="text-lg md:text-xl text-muted-foreground">Monitor your cloud infrastructure, container health, and deployment metrics in real-time.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <Card className="col-span-2 border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md p-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">

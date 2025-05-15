@@ -51,25 +51,25 @@ export default function Header() {
           : "bg-background/40 backdrop-blur-sm"
       )} />
       
-      <div className="container relative">
+      <div className="container px-4 sm:px-6 relative">
         <div className={cn(
-          "flex items-center justify-between rounded-full border border-border/50 px-4 transition-all duration-300",
+          "flex items-center justify-between rounded-full border border-border/50 px-4 sm:px-6 transition-all duration-300",
           scrolled ? "py-2" : "py-3",
           "bg-background/50 backdrop-blur-sm"
         )}>
-          <Link href="/" className="text-xl font-bold relative group">
+          <Link href="/" className="text-lg sm:text-xl font-bold relative group whitespace-nowrap">
             ProDevOpsGuy<span className="text-primary">Tech</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
             
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link 
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-md relative group transition-colors",
+                  "px-2 sm:px-3 py-2 text-sm font-medium rounded-md relative group transition-colors whitespace-nowrap",
                   pathname === item.href 
                     ? "text-foreground bg-primary/10" 
                     : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
@@ -80,9 +80,9 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <Link href="/get-started" className="hidden md:inline-flex">
-              <Button size="sm" className="relative overflow-hidden group">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link href="/get-started" className="hidden sm:inline-flex">
+              <Button size="sm" className="relative overflow-hidden group whitespace-nowrap">
                 <span className="relative z-10">Get Started</span>
                 <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
               </Button>
@@ -101,7 +101,7 @@ export default function Header() {
           
             {/* Mobile Menu */}
             <Sheet>
-              <SheetTrigger asChild className="md:hidden">
+              <SheetTrigger asChild className="lg:hidden">
                 <Button variant="ghost" size="icon" className="hover:bg-primary/5 transition-colors">
                   <Menu className="h-5 w-5" />
                 </Button>
