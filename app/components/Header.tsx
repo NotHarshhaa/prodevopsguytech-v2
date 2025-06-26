@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
   const pathname = usePathname();
@@ -27,6 +28,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close menu when pathname changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const navItems = [
     { href: "https://projects.prodevopsguytech.com/", label: "Projects" },
@@ -100,7 +106,7 @@ export default function Header() {
             </Button>
           
             {/* Mobile Menu */}
-            <Sheet>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild className="lg:hidden">
                 <Button variant="ghost" size="icon" className="hover:bg-primary/5 transition-colors">
                   <Menu className="h-5 w-5" />
