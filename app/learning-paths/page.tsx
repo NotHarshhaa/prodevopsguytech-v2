@@ -229,60 +229,72 @@ export default function LearningPathsPage() {
   };
   
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 to-background pt-32 pb-24">
+      <section className="relative bg-gradient-to-b from-primary/5 to-background pt-28 md:pt-32 pb-16 md:pb-24">
         <div className="container px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12 md:mb-16 pt-8 md:pt-0"
           >
             <span className="inline-block text-primary font-semibold mb-2">LEARNING PATHS</span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
               Master DevOps & Cloud Computing
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8">
               Structured learning paths to guide your journey from beginner to expert
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8 md:mb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">9+</div>
-                <div className="text-sm text-muted-foreground">Learning Paths</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">9+</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Learning Paths</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">48+</div>
-                <div className="text-sm text-muted-foreground">Weeks of Content</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">48+</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Weeks of Content</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">1000+</div>
-                <div className="text-sm text-muted-foreground">Students Enrolled</div>
+                <div className="text-2xl md:text-3xl font-bold text-primary mb-1">1000+</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Students Enrolled</div>
               </div>
             </div>
 
             {/* Search and Filter */}
             <div className="max-w-2xl mx-auto">
-              <div className="relative mb-6">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
+              <div className="relative mb-4 md:mb-6">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   type="text"
                   placeholder="Search learning paths..."
-                  className="pl-10 py-6"
+                  className="pl-10 py-4 md:py-6"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               
               <Tabs defaultValue="all" className="w-full" onValueChange={setSelectedLevel}>
-                <TabsList className="grid grid-cols-5 gap-2">
+                <TabsList className="grid grid-cols-3 md:grid-cols-5 gap-2">
                   <TabsTrigger value="all">All</TabsTrigger>
-                  <TabsTrigger value="Beginner">Beginner</TabsTrigger>
-                  <TabsTrigger value="Intermediate">Intermediate</TabsTrigger>
-                  <TabsTrigger value="Advanced">Advanced</TabsTrigger>
-                  <TabsTrigger value="Specialization">Specialization</TabsTrigger>
+                  <TabsTrigger value="Beginner">
+                    <span className="hidden md:inline">Beginner</span>
+                    <span className="md:hidden">Begin</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="Intermediate">
+                    <span className="hidden md:inline">Intermediate</span>
+                    <span className="md:hidden">Inter</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="Advanced">
+                    <span className="hidden md:inline">Advanced</span>
+                    <span className="md:hidden">Adv</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="Specialization">
+                    <span className="hidden md:inline">Specialization</span>
+                    <span className="md:hidden">Spec</span>
+                  </TabsTrigger>
                 </TabsList>
               </Tabs>
             </div>
@@ -291,13 +303,13 @@ export default function LearningPathsPage() {
       </section>
 
       {/* Learning Paths Grid */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="container px-4 mx-auto">
           <motion.div 
             variants={container}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           >
             {filteredPaths.map((path) => (
               <MotionCard
@@ -306,40 +318,40 @@ export default function LearningPathsPage() {
                 className={`shadow-sm hover:shadow-md transition-all ${getPathCardClass(path.level)}`}
                 whileHover={{ y: -5 }}
               >
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-4">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
                     <Badge className={getLevelBadgeClass(path.level)}>
                       {path.level}
                     </Badge>
-                    <div className="flex items-center text-muted-foreground text-sm">
-                      <Clock className="h-4 w-4 mr-1" />
+                    <div className="flex items-center text-muted-foreground text-xs md:text-sm">
+                      <Clock className="h-3 w-3 md:h-4 md:w-4 mr-1" />
                       <span>{path.duration}</span>
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3">
                     {path.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">{path.description}</p>
+                  <p className="text-sm md:text-base text-muted-foreground mb-4">{path.description}</p>
                   
                   {/* Course Stats */}
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                  <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4 text-xs md:text-sm">
                     <div className="flex items-center text-muted-foreground">
-                      <Users className="h-4 w-4 mr-2" />
+                      <Users className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                       {path.enrolled.toLocaleString()} enrolled
                     </div>
                     <div className="flex items-center text-muted-foreground">
-                      <Trophy className="h-4 w-4 mr-2" />
+                      <Trophy className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                       {path.completion_rate}% completion
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-medium text-sm mb-2">Topics Covered:</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
+                    <h4 className="font-medium text-xs md:text-sm mb-2">Topics Covered:</h4>
+                    <ul className="space-y-1 text-xs md:text-sm text-muted-foreground">
                       {path.topics.map((topic, index) => (
                         <li key={index} className="flex items-center">
-                          <BookOpen className="h-3 w-3 mr-2 text-primary" />
+                          <BookOpen className="h-3 w-3 mr-1 md:mr-2 text-primary" />
                           {topic}
                         </li>
                       ))}
@@ -349,10 +361,10 @@ export default function LearningPathsPage() {
                 <CardFooter className="p-0">
                   <Link 
                     href={path.url}
-                    className="w-full p-4 text-center font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-colors rounded-b-lg flex items-center justify-center group"
+                    className="w-full p-3 md:p-4 text-center font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-colors rounded-b-lg flex items-center justify-center group"
                   >
-                    Explore Path
-                    <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                    <span className="text-sm md:text-base">Explore Path</span>
+                    <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </CardFooter>
               </MotionCard>
@@ -363,16 +375,16 @@ export default function LearningPathsPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-12"
+              className="text-center py-8 md:py-12"
             >
-              <h3 className="text-xl font-semibold mb-2">No learning paths found</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg md:text-xl font-semibold mb-2">No learning paths found</h3>
+              <p className="text-sm md:text-base text-muted-foreground">
                 Try adjusting your search or filter criteria
               </p>
             </motion.div>
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 } 

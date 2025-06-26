@@ -127,21 +127,21 @@ export default function ResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
       <div className="absolute inset-0 flex items-center justify-center -z-10 bg-background">
-        <div className="absolute inset-auto w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
+        <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
       </div>
 
-      <section className="relative pt-32 pb-16">
+      <section className="relative pt-28 md:pt-32 pb-16">
         <div className="container px-4 mx-auto">
           {/* Hero Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-20"
+            className="text-center max-w-3xl mx-auto mb-12 md:mb-20 pt-8 md:pt-0"
           >
             <motion.span 
               initial={{ scale: 0 }}
@@ -151,10 +151,10 @@ export default function ResourcesPage() {
             >
               RESOURCES HUB
             </motion.span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
               DevOps & Cloud Resources
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
               Your Gateway to DevOps Excellence — Curated Resources for Every Stage of Your Journey
             </p>
             
@@ -168,8 +168,8 @@ export default function ResourcesPage() {
                   transition={{ delay: index * 0.1 }}
                   className="p-4 rounded-lg bg-muted/50 backdrop-blur-sm"
                 >
-                  <div className="text-2xl font-bold text-primary mb-1">{value}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-xl md:text-2xl font-bold text-primary mb-1">{value}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </div>
                 </motion.div>
@@ -177,7 +177,7 @@ export default function ResourcesPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 md:mb-12">
               <a 
                 href="https://topmate.io/prodevopsguytech/800566"
                 target="_blank"
@@ -202,7 +202,7 @@ export default function ResourcesPage() {
             </div>
 
             {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto mb-12">
+            <div className="relative max-w-xl mx-auto mb-8 md:mb-12">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
@@ -215,8 +215,8 @@ export default function ResourcesPage() {
           </motion.div>
 
           {/* Category Tabs */}
-          <Tabs defaultValue="all" className="mb-8">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-transparent">
+          <Tabs defaultValue="all" className="mb-6 md:mb-8">
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 bg-transparent">
               {categories.map((category) => {
                 const Icon = category.icon;
                 return (
@@ -227,7 +227,8 @@ export default function ResourcesPage() {
                     className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary"
                   >
                     <Icon className="mr-2 h-4 w-4" />
-                    {category.label}
+                    <span className="hidden md:inline">{category.label}</span>
+                    <span className="md:hidden">{category.label.split(' ')[0]}</span>
                   </TabsTrigger>
                 );
               })}
@@ -235,7 +236,7 @@ export default function ResourcesPage() {
           </Tabs>
 
           {/* Resource Cards */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-20">
             <AnimatePresence>
               {filteredResources.map((resource, index) => (
                 <motion.div
@@ -290,18 +291,18 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="relative overflow-hidden bg-gradient-to-b from-muted/50 to-muted/30 border rounded-xl p-12 max-w-4xl mx-auto text-center backdrop-blur-sm"
+            className="relative overflow-hidden bg-gradient-to-b from-muted/50 to-muted/30 border rounded-xl p-6 md:p-12 max-w-4xl mx-auto text-center backdrop-blur-sm"
           >
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:16px] rounded-xl" />
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
                 Ready to Master DevOps?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
                 Join thousands of developers who are transforming their careers with our comprehensive resources.
                 New content is added weekly to keep you up-to-date with the latest trends and practices.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col md:flex-row justify-center gap-4">
                 <a 
                   href="https://projects.prodevopsguytech.com/"
                   target="_blank" 
