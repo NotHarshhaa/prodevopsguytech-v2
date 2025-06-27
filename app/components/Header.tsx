@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, SunIcon, MoonIcon } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Menu, SunIcon, MoonIcon, Code, BookOpen, Users, MessageCircle, Info, Mail, ArrowRight, ExternalLink, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,13 +36,71 @@ export default function Header() {
   }, [pathname]);
 
   const navItems = [
-    { href: "https://projects.prodevopsguytech.com/", label: "Projects" },
-    { href: "/resources", label: "Resources" },
-    { href: "/learning-paths", label: "Learning Paths" },
-    { href: "/community", label: "Community" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" }
+    { 
+      href: "https://projects.prodevopsguytech.com/", 
+      label: "Projects",
+      icon: Code,
+      description: "Real-world DevOps projects and tutorials",
+      isExternal: true
+    },
+    { 
+      href: "/resources", 
+      label: "Resources",
+      icon: BookOpen,
+      description: "Comprehensive learning materials",
+      isExternal: false
+    },
+    { 
+      href: "/learning-paths", 
+      label: "Learning Paths",
+      icon: ArrowRight,
+      description: "Structured paths to master DevOps",
+      isExternal: false
+    },
+    { 
+      href: "/community", 
+      label: "Community",
+      icon: Users,
+      description: "Join our growing tech community",
+      isExternal: false
+    },
+    { 
+      href: "/about", 
+      label: "About",
+      icon: Info,
+      description: "Learn more about us",
+      isExternal: false
+    },
+    { 
+      href: "/contact", 
+      label: "Contact",
+      icon: Mail,
+      description: "Get in touch with us",
+      isExternal: false
+    }
   ];
+
+  const menuItemVariants = {
+    hidden: { 
+      opacity: 0,
+      x: -20
+    },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.3,
+      }
+    }),
+    exit: { 
+      opacity: 0,
+      x: -20,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
 
   return (
     <header 
@@ -114,41 +173,121 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="w-[300px] sm:w-[400px] p-0 border-l border-border/30 backdrop-blur-lg"
+                className="w-[300px] sm:w-[400px] p-0 border-l border-border/30 backdrop-blur-lg bg-background/95"
+                title="Navigation Menu"
+                hideCloseButton
               >
                 <div className="flex flex-col h-full">
-                  <div className="flex items-center p-6 border-b border-border/10">
-                    <span className="font-semibold">Menu</span>
-                  </div>
-                  <nav className="flex-1 overflow-y-auto p-6">
-                    <div className="flex flex-col gap-2">
-                      {navItems.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.href} 
-                          className={cn(
-                            "px-4 py-3 rounded-lg transition-all duration-200 relative group",
-                            pathname === item.href 
-                              ? "bg-primary/10 text-foreground" 
-                              : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
-                          )}
+                  <div className="flex items-center justify-between p-6 border-b border-border/10">
+                    <div className="flex flex-col">
+                      <span className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+                        Navigation
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        Explore our platform
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="icon"
+                        onClick={toggleTheme}
+                        className="hover:bg-primary/5 transition-colors"
+                        aria-label="Toggle theme"
+                      >
+                        {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+                      </Button>
+                      <SheetClose asChild>
+                        <Button 
+                          variant="ghost" 
+                          size="icon" 
+                          className="hover:bg-destructive/10 transition-colors"
                         >
-                          <span className="font-medium">{item.label}</span>
-                          <span className={cn(
-                            "absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 rounded-r-full bg-primary transition-all duration-200",
-                            pathname === item.href ? "h-8" : "group-hover:h-8"
-                          )}></span>
-                        </Link>
-                      ))}
+                          <X className="h-5 w-5" />
+                          <span className="sr-only">Close menu</span>
+                        </Button>
+                      </SheetClose>
+                    </div>
+                  </div>
+
+                  <nav className="flex-1 overflow-y-auto py-6">
+                    <div className="px-3">
+                      <AnimatePresence mode="wait">
+                        <div className="grid gap-2">
+                          {navItems.map((item, i) => (
+                            <motion.div
+                              key={item.label}
+                              custom={i}
+                              variants={menuItemVariants}
+                              initial="hidden"
+                              animate="visible"
+                              exit="exit"
+                            >
+                              <Link
+                                href={item.href}
+                                className={cn(
+                                  "flex items-start gap-4 p-3 rounded-lg transition-all duration-200 group",
+                                  pathname === item.href 
+                                    ? "bg-primary/10 text-foreground" 
+                                    : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                                )}
+                              >
+                                <div className={cn(
+                                  "p-2 rounded-md transition-colors",
+                                  pathname === item.href
+                                    ? "bg-primary/20 text-primary"
+                                    : "bg-muted text-muted-foreground group-hover:text-primary group-hover:bg-primary/10"
+                                )}>
+                                  <item.icon className="h-5 w-5" />
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-medium">{item.label}</span>
+                                    {item.isExternal && (
+                                      <ExternalLink className="h-4 w-4 opacity-50" />
+                                    )}
+                                  </div>
+                                  <p className="text-sm text-muted-foreground line-clamp-1">
+                                    {item.description}
+                                  </p>
+                                </div>
+                                <div className={cn(
+                                  "w-1 self-stretch rounded-full transition-all duration-300",
+                                  pathname === item.href
+                                    ? "bg-primary scale-100"
+                                    : "bg-primary/50 scale-y-0 group-hover:scale-y-100"
+                                )} />
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </AnimatePresence>
                     </div>
                   </nav>
+
                   <div className="p-6 border-t border-border/10">
-                    <Link href="/get-started" className="block">
-                      <Button className="w-full relative overflow-hidden group">
-                        <span className="relative z-10">Get Started</span>
-                        <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
-                      </Button>
-                    </Link>
+                    <div className="grid gap-4">
+                      <Link href="/get-started" className="block">
+                        <Button className="w-full relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80">
+                          <span className="relative z-10 flex items-center justify-center gap-2">
+                            Get Started
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </span>
+                          <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
+                        </Button>
+                      </Link>
+                      <div className="text-center">
+                        <Link 
+                          href="https://t.me/prodevopsguy"
+                          target="_blank"
+                          rel="noopener noreferrer" 
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+                        >
+                          <MessageCircle className="h-4 w-4" />
+                          Join our Telegram
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
