@@ -88,9 +88,9 @@ export default function ResourcesPage() {
     },
     {
       id: 7,
-      title: 'DevOps Tools Hub',
+      title: 'DevOps Tools Setup Installations',
       description: 'Comprehensive guides for installing and configuring essential DevOps tools.',
-      url: 'https://devopsguides.site',
+      url: 'https://tools-setup.prodevopsguytech.com/',
       icon: '🛠️',
       gradient: 'from-rose-500/10 to-pink-500/10',
       borderGradient: 'hover:border-rose-500/50',
@@ -99,7 +99,7 @@ export default function ResourcesPage() {
     },
     {
       id: 8,
-      title: 'Tools Cheatsheet',
+      title: 'Ultimate DevOps Tools Cheatsheet',
       description: 'Quick reference guides and commands for your daily DevOps workflow.',
       url: 'https://cheatsheet.prodevopsguytech.com',
       icon: '📋',
