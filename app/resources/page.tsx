@@ -6,8 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ExternalLink, ArrowRight, Search, BookOpen, Code, Briefcase, Newspaper } from "lucide-react";
+import { ExternalLink, ArrowRight, Search, BookOpen, Code, Briefcase, Newspaper, 
+  Terminal, 
+  Book, 
+  Box, 
+  Compass, 
+  FileText, 
+  Cloud, 
+  Wrench, 
+  ClipboardList 
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import React from 'react';
 
 export default function ResourcesPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,7 +35,7 @@ export default function ResourcesPage() {
       title: 'Real-Time Projects Hub',
       description: 'Work on real-world DevOps/Cloud projects with hands-on experience in AWS, Azure, and GCP.',
       url: 'https://projects.prodevopsguytech.com/',
-      icon: '💻',
+      icon: Terminal,
       gradient: 'from-blue-500/10 to-cyan-500/10',
       borderGradient: 'hover:border-blue-500/50',
       category: 'learning',
@@ -36,18 +46,18 @@ export default function ResourcesPage() {
       title: 'Ultimate Docs Portal',
       description: '900+ curated learning materials covering everything from basic concepts to advanced implementations.',
       url: 'https://docs.prodevopsguytech.com/',
-      icon: '📚',
+      icon: Book,
       gradient: 'from-purple-500/10 to-pink-500/10',
       borderGradient: 'hover:border-purple-500/50',
       category: 'learning',
-      stats: { articles: '900+', readers: '10K+' }
+      stats: { docs: '1400+', readers: '10K+' }
     },
     {
       id: 3,
       title: 'Repositories Central',
       description: 'Access production-ready scripts, infrastructure templates, and preparation content.',
       url: 'https://repos.prodevopsguytech.com/',
-      icon: '📦',
+      icon: Box,
       gradient: 'from-orange-500/10 to-red-500/10',
       borderGradient: 'hover:border-orange-500/50',
       category: 'learning',
@@ -58,7 +68,7 @@ export default function ResourcesPage() {
       title: 'Jobs Portal',
       description: 'Discover curated DevOps and Cloud opportunities from leading tech companies.',
       url: 'https://jobs.prodevopsguytech.com/',
-      icon: '🧭',
+      icon: Compass,
       gradient: 'from-green-500/10 to-emerald-500/10',
       borderGradient: 'hover:border-green-500/50',
       category: 'career',
@@ -69,7 +79,7 @@ export default function ResourcesPage() {
       title: 'DevOps Blog',
       description: 'In-depth technical articles and practical guides for modern DevOps practices.',
       url: 'https://blog.prodevopsguytech.com/',
-      icon: '📰',
+      icon: FileText,
       gradient: 'from-yellow-500/10 to-amber-500/10',
       borderGradient: 'hover:border-yellow-500/50',
       category: 'content',
@@ -80,7 +90,7 @@ export default function ResourcesPage() {
       title: 'Cloud Blog',
       description: 'Expert insights and best practices for cloud architecture and implementation.',
       url: 'https://cloud.prodevopsguytech.com/',
-      icon: '☁️',
+      icon: Cloud,
       gradient: 'from-indigo-500/10 to-violet-500/10',
       borderGradient: 'hover:border-indigo-500/50',
       category: 'content',
@@ -91,7 +101,7 @@ export default function ResourcesPage() {
       title: 'DevOps Tools Setup Installations',
       description: 'Comprehensive guides for installing and configuring essential DevOps tools.',
       url: 'https://tools-setup.prodevopsguytech.com/',
-      icon: '🛠️',
+      icon: Wrench,
       gradient: 'from-rose-500/10 to-pink-500/10',
       borderGradient: 'hover:border-rose-500/50',
       category: 'learning',
@@ -102,7 +112,7 @@ export default function ResourcesPage() {
       title: 'Ultimate DevOps Tools Cheatsheet',
       description: 'Quick reference guides and commands for your daily DevOps workflow.',
       url: 'https://cheatsheet.prodevopsguytech.com',
-      icon: '📋',
+      icon: ClipboardList,
       gradient: 'from-teal-500/10 to-emerald-500/10',
       borderGradient: 'hover:border-teal-500/50',
       category: 'learning',
@@ -252,7 +262,10 @@ export default function ResourcesPage() {
                   >
                     <CardContent className="p-6">
                       <div className="text-4xl mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-12">
-                        {resource.icon}
+                        {resource.icon && React.createElement(resource.icon, {
+                          size: 40,
+                          className: "text-primary"
+                        })}
                       </div>
                       <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                         {resource.title}
