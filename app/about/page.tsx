@@ -89,20 +89,20 @@ export default function AboutPage() {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
+    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
       <div className="absolute inset-0 flex items-center justify-center -z-10 bg-background">
-        <div className="absolute inset-auto w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
+        <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
       </div>
 
-      <section className="relative pt-32 pb-16">
+      <section className="relative pt-28 md:pt-32 pb-16">
         <div className="container px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12 md:mb-16 pt-8 md:pt-0"
           >
             <motion.span 
               initial={{ scale: 0 }}
@@ -112,10 +112,10 @@ export default function AboutPage() {
             >
               ABOUT US
             </motion.span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
               About ProDevOpsGuy Tech
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
               A passionate community built for DevOps and Cloud enthusiasts, learners, and professionals.
             </p>
 
@@ -132,7 +132,7 @@ export default function AboutPage() {
                     className="p-4 rounded-lg bg-muted/50 backdrop-blur-sm"
                   >
                     <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
+                    <div className="text-xl md:text-2xl font-bold text-primary mb-1">{stat.value}</div>
                     <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </motion.div>
                 )}
@@ -144,7 +144,7 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 mb-16"
           >
             <motion.div variants={itemVariants}>
               <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
@@ -207,7 +207,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-muted/50 backdrop-blur-sm py-16 px-8 rounded-lg"
+            className="bg-muted/50 backdrop-blur-sm py-8 sm:py-16 px-4 sm:px-8 rounded-lg"
           >
             <div className="text-center mb-12">
               <span className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4">
@@ -218,7 +218,7 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
               {values.map((value, index) => (
                 <motion.div
                   key={index}

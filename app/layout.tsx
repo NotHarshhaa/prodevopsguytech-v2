@@ -71,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${mono.variable}`} suppressHydrationWarning>
       <head />
-      <body className="min-h-screen font-sans antialiased">
+      <body className="min-h-screen font-sans antialiased overflow-x-hidden">
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
             <Header />
