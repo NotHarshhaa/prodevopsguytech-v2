@@ -5,14 +5,31 @@ import Link from 'next/link';
 import { useTheme } from '../context/ThemeContext';
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { Menu, SunIcon, MoonIcon, Code, BookOpen, Users, MessageCircle, Info, Mail, ArrowRight, ExternalLink, X } from "lucide-react";
+import { 
+  Menu, 
+  SunIcon, 
+  MoonIcon, 
+  Code, 
+  BookOpen, 
+  Users, 
+  MessageCircle, 
+  Info, 
+  Mail, 
+  ArrowRight, 
+  ExternalLink, 
+  X,
+  Sparkles,
+  Command
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from "framer-motion";
+import { CommandMenu } from './CommandMenu';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCommandMenu, setShowCommandMenu] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
   const pathname = usePathname();
@@ -41,7 +58,8 @@ export default function Header() {
       label: "Projects",
       icon: Code,
       description: "Real-world DevOps projects and tutorials",
-      isExternal: true
+      isExternal: true,
+      badge: "New"
     },
     { 
       href: "/resources", 
@@ -55,7 +73,8 @@ export default function Header() {
       label: "Learning Paths",
       icon: ArrowRight,
       description: "Structured paths to master DevOps",
-      isExternal: false
+      isExternal: false,
+      badge: "Popular"
     },
     { 
       href: "/community", 
@@ -109,6 +128,9 @@ export default function Header() {
         scrolled ? "py-2" : "py-4"
       )}
     >
+      {/* Gradient line at the top */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0" />
+
       <div className={cn(
         "absolute inset-0 transition-all duration-300",
         scrolled 
@@ -118,13 +140,22 @@ export default function Header() {
       
       <div className="container px-4 sm:px-6 relative">
         <div className={cn(
-          "flex items-center justify-between rounded-full border border-border/50 px-4 sm:px-6 transition-all duration-300",
+          "flex items-center justify-between rounded-2xl border border-border/50 px-4 sm:px-6 transition-all duration-300",
           scrolled ? "py-2" : "py-3",
           "bg-background/50 backdrop-blur-sm"
         )}>
-          <Link href="/" className="text-lg sm:text-xl font-bold relative group whitespace-nowrap">
-            ProDevOpsGuy<span className="text-primary">Tech</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          {/* Logo */}
+          <Link href="/" className="relative group">
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <Sparkles className="h-6 w-6 text-primary animate-pulse" />
+                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
+              </div>
+              <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                ProDevOpsGuy<span className="text-primary">Tech</span>
+              </span>
+            </div>
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary/50 to-primary transition-all duration-300 group-hover:w-full"></span>
           </Link>
             
           {/* Desktop Navigation */}
@@ -134,22 +165,56 @@ export default function Header() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "px-2 sm:px-3 py-2 text-sm font-medium rounded-md relative group transition-colors whitespace-nowrap",
+                  "px-3 py-2 text-sm font-medium rounded-lg relative group transition-all duration-300",
                   pathname === item.href 
                     ? "text-foreground bg-primary/10" 
                     : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
                 )}
               >
-                {item.label}
+                <div className="flex items-center gap-2">
+                  {item.label}
+                  {item.isExternal && (
+                    <ExternalLink className="h-3 w-3 opacity-50" />
+                  )}
+                  {item.badge && (
+                    <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded-full bg-primary/10 text-primary">
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/50 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Command Menu */}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="hidden sm:inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+              onClick={() => setShowCommandMenu(true)}
+            >
+              <Command className="h-4 w-4" />
+              <span className="text-xs">Quick nav</span>
+              <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
+                <span className="text-xs">⌘</span>K
+              </kbd>
+            </Button>
+
+            {/* Command Menu Component */}
+            <CommandMenu 
+              open={showCommandMenu} 
+              onOpenChange={setShowCommandMenu}
+            />
+
             <Link href="/get-started" className="hidden sm:inline-flex">
-              <Button size="sm" className="relative overflow-hidden group whitespace-nowrap">
-                <span className="relative z-10">Get Started</span>
-                <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
+              <Button size="sm" className="relative group">
+                <span className="relative z-10 flex items-center gap-2">
+                  Get Started
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity rounded-md" />
               </Button>
             </Link>
           
@@ -158,22 +223,32 @@ export default function Header() {
               variant="ghost" 
               size="icon"
               onClick={toggleTheme}
-              className="hover:bg-primary/5 transition-colors"
+              className="relative group"
               aria-label="Toggle theme"
             >
-              {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+              <span className="absolute -inset-1 bg-primary/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
+              {isDark ? (
+                <SunIcon className="h-5 w-5 relative transition-transform group-hover:rotate-90" />
+              ) : (
+                <MoonIcon className="h-5 w-5 relative transition-transform group-hover:-rotate-90" />
+              )}
             </Button>
           
             {/* Mobile Menu */}
             <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="hover:bg-primary/5 transition-colors">
-                  <Menu className="h-5 w-5" />
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="relative group"
+                >
+                  <span className="absolute -inset-1 bg-primary/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
+                  <Menu className="h-5 w-5 relative" />
                 </Button>
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="w-[300px] sm:w-[400px] p-0 border-l border-border/30 backdrop-blur-lg bg-background/95"
+                className="w-[300px] sm:w-[400px] p-0 border-l border-border/30 backdrop-blur-xl bg-background/95"
                 title="Navigation Menu"
                 hideCloseButton
               >
@@ -192,19 +267,23 @@ export default function Header() {
                         variant="ghost" 
                         size="icon"
                         onClick={toggleTheme}
-                        className="hover:bg-primary/5 transition-colors"
-                        aria-label="Toggle theme"
+                        className="relative group"
                       >
-                        {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+                        <span className="absolute -inset-1 bg-primary/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
+                        {isDark ? (
+                          <SunIcon className="h-5 w-5 relative transition-transform group-hover:rotate-90" />
+                        ) : (
+                          <MoonIcon className="h-5 w-5 relative transition-transform group-hover:-rotate-90" />
+                        )}
                       </Button>
                       <SheetClose asChild>
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="hover:bg-destructive/10 transition-colors"
+                          className="relative group"
                         >
-                          <X className="h-5 w-5" />
-                          <span className="sr-only">Close menu</span>
+                          <span className="absolute -inset-1 bg-destructive/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
+                          <X className="h-5 w-5 relative" />
                         </Button>
                       </SheetClose>
                     </div>
@@ -226,7 +305,7 @@ export default function Header() {
                               <Link
                                 href={item.href}
                                 className={cn(
-                                  "flex items-start gap-4 p-3 rounded-lg transition-all duration-200 group",
+                                  "flex items-start gap-4 p-3 rounded-lg transition-all duration-200 group relative overflow-hidden",
                                   pathname === item.href 
                                     ? "bg-primary/10 text-foreground" 
                                     : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
@@ -245,6 +324,11 @@ export default function Header() {
                                     <span className="font-medium">{item.label}</span>
                                     {item.isExternal && (
                                       <ExternalLink className="h-4 w-4 opacity-50" />
+                                    )}
+                                    {item.badge && (
+                                      <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded-full bg-primary/10 text-primary">
+                                        {item.badge}
+                                      </span>
                                     )}
                                   </div>
                                   <p className="text-sm text-muted-foreground line-clamp-1">
@@ -268,12 +352,12 @@ export default function Header() {
                   <div className="p-6 border-t border-border/10">
                     <div className="grid gap-4">
                       <Link href="/get-started" className="block">
-                        <Button className="w-full relative overflow-hidden group bg-gradient-to-r from-primary to-primary/80">
+                        <Button className="w-full relative group overflow-hidden">
                           <span className="relative z-10 flex items-center justify-center gap-2">
                             Get Started
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </span>
-                          <span className="absolute inset-0 bg-primary/10 transform translate-y-full transition-transform group-hover:translate-y-0"></span>
+                          <span className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Button>
                       </Link>
                       <div className="text-center">
@@ -281,9 +365,9 @@ export default function Header() {
                           href="https://t.me/prodevopsguy"
                           target="_blank"
                           rel="noopener noreferrer" 
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2 group"
                         >
-                          <MessageCircle className="h-4 w-4" />
+                          <MessageCircle className="h-4 w-4 transition-transform group-hover:scale-110" />
                           Join our Telegram
                         </Link>
                       </div>
