@@ -128,21 +128,11 @@ export default function Header() {
         scrolled ? "py-2" : "py-4"
       )}
     >
-      {/* Gradient line at the top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-primary/0 via-primary/50 to-primary/0" />
-
-      <div className={cn(
-        "absolute inset-0 transition-all duration-300",
-        scrolled 
-          ? "bg-background/80 backdrop-blur-md shadow-sm" 
-          : "bg-background/40 backdrop-blur-sm"
-      )} />
-      
       <div className="container px-4 sm:px-6 relative">
         <div className={cn(
-          "flex items-center justify-between rounded-2xl border border-border/50 px-4 sm:px-6 transition-all duration-300",
+          "flex items-center justify-between rounded-2xl border border-border/30 px-4 sm:px-6 transition-all duration-300",
           scrolled ? "py-2" : "py-3",
-          "bg-background/50 backdrop-blur-sm"
+          "bg-background/80 backdrop-blur-md shadow-lg"
         )}>
           {/* Logo */}
           <Link href="/" className="relative group">
