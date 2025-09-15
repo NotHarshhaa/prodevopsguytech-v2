@@ -108,11 +108,11 @@ export default function AboutPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide"
             >
               ABOUT US
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               About ProDevOpsGuy Tech
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -129,11 +129,11 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 rounded-lg bg-muted/50 backdrop-blur-sm"
+                    className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                   >
                     <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-xl md:text-2xl font-bold text-primary mb-1">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
                   </motion.div>
                 )}
               )}
@@ -147,24 +147,24 @@ export default function AboutPage() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 mb-16"
           >
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+              <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
                 Our Mission
               </h2>
               <div className="space-y-4">
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   Our mission at ProDevOpsGuy Tech is to empower individuals by providing hands-on, real-world projects, practical learning paths, interview resources, and automation guides tailored for modern infrastructure and deployment practices.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   We believe that learning by doing is the most effective approach to mastering DevOps and Cloud technologies. That's why we focus on creating practical, real-world projects and resources that help you build valuable skills for your career.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   Whether you're just getting started or leveling up your DevOps journey, ProDevOpsGuy Tech is here to guide you with practical resources and a supportive tech community.
                 </p>
                 <div className="pt-4">
                   <Link href="/get-started">
-                    <Button className="group">
+                    <Button className="group rounded-full">
                       Start Your Journey
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </Button>
                   </Link>
                 </div>
@@ -172,9 +172,9 @@ export default function AboutPage() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Card className="bg-card border shadow-sm backdrop-blur-sm hover:shadow-lg transition-all duration-300">
+              <Card className="bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 ease-out rounded-2xl">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6">What We Focus On</h3>
+                  <h3 className="text-2xl font-semibold mb-6 tracking-wide">What We Focus On</h3>
                   <div className="space-y-6">
                     {focusPoints.map((point, index) => (
                       <motion.div
@@ -184,14 +184,14 @@ export default function AboutPage() {
                         transition={{ delay: index * 0.1 }}
                         className="flex items-start gap-4 group"
                       >
-                        <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                        <div className="p-2 rounded-full bg-primary/15 text-primary group-hover:scale-110 transition-transform duration-300">
                           {point.icon}
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors">
+                          <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors tracking-wide">
                             {point.title}
                           </h4>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
                             {point.description}
                           </p>
                         </div>
@@ -207,13 +207,13 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-muted/50 backdrop-blur-sm py-8 sm:py-16 px-4 sm:px-8 rounded-lg"
+            className="bg-background/60 backdrop-blur-xl py-8 sm:py-16 px-4 sm:px-8 rounded-2xl border border-border/20 shadow-lg"
           >
             <div className="text-center mb-12">
-              <span className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4">
+              <span className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
                 OUR VALUES
               </span>
-              <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+              <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
                 What Drives Us
               </h2>
             </div>
@@ -227,21 +227,21 @@ export default function AboutPage() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Card className="bg-card border shadow-sm h-full backdrop-blur-sm hover:shadow-lg transition-all duration-300">
+                  <Card className="bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg h-full hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out rounded-2xl">
                     <CardContent className="p-8 text-center">
                       <motion.div
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
-                        className={`w-12 h-12 mx-auto rounded-lg flex items-center justify-center mb-4 ${
-                          value.color === 'blue' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400' :
-                          value.color === 'green' ? 'bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400' :
-                          'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400'
+                        className={`w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4 ${
+                          value.color === 'blue' ? 'bg-blue-500/15 text-blue-600 dark:bg-blue-900 dark:text-blue-400' :
+                          value.color === 'green' ? 'bg-green-500/15 text-green-600 dark:bg-green-900 dark:text-green-400' :
+                          'bg-purple-500/15 text-purple-600 dark:bg-purple-900 dark:text-purple-400'
                         }`}
                       >
                         {value.icon}
                       </motion.div>
-                      <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                      <p className="text-muted-foreground">
+                      <h3 className="text-xl font-semibold mb-3 tracking-wide">{value.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
                         {value.description}
                       </p>
                     </CardContent>
@@ -263,13 +263,13 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/get-started">
-                <Button size="lg" className="group">
+                <Button size="lg" className="group rounded-full">
                   Get Started
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </Link>
               <Link href="/community">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" className="rounded-full">
                   Join Community
                 </Button>
               </Link>

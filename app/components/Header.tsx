@@ -130,9 +130,10 @@ export default function Header() {
     >
       <div className="container px-4 sm:px-6 relative">
         <div className={cn(
-          "flex items-center justify-between rounded-2xl border border-border/30 px-4 sm:px-6 transition-all duration-300",
-          scrolled ? "py-2" : "py-3",
-          "bg-background/80 backdrop-blur-md shadow-lg"
+          "flex items-center justify-between rounded-full border border-border/20 px-6 sm:px-8 transition-all duration-500 ease-out",
+          scrolled ? "py-2.5" : "py-3.5",
+          "bg-background/70 backdrop-blur-xl shadow-2xl shadow-black/5",
+          "hover:shadow-2xl hover:shadow-black/10"
         )}>
           {/* Logo */}
           <Link href="/" className="relative group">
@@ -149,30 +150,29 @@ export default function Header() {
           </Link>
             
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-0.5">
             {navItems.map((item) => (
               <Link 
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-lg relative group transition-all duration-300",
+                  "px-4 py-2 text-sm font-medium rounded-full relative group transition-all duration-200 ease-out",
                   pathname === item.href 
-                    ? "text-foreground bg-primary/10" 
-                    : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
+                    ? "text-foreground bg-primary/15 shadow-sm" 
+                    : "text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5"
                 )}
               >
                 <div className="flex items-center gap-2">
-                  {item.label}
+                  <span className="font-medium tracking-wide">{item.label}</span>
                   {item.isExternal && (
-                    <ExternalLink className="h-3 w-3 opacity-50" />
+                    <ExternalLink className="h-3 w-3 opacity-60" />
                   )}
                   {item.badge && (
-                    <span className="px-1.5 py-0.5 text-[10px] font-semibold rounded-full bg-primary/10 text-primary">
+                    <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-primary/15 text-primary border border-primary/20">
                       {item.badge}
                     </span>
                   )}
                 </div>
-                <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary/50 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
@@ -182,12 +182,12 @@ export default function Header() {
             <Button 
               variant="outline" 
               size="sm" 
-              className="hidden sm:inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+              className="hidden sm:inline-flex items-center gap-2 text-muted-foreground hover:text-foreground rounded-full border-border/20 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 ease-out shadow-lg hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 group"
               onClick={() => setShowCommandMenu(true)}
             >
-              <Command className="h-4 w-4" />
-              <span className="text-xs">Quick nav</span>
-              <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
+              <Command className="h-4 w-4 transition-transform group-hover:scale-110" />
+              <span className="text-xs font-medium tracking-wide">Quick nav</span>
+              <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded-md border border-border/30 bg-muted/60 px-1.5 font-mono text-[10px] font-medium">
                 <span className="text-xs">⌘</span>K
               </kbd>
             </Button>
@@ -199,12 +199,11 @@ export default function Header() {
             />
 
             <Link href="/get-started" className="hidden sm:inline-flex">
-              <Button size="sm" className="relative group">
-                <span className="relative z-10 flex items-center gap-2">
+              <Button size="sm" className="relative group rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 ease-out border-0">
+                <span className="relative z-10 flex items-center gap-2 font-medium">
                   Get Started
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity rounded-md" />
               </Button>
             </Link>
           
@@ -213,14 +212,13 @@ export default function Header() {
               variant="ghost" 
               size="icon"
               onClick={toggleTheme}
-              className="relative group"
+              className="relative group rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200 ease-out"
               aria-label="Toggle theme"
             >
-              <span className="absolute -inset-1 bg-primary/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
               {isDark ? (
-                <SunIcon className="h-5 w-5 relative transition-transform group-hover:rotate-90" />
+                <SunIcon className="h-5 w-5 relative transition-transform group-hover:rotate-12" />
               ) : (
-                <MoonIcon className="h-5 w-5 relative transition-transform group-hover:-rotate-90" />
+                <MoonIcon className="h-5 w-5 relative transition-transform group-hover:-rotate-12" />
               )}
             </Button>
           
@@ -230,9 +228,8 @@ export default function Header() {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="relative group"
+                  className="relative group rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200 ease-out"
                 >
-                  <span className="absolute -inset-1 bg-primary/10 scale-0 group-hover:scale-100 rounded-lg transition-transform" />
                   <Menu className="h-5 w-5 relative" />
                 </Button>
               </SheetTrigger>

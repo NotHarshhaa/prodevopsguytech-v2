@@ -157,11 +157,11 @@ export default function ResourcesPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide"
             >
               RESOURCES HUB
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               DevOps & Cloud Resources
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -176,10 +176,10 @@ export default function ResourcesPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-lg bg-muted/50 backdrop-blur-sm"
+                  className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                 >
-                  <div className="text-xl md:text-2xl font-bold text-primary mb-1">{value}</div>
-                  <div className="text-xs md:text-sm text-muted-foreground">
+                  <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{value}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </div>
                 </motion.div>
@@ -194,9 +194,9 @@ export default function ResourcesPage() {
                 rel="noopener noreferrer"
                 className="w-full md:w-auto"
               >
-                <Button size="lg" className="w-full md:w-auto group">
+                <Button size="lg" className="w-full md:w-auto group rounded-full">
                   Start Learning
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </a>
               <a 
@@ -205,7 +205,7 @@ export default function ResourcesPage() {
                 rel="noopener noreferrer"
                 className="w-full md:w-auto"
               >
-                <Button variant="outline" size="lg" className="w-full md:w-auto">
+                <Button variant="outline" size="lg" className="w-full md:w-auto rounded-full">
                   View Roadmap
                 </Button>
               </a>
@@ -217,7 +217,7 @@ export default function ResourcesPage() {
               <Input
                 type="text"
                 placeholder="Search resources..."
-                className="pl-10 bg-muted/50 backdrop-blur-sm"
+                className="pl-10 bg-background/60 backdrop-blur-sm border-border/30 rounded-full"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -258,7 +258,7 @@ export default function ResourcesPage() {
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   <Card 
-                    className={`group relative overflow-hidden border border-border/50 bg-gradient-to-b ${resource.gradient} backdrop-blur-sm transition-all duration-300 ${resource.borderGradient} hover:shadow-lg hover:-translate-y-1`}
+                    className={`group relative overflow-hidden border border-border/20 bg-background/60 backdrop-blur-xl transition-all duration-300 ease-out rounded-2xl hover:shadow-xl hover:scale-105 ${resource.borderGradient}`}
                   >
                     <CardContent className="p-6">
                       <div className="text-4xl mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-12">
@@ -267,7 +267,7 @@ export default function ResourcesPage() {
                           className: "text-primary"
                         })}
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors tracking-wide">
                         {resource.title}
                       </h3>
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -290,7 +290,7 @@ export default function ResourcesPage() {
                         className="w-full p-4 text-center font-medium text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2 group-hover:bg-muted/50"
                       >
                         Explore Resource
-                        <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       </a>
                     </CardFooter>
                   </Card>
@@ -304,14 +304,14 @@ export default function ResourcesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="relative overflow-hidden bg-gradient-to-b from-muted/50 to-muted/30 border rounded-xl p-6 md:p-12 max-w-4xl mx-auto text-center backdrop-blur-sm"
+            className="relative overflow-hidden bg-background/60 backdrop-blur-xl border border-border/20 rounded-2xl p-6 md:p-12 max-w-4xl mx-auto text-center shadow-lg"
           >
             <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:16px] rounded-xl" />
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
                 Ready to Master DevOps?
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
                 Join thousands of developers who are transforming their careers with our comprehensive resources.
                 New content is added weekly to keep you up-to-date with the latest trends and practices.
               </p>
@@ -322,13 +322,13 @@ export default function ResourcesPage() {
                   rel="noopener noreferrer"
                   className="w-full md:w-auto"
                 >
-                  <Button size="lg" className="w-full md:w-auto group">
+                  <Button size="lg" className="w-full md:w-auto group rounded-full">
                     Start with Projects
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </Button>
                 </a>
                 <Link href="/" className="w-full md:w-auto">
-                  <Button variant="outline" size="lg" className="w-full md:w-auto">
+                  <Button variant="outline" size="lg" className="w-full md:w-auto rounded-full">
                     Explore More
                   </Button>
                 </Link>

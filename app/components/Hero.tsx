@@ -46,10 +46,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10"
               >
                 <Rocket className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Your DevOps Journey Starts Here</span>
+                <span className="text-sm font-medium text-primary tracking-wide">Your DevOps Journey Starts Here</span>
               </motion.div>
 
               {/* Title */}
@@ -57,7 +57,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
               >
                 Your complete platform for{' '}
                 <span className="relative">
@@ -73,7 +73,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-lg md:text-xl text-muted-foreground mx-auto max-w-2xl"
+                className="text-lg md:text-xl text-muted-foreground mx-auto max-w-2xl leading-relaxed tracking-wide"
               >
                 ProDevOpsGuy Tech provides the tools, resources, and community
                 to build, learn, and master modern DevOps practices.
@@ -87,22 +87,20 @@ export default function Hero() {
                 className="flex flex-wrap justify-center gap-4 pt-4 md:pt-6"
               >
                 <Link href="https://projects.prodevopsguytech.com/">
-                  <Button size="lg" className="group relative overflow-hidden h-12 px-6 text-base">
-                    <span className="relative z-10 flex items-center gap-2">
+                  <Button size="lg" className="group relative overflow-hidden h-12 px-8 text-base rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 ease-out border-0">
+                    <span className="relative z-10 flex items-center gap-2 font-medium">
                       Start Deploying
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary to-primary/80 transition-transform group-hover:scale-[1.05]" />
                   </Button>
                 </Link>
                 <Link href="/learning-paths">
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="h-12 px-6 text-base relative overflow-hidden group"
+                    className="h-12 px-8 text-base relative overflow-hidden group rounded-full border-border/30 bg-background/50 hover:bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
                   >
-                    <span className="relative z-10">Get a Demo</span>
-                    <span className="absolute inset-0 bg-primary/10 transform translate-y-[101%] transition-transform group-hover:translate-y-0" />
+                    <span className="relative z-10 font-medium">Get a Demo</span>
                   </Button>
                 </Link>
               </motion.div>
@@ -112,7 +110,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="grid grid-cols-3 gap-4 max-w-3xl mx-auto mt-12 md:mt-16"
+                className="grid grid-cols-3 gap-6 max-w-4xl mx-auto mt-16 md:mt-20"
               >
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
@@ -124,11 +122,14 @@ export default function Hero() {
                       transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
                       className="relative group"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-lg transform group-hover:scale-105 transition-transform" />
-                      <div className="relative p-4 rounded-lg border border-border/50 backdrop-blur-sm">
-                        <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                        <div className="text-2xl font-bold text-foreground mb-1">{stat.value}</div>
-                        <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="relative p-6 rounded-2xl border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out group-hover:scale-105">
+                        <div className="flex flex-col items-center text-center">
+                          <div className="p-3 rounded-full bg-primary/15 mb-3 group-hover:bg-primary/20 transition-colors duration-300">
+                            <Icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="text-3xl font-bold text-foreground mb-1 tracking-tight">{stat.value}</div>
+                          <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
+                        </div>
                       </div>
                     </motion.div>
                   );

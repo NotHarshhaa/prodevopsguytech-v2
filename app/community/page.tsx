@@ -123,11 +123,11 @@ export default function CommunityPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide"
             >
               JOIN OUR COMMUNITY
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               DevOps Community Hub
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -144,11 +144,11 @@ export default function CommunityPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 rounded-lg bg-muted/50 backdrop-blur-sm"
+                    className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                   >
                     <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-xl md:text-2xl font-bold text-primary mb-1">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
+                    <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
                   </motion.div>
                 )}
               )}
@@ -171,8 +171,8 @@ export default function CommunityPage() {
                 onHoverEnd={() => setHoveredCard(null)}
               >
                 <Card className={cn(
-                  "border bg-card shadow-sm transition-all duration-300",
-                  hoveredCard === option.id ? "transform -translate-y-2 shadow-lg" : "hover:shadow-md"
+                  "border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg transition-all duration-300 ease-out rounded-2xl",
+                  hoveredCard === option.id ? "transform -translate-y-2 shadow-xl hover:scale-105" : "hover:shadow-xl hover:scale-105"
                 )}>
                   <CardContent className="pt-6">
                     <motion.div
@@ -181,16 +181,16 @@ export default function CommunityPage() {
                       }}
                       transition={{ duration: 0.5 }}
                       className={cn(
-                        "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
-                        option.color === 'blue' && "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400",
-                        option.color === 'green' && "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400",
-                        option.color === 'purple' && "bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400"
+                        "w-12 h-12 rounded-full flex items-center justify-center mb-4",
+                        option.color === 'blue' && "bg-blue-500/15 text-blue-600 dark:bg-blue-900 dark:text-blue-400",
+                        option.color === 'green' && "bg-green-500/15 text-green-600 dark:bg-green-900 dark:text-green-400",
+                        option.color === 'purple' && "bg-purple-500/15 text-purple-600 dark:bg-purple-900 dark:text-purple-400"
                       )}
                     >
                       {option.icon}
                     </motion.div>
-                    <h3 className="text-xl font-semibold mb-3">{option.title}</h3>
-                    <p className="text-muted-foreground mb-4">{option.description}</p>
+                    <h3 className="text-xl font-semibold mb-3 tracking-wide">{option.title}</h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">{option.description}</p>
                     
                     {/* Stats */}
                     <div className="flex gap-4 text-xs text-muted-foreground mb-4">
@@ -224,29 +224,29 @@ export default function CommunityPage() {
                       <a 
                         href={option.buttonUrl} 
                         className={cn(
-                          "inline-flex items-center px-4 py-2 rounded-md font-medium text-sm transition-all duration-300",
-                          option.color === 'blue' && "bg-blue-600 text-white hover:bg-blue-700",
-                          option.color === 'green' && "bg-green-600 text-white hover:bg-green-700",
-                          option.color === 'purple' && "bg-purple-600 text-white hover:bg-purple-700"
+                          "inline-flex items-center px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ease-out",
+                          option.color === 'blue' && "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105",
+                          option.color === 'green' && "bg-green-600 text-white hover:bg-green-700 hover:scale-105",
+                          option.color === 'purple' && "bg-purple-600 text-white hover:bg-purple-700 hover:scale-105"
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {option.buttonText}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       </a>
                     ) : (
                       <Link 
                         href={option.buttonUrl}
                         className={cn(
-                          "inline-flex items-center px-4 py-2 rounded-md font-medium text-sm transition-all duration-300",
-                          option.color === 'blue' && "bg-blue-600 text-white hover:bg-blue-700",
-                          option.color === 'green' && "bg-green-600 text-white hover:bg-green-700",
-                          option.color === 'purple' && "bg-purple-600 text-white hover:bg-purple-700"
+                          "inline-flex items-center px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ease-out",
+                          option.color === 'blue' && "bg-blue-600 text-white hover:bg-blue-700 hover:scale-105",
+                          option.color === 'green' && "bg-green-600 text-white hover:bg-green-700 hover:scale-105",
+                          option.color === 'purple' && "bg-purple-600 text-white hover:bg-purple-700 hover:scale-105"
                         )}
                       >
                         {option.buttonText}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       </Link>
                     )}
                   </CardContent>
@@ -259,16 +259,16 @@ export default function CommunityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-muted/50 backdrop-blur-sm py-12 md:py-16 px-4 rounded-lg mb-12 md:mb-16"
+            className="bg-background/60 backdrop-blur-xl py-12 md:py-16 px-4 rounded-2xl mb-12 md:mb-16 border border-border/20 shadow-lg"
           >
             <div className="text-center mb-8 md:mb-12">
-              <span className="inline-flex items-center justify-center px-4 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full mb-4">
+              <span className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
                 UPCOMING EVENTS
               </span>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
                 Join Our Events
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
+              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
                 Join our virtual meetups, workshops, and webinars to learn from experts and connect with fellow community members.
               </p>
             </div>
@@ -281,7 +281,7 @@ export default function CommunityPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="border overflow-hidden backdrop-blur-sm hover:shadow-lg transition-all duration-300">
+                  <Card className="border border-border/20 bg-background/60 backdrop-blur-xl overflow-hidden rounded-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
                         <Badge className={getTagColorClass(event.tagColor)}>
@@ -289,8 +289,8 @@ export default function CommunityPage() {
                         </Badge>
                         <Badge variant="outline">{event.level}</Badge>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3">{event.title}</h3>
-                      <p className="text-muted-foreground mb-4">{event.description}</p>
+                      <h3 className="text-xl font-semibold mb-3 tracking-wide">{event.title}</h3>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">{event.description}</p>
                       <div className="space-y-2 text-sm text-muted-foreground">
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-2" />
@@ -310,13 +310,13 @@ export default function CommunityPage() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="bg-muted/30 px-6 py-3 flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">
+                    <CardFooter className="bg-background/40 backdrop-blur-sm px-6 py-3 flex justify-between items-center">
+                      <span className="text-sm text-muted-foreground font-medium">
                         {event.attendees} spots left
                       </span>
-                      <Button variant="default" size="sm" className="group">
+                      <Button variant="default" size="sm" className="group rounded-full">
                         Register Now
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       </Button>
                     </CardFooter>
                   </Card>
@@ -329,20 +329,20 @@ export default function CommunityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="max-w-3xl mx-auto text-center p-8 md:p-12 border rounded-lg bg-card shadow-sm backdrop-blur-sm"
+            className="max-w-3xl mx-auto text-center p-8 md:p-12 border border-border/20 rounded-2xl bg-background/60 backdrop-blur-xl shadow-lg"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
               Ready to Join Our Community?
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
+            <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               Connect with like-minded professionals, learn from experts, and contribute to open-source projects.
               Join our growing community of DevOps enthusiasts today!
             </p>
             <div className="flex flex-col md:flex-row justify-center gap-4">
               <Link href="/join" className="w-full md:w-auto">
-                <Button size="lg" className="w-full md:w-auto group">
+                <Button size="lg" className="w-full md:w-auto group rounded-full">
                   Join Community
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </Link>
               <a 
@@ -351,10 +351,10 @@ export default function CommunityPage() {
                 rel="noopener noreferrer"
                 className="w-full md:w-auto"
               >
-                <Button variant="outline" size="lg" className="w-full md:w-auto group">
+                <Button variant="outline" size="lg" className="w-full md:w-auto group rounded-full">
                   <MessageSquare className="mr-2 h-4 w-4" />
                   Telegram Server
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </a>
             </div>

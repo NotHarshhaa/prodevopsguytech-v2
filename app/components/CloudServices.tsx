@@ -149,14 +149,14 @@ export default function CloudServices() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-4">
+          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 mb-4">
             <Cloud className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Cloud Solutions</span>
+            <span className="text-sm font-medium text-primary tracking-wide">Cloud Solutions</span>
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
             Enterprise-Grade Cloud Solutions
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground leading-relaxed">
             Build and deploy scalable applications with our comprehensive cloud services and expertise
           </p>
         </motion.div>
@@ -173,16 +173,16 @@ export default function CloudServices() {
             const Icon = metric.icon;
             return (
               <motion.div key={metric.label} variants={fadeInUp}>
-                <Card className="group relative overflow-hidden p-6 text-center bg-background/60 backdrop-blur-sm border-border/50 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
+                <Card className="group relative overflow-hidden p-6 text-center bg-background/60 backdrop-blur-xl border-border/20 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <div className="mb-4 mx-auto size-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="mb-4 mx-auto size-12 rounded-full bg-primary/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
-                    <p className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-2">
+                    <p className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-2 tracking-tight">
                       {metric.value}
                     </p>
-                    <p className="text-sm text-muted-foreground">{metric.label}</p>
+                    <p className="text-sm text-muted-foreground font-medium tracking-wide">{metric.label}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -201,19 +201,19 @@ export default function CloudServices() {
           {services.map((service, index) => (
             <motion.div key={service.title} variants={fadeInUp}>
               <Card 
-                className="group relative overflow-hidden border-border/50 bg-background/50 backdrop-blur-sm p-8 hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
-                  <div className={`size-12 rounded-lg bg-${service.color}-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                  <div className={`size-12 rounded-full bg-${service.color}-500/15 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon className={`h-6 w-6 text-${service.color}-500`} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-6">{service.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors tracking-wide">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{service.description}</p>
                   <Link href={service.url} className="inline-flex">
-                    <Button variant="ghost" className="group/btn p-0 hover:bg-transparent">
-                      <span className="text-muted-foreground group-hover:text-primary transition-colors">Learn more</span>
-                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+                    <Button variant="ghost" className="group/btn p-0 hover:bg-transparent rounded-full">
+                      <span className="text-muted-foreground group-hover:text-primary transition-colors font-medium">Learn more</span>
+                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover/btn:translate-x-0.5" />
                     </Button>
                   </Link>
                 </div>
@@ -231,14 +231,14 @@ export default function CloudServices() {
           className="mt-20"
         >
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-4">
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 mb-4">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Trusted Partners</span>
+              <span className="text-sm font-medium text-primary tracking-wide">Trusted Partners</span>
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
               Trusted Cloud Platforms
             </h3>
-            <p className="text-lg text-muted-foreground">We support and integrate with all major cloud providers</p>
+            <p className="text-lg text-muted-foreground leading-relaxed">We support and integrate with all major cloud providers</p>
           </div>
           <motion.div 
             variants={staggerContainer}
@@ -256,9 +256,9 @@ export default function CloudServices() {
                   className="block w-full no-underline"
                 >
                   <div 
-                    className="relative group bg-background/60 backdrop-blur-sm rounded-lg p-6 hover:bg-background/80 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/5 border border-border/50 hover:border-primary w-full"
+                    className="relative group bg-background/60 backdrop-blur-xl rounded-2xl p-6 hover:bg-background/80 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl hover:shadow-primary/10 border border-border/20 hover:border-primary/30 w-full"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
                     <div className="relative w-full flex flex-col items-center justify-center gap-3">
                       <Image
                         src={provider.logo}
@@ -267,7 +267,7 @@ export default function CloudServices() {
                         height={provider.height}
                         className="opacity-60 group-hover:opacity-100 transition-opacity"
                       />
-                      <span className="text-sm text-muted-foreground text-center font-medium group-hover:text-primary transition-colors">
+                      <span className="text-sm text-muted-foreground text-center font-medium group-hover:text-primary transition-colors tracking-wide">
                         {provider.name}
                       </span>
                     </div>

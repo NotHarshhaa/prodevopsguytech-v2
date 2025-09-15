@@ -36,11 +36,11 @@ export default function Features() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-4">
+          <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 mb-4">
             <LightbulbIcon className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Features & Capabilities</span>
+            <span className="text-sm font-medium text-primary tracking-wide">Features & Capabilities</span>
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
+          <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
             Bringing DevOps to every engineer.
           </h2>
         </motion.div>
@@ -50,100 +50,100 @@ export default function Features() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-16 md:mb-24"
         >
           {/* Real-time DevOps Projects */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-blue-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Rocket className="h-6 w-6 text-blue-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-500 transition-colors">Real-time DevOps & Cloud Projects</h3>
-              <p className="text-muted-foreground mb-6">Hands-on projects with AWS, Azure, Terraform, Kubernetes, Docker & more.</p>
-              <a href="https://projects.prodevopsguytech.com" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-blue-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-500 transition-colors tracking-wide">Real-time DevOps & Cloud Projects</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">Hands-on projects with AWS, Azure, Terraform, Kubernetes, Docker & more.</p>
+              <a href="https://projects.prodevopsguytech.com" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-blue-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
 
           {/* Automation Scripts */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-purple-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Settings className="h-6 w-6 text-purple-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-purple-500 transition-colors">Automation Scripts</h3>
-              <p className="text-muted-foreground mb-6">Ready-to-use scripts for tool installations & configurations to streamline your workflow.</p>
-              <a href="https://github.com/topics/devops-automation" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-purple-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-purple-500 transition-colors tracking-wide">Automation Scripts</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">Ready-to-use scripts for tool installations & configurations to streamline your workflow.</p>
+              <a href="https://github.com/topics/devops-automation" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-purple-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
 
           {/* Interview Resources */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-green-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <BookOpen className="h-6 w-6 text-green-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-green-500 transition-colors">Interview Resources</h3>
-              <p className="text-muted-foreground mb-6">In-depth interview questions and cheat sheets for DevOps and Cloud roles.</p>
-              <a href="https://roadmap.sh/devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-green-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-green-500 transition-colors tracking-wide">Interview Resources</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">In-depth interview questions and cheat sheets for DevOps and Cloud roles.</p>
+              <a href="https://roadmap.sh/devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-green-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
 
           {/* Learning Paths */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-orange-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-orange-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Globe className="h-6 w-6 text-orange-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors">Learning Paths</h3>
-              <p className="text-muted-foreground mb-6">Curated learning paths designed for beginners to advanced DevOps engineers.</p>
-              <a href="https://learn.microsoft.com/en-us/devops/plan/what-is-devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-orange-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors tracking-wide">Learning Paths</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">Curated learning paths designed for beginners to advanced DevOps engineers.</p>
+              <a href="https://learn.microsoft.com/en-us/devops/plan/what-is-devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-orange-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
 
           {/* Version Control */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-indigo-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <GitBranch className="h-6 w-6 text-indigo-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-indigo-500 transition-colors">Version Control</h3>
-              <p className="text-muted-foreground mb-6">Master Git workflows and best practices for collaborative development.</p>
-              <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-indigo-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-indigo-500 transition-colors tracking-wide">Version Control</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">Master Git workflows and best practices for collaborative development.</p>
+              <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-indigo-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
 
           {/* Open Source */}
           <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/50 bg-background/50 p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/5">
+            <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="mb-6 size-12 rounded-lg bg-yellow-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="mb-6 size-12 rounded-full bg-yellow-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <LightbulbIcon className="h-6 w-6 text-yellow-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-yellow-500 transition-colors">Open Source Community</h3>
-              <p className="text-muted-foreground mb-6">Building a collaborative space for open-source contributions and knowledge sharing.</p>
-              <a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-yellow-500 transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-yellow-500 transition-colors tracking-wide">Open Source Community</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">Building a collaborative space for open-source contributions and knowledge sharing.</p>
+              <a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer" className="flex items-center text-sm text-muted-foreground group-hover:text-yellow-500 transition-colors font-medium">
                 <span>Learn more</span>
-                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Card>
           </motion.div>
@@ -171,7 +171,7 @@ export default function Features() {
               <p className="text-lg md:text-xl text-muted-foreground">Deploy from Git or your CLI.</p>
             </div>
 
-            <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md overflow-hidden backdrop-blur-sm">
+            <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg overflow-hidden rounded-2xl">
               <div className="p-6 font-mono text-sm bg-muted/20">
                 <div className="flex items-center gap-2 text-muted-foreground mb-4">
                   <span className="size-3 rounded-full bg-red-500/80"></span>
@@ -210,7 +210,7 @@ export default function Features() {
                 variants={fadeInUp}
                 className="transform hover:translate-y-[-2px] transition-transform"
               >
-                <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md p-6 backdrop-blur-sm">
+                <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-6 rounded-2xl">
                   <div className="flex items-start gap-4">
                     <div className="size-10 rounded-full bg-blue-500/20 flex items-center justify-center ring-2 ring-blue-500/20">
                       <span className="text-sm font-medium text-blue-400">P</span>
@@ -229,7 +229,7 @@ export default function Features() {
                 variants={fadeInUp}
                 className="transform hover:translate-y-[-2px] transition-transform"
               >
-                <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md p-6 backdrop-blur-sm">
+                <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-6 rounded-2xl">
                   <div className="flex items-start gap-4">
                     <div className="size-10 rounded-full bg-red-500/20 flex items-center justify-center ring-2 ring-red-500/20">
                       <span className="text-sm font-medium text-red-400">R</span>
@@ -321,7 +321,7 @@ export default function Features() {
               </div>
             </Card>
 
-            <Card className="border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md p-8 backdrop-blur-sm">
+            <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-8 rounded-2xl">
               <div className="h-full flex flex-col">
                 <h3 className="font-semibold mb-6">Active Deployments</h3>
                 <div className="flex-1 space-y-4">
