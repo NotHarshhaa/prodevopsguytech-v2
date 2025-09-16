@@ -96,13 +96,13 @@ export default function AboutPage() {
         <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
       </div>
 
-      <section className="relative pt-28 md:pt-32 pb-16">
-        <div className="container px-4 mx-auto">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="container px-3 sm:px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12 md:mb-16 pt-8 md:pt-0"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16 pt-4 md:pt-0"
           >
             <motion.span 
               initial={{ scale: 0 }}
@@ -112,15 +112,15 @@ export default function AboutPage() {
             >
               ABOUT US
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               About ProDevOpsGuy Tech
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
               A passionate community built for DevOps and Cloud enthusiasts, learners, and professionals.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
@@ -129,11 +129,11 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
+                    className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                   >
-                    <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
+                    <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-primary" />
+                    <div className="text-lg md:text-xl lg:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
                   </motion.div>
                 )}
               )}
@@ -144,27 +144,27 @@ export default function AboutPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-16"
           >
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
                 Our Mission
               </h2>
-              <div className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+              <div className="space-y-3 md:space-y-4">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   Our mission at ProDevOpsGuy Tech is to empower individuals by providing hands-on, real-world projects, practical learning paths, interview resources, and automation guides tailored for modern infrastructure and deployment practices.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   We believe that learning by doing is the most effective approach to mastering DevOps and Cloud technologies. That's why we focus on creating practical, real-world projects and resources that help you build valuable skills for your career.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   Whether you're just getting started or leveling up your DevOps journey, ProDevOpsGuy Tech is here to guide you with practical resources and a supportive tech community.
                 </p>
-                <div className="pt-4">
+                <div className="pt-3 md:pt-4">
                   <Link href="/get-started">
-                    <Button className="group rounded-full">
+                    <Button className="group rounded-full text-sm md:text-base">
                       Start Your Journey
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
                     </Button>
                   </Link>
                 </div>
@@ -173,25 +173,25 @@ export default function AboutPage() {
 
             <motion.div variants={itemVariants}>
               <Card className="bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 ease-out rounded-2xl">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6 tracking-wide">What We Focus On</h3>
-                  <div className="space-y-6">
+                <CardContent className="p-4 md:p-6 lg:p-8">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 tracking-wide">What We Focus On</h3>
+                  <div className="space-y-4 md:space-y-6">
                     {focusPoints.map((point, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-start gap-4 group"
+                        className="flex items-start gap-3 md:gap-4 group"
                       >
-                        <div className="p-2 rounded-full bg-primary/15 text-primary group-hover:scale-110 transition-transform duration-300">
+                        <div className="p-1.5 md:p-2 rounded-full bg-primary/15 text-primary group-hover:scale-110 transition-transform duration-300">
                           {point.icon}
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1 group-hover:text-primary transition-colors tracking-wide">
+                          <h4 className="text-sm md:text-base font-semibold mb-1 group-hover:text-primary transition-colors tracking-wide">
                             {point.title}
                           </h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                             {point.description}
                           </p>
                         </div>

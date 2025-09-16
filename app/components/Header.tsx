@@ -173,10 +173,10 @@ export default function Header() {
         scrolled ? "py-2" : "py-4"
       )}
     >
-      <div className="container px-4 sm:px-8 relative">
+      <div className="container px-3 sm:px-8 relative">
         <div className={cn(
-          "flex items-center justify-between lg:justify-center rounded-full border border-border/20 px-4 sm:px-6 lg:px-32 xl:px-36 2xl:px-40 transition-all duration-500 ease-out",
-          scrolled ? "py-2.5" : "py-3.5",
+          "flex items-center justify-between lg:justify-center rounded-full border border-border/20 px-3 sm:px-6 lg:px-32 xl:px-36 2xl:px-40 transition-all duration-500 ease-out",
+          scrolled ? "py-2 sm:py-2.5" : "py-2.5 sm:py-3.5",
           "bg-background/70 backdrop-blur-xl shadow-2xl shadow-black/5",
           "hover:shadow-2xl hover:shadow-black/10",
           "max-w-9xl mx-auto"
@@ -189,7 +189,7 @@ export default function Header() {
                   <Sparkles className="h-6 w-6 text-primary animate-pulse" />
                   <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
                 </div>
-                <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+                <span className="text-base sm:text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
                   ProDevOpsGuy<span className="text-primary">Tech</span>
                 </span>
               </div>

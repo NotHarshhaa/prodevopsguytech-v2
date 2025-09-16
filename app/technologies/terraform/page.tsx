@@ -96,7 +96,7 @@ export default function TerraformPage() {
         <div className="absolute bottom-1/4 left-1/3 -z-10 h-96 w-96 rounded-full bg-purple-600/20 blur-[100px] animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 pt-32 pb-8">
+      <div className="container mx-auto px-3 sm:px-4 pt-24 md:pt-32 pb-8 md:pb-12">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,7 +109,7 @@ export default function TerraformPage() {
             <span className="text-sm font-medium text-purple-500 tracking-wide">Terraform</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
             Code Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-purple-400 to-purple-600">Infrastructure</span>
           </h1>
           

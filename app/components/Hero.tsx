@@ -31,15 +31,15 @@ export default function Hero() {
         </div>
       </div>
 
-      <section className="w-full pt-28 md:pt-32 pb-12 md:pb-20">
-        <div className="container px-4 mx-auto">
+      <section className="w-full pt-24 md:pt-32 pb-8 md:pb-20">
+        <div className="container px-3 sm:px-4 mx-auto">
           {/* Main Content */}
           <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-6 md:space-y-8"
+              className="space-y-4 md:space-y-8"
             >
               {/* Floating Badge */}
               <motion.div
@@ -57,7 +57,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight"
               >
                 Your complete platform for{' '}
                 <span className="relative">
@@ -73,7 +73,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-lg md:text-xl text-muted-foreground mx-auto max-w-2xl leading-relaxed tracking-wide"
+                className="text-base md:text-lg lg:text-xl text-muted-foreground mx-auto max-w-2xl leading-relaxed tracking-wide"
               >
                 ProDevOpsGuy Tech provides the tools, resources, and community
                 to build, learn, and master modern DevOps practices.
@@ -84,10 +84,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="flex flex-wrap justify-center gap-4 pt-4 md:pt-6"
+                className="flex flex-wrap justify-center gap-3 md:gap-4 pt-2 md:pt-6"
               >
                 <Link href="https://projects.prodevopsguytech.com/">
-                  <Button size="lg" className="group relative overflow-hidden h-12 px-8 text-base rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 ease-out border-0">
+                  <Button size="lg" className="group relative overflow-hidden h-10 md:h-12 px-6 md:px-8 text-sm md:text-base rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 ease-out border-0">
                     <span className="relative z-10 flex items-center gap-2 font-medium">
                       Start Deploying
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -98,7 +98,7 @@ export default function Hero() {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="h-12 px-8 text-base relative overflow-hidden group rounded-full border-border/30 bg-background/50 hover:bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
+                    className="h-10 md:h-12 px-6 md:px-8 text-sm md:text-base relative overflow-hidden group rounded-full border-border/30 bg-background/50 hover:bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
                   >
                     <span className="relative z-10 font-medium">Get a Demo</span>
                   </Button>
@@ -110,7 +110,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="grid grid-cols-3 gap-6 max-w-4xl mx-auto mt-16 md:mt-20"
+                className="grid grid-cols-3 gap-3 md:gap-6 max-w-4xl mx-auto mt-12 md:mt-20"
               >
                 {stats.map((stat, index) => {
                   const Icon = stat.icon;
@@ -122,13 +122,13 @@ export default function Hero() {
                       transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
                       className="relative group"
                     >
-                      <div className="relative p-6 rounded-2xl border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out group-hover:scale-105">
+                      <div className="relative p-3 md:p-6 rounded-2xl border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out group-hover:scale-105">
                         <div className="flex flex-col items-center text-center">
-                          <div className="p-3 rounded-full bg-primary/15 mb-3 group-hover:bg-primary/20 transition-colors duration-300">
-                            <Icon className="h-6 w-6 text-primary" />
+                          <div className="p-2 md:p-3 rounded-full bg-primary/15 mb-2 md:mb-3 group-hover:bg-primary/20 transition-colors duration-300">
+                            <Icon className="h-4 w-4 md:h-6 md:w-6 text-primary" />
                           </div>
-                          <div className="text-3xl font-bold text-foreground mb-1 tracking-tight">{stat.value}</div>
-                          <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
+                          <div className="text-xl md:text-3xl font-bold text-foreground mb-1 tracking-tight">{stat.value}</div>
+                          <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
                         </div>
                       </div>
                     </motion.div>

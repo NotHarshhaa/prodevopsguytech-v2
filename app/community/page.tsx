@@ -111,13 +111,13 @@ export default function CommunityPage() {
         <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
       </div>
 
-      <section className="relative pt-28 md:pt-32 pb-16">
-        <div className="container px-4 mx-auto">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="container px-3 sm:px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12 md:mb-16 pt-8 md:pt-0"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16 pt-4 md:pt-0"
           >
             <motion.span 
               initial={{ scale: 0 }}
@@ -127,15 +127,15 @@ export default function CommunityPage() {
             >
               JOIN OUR COMMUNITY
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               DevOps Community Hub
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
               Join a passionate community of DevOps and Cloud enthusiasts, where knowledge sharing and collaboration drive innovation.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 md:mb-12">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
                 return (
@@ -144,11 +144,11 @@ export default function CommunityPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
+                    className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                   >
-                    <Icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
+                    <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-primary" />
+                    <div className="text-lg md:text-xl lg:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
                   </motion.div>
                 )}
               )}
@@ -159,7 +159,7 @@ export default function CommunityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-16"
           >
             {communityOptions.map((option, index) => (
               <motion.div

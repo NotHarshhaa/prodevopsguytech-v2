@@ -128,7 +128,7 @@ export default function CloudServices() {
   };
 
   return (
-    <section className="py-16 md:py-24 overflow-hidden relative">
+    <section className="py-12 md:py-24 overflow-hidden relative">
       {/* Background Effects */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
@@ -140,23 +140,23 @@ export default function CloudServices() {
         <div className="absolute right-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] opacity-50 -translate-y-1/2 animate-pulse delay-700"></div>
       </div>
 
-      <div className="container px-4 mx-auto">
+      <div className="container px-3 sm:px-4 mx-auto">
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
           <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 mb-4">
             <Cloud className="h-4 w-4 text-primary" />
             <span className="text-sm font-medium text-primary tracking-wide">Cloud Solutions</span>
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
             Enterprise-Grade Cloud Solutions
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Build and deploy scalable applications with our comprehensive cloud services and expertise
           </p>
         </motion.div>
@@ -167,22 +167,22 @@ export default function CloudServices() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-20"
         >
           {cloudMetrics.map((metric, index) => {
             const Icon = metric.icon;
             return (
               <motion.div key={metric.label} variants={fadeInUp}>
-                <Card className="group relative overflow-hidden p-6 text-center bg-background/60 backdrop-blur-xl border-border/20 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out">
+                <Card className="group relative overflow-hidden p-4 md:p-6 text-center bg-background/60 backdrop-blur-xl border-border/20 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
-                    <div className="mb-4 mx-auto size-12 rounded-full bg-primary/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="h-6 w-6 text-primary" />
+                    <div className="mb-3 md:mb-4 mx-auto size-10 md:size-12 rounded-full bg-primary/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                     </div>
-                    <p className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-2 tracking-tight">
+                    <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-2 tracking-tight">
                       {metric.value}
                     </p>
-                    <p className="text-sm text-muted-foreground font-medium tracking-wide">{metric.label}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{metric.label}</p>
                   </div>
                 </Card>
               </motion.div>
@@ -196,20 +196,20 @@ export default function CloudServices() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-20"
         >
           {services.map((service, index) => (
             <motion.div key={service.title} variants={fadeInUp}>
               <Card 
-                className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out"
+                className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 hover:scale-105 transition-all duration-300 ease-out"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative">
-                  <div className={`size-12 rounded-full bg-${service.color}-500/15 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className={`h-6 w-6 text-${service.color}-500`} />
+                  <div className={`size-10 md:size-12 rounded-full bg-${service.color}-500/15 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className={`h-5 w-5 md:h-6 md:w-6 text-${service.color}-500`} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors tracking-wide">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors tracking-wide">{service.title}</h3>
+                  <p className="text-sm md:text-base text-muted-foreground text-sm mb-4 md:mb-6 leading-relaxed">{service.description}</p>
                   <Link href={service.url} className="inline-flex">
                     <Button variant="ghost" className="group/btn p-0 hover:bg-transparent rounded-full">
                       <span className="text-muted-foreground group-hover:text-primary transition-colors font-medium">Learn more</span>
@@ -228,24 +228,24 @@ export default function CloudServices() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-20"
+          className="mt-16"
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 mb-4">
               <CheckCircle2 className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary tracking-wide">Trusted Partners</span>
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
+            <h3 className="text-xl md:text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50 tracking-tight leading-tight">
               Trusted Cloud Platforms
             </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">We support and integrate with all major cloud providers</p>
+            <p className="text-base text-muted-foreground leading-relaxed">We support and integrate with all major cloud providers</p>
           </div>
           <motion.div 
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center"
           >
             {cloudProviders.map((provider, index) => (
               <motion.div key={provider.name} variants={fadeInUp}>
@@ -256,10 +256,10 @@ export default function CloudServices() {
                   className="block w-full no-underline"
                 >
                   <div 
-                    className="relative group bg-background/60 backdrop-blur-xl rounded-2xl p-6 hover:bg-background/80 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl hover:shadow-primary/10 border border-border/20 hover:border-primary/30 w-full"
+                    className="relative group bg-background/60 backdrop-blur-xl rounded-2xl p-4 hover:bg-background/80 transition-all duration-300 ease-out hover:scale-105 hover:shadow-xl hover:shadow-primary/10 border border-border/20 hover:border-primary/30 w-full"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                    <div className="relative w-full flex flex-col items-center justify-center gap-3">
+                    <div className="relative w-full flex flex-col items-center justify-center gap-2">
                       <Image
                         src={provider.logo}
                         alt={provider.name}
@@ -267,7 +267,7 @@ export default function CloudServices() {
                         height={provider.height}
                         className="opacity-60 group-hover:opacity-100 transition-opacity"
                       />
-                      <span className="text-sm text-muted-foreground text-center font-medium group-hover:text-primary transition-colors tracking-wide">
+                      <span className="text-xs text-muted-foreground text-center font-medium group-hover:text-primary transition-colors tracking-wide">
                         {provider.name}
                       </span>
                     </div>

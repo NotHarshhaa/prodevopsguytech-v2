@@ -94,49 +94,49 @@ export default function AWSPage() {
         <div className="absolute bottom-1/4 left-1/3 -z-10 h-96 w-96 rounded-full bg-orange-600/20 blur-[100px] animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 pt-32 pb-8">
+      <div className="container mx-auto px-3 sm:px-4 pt-24 md:pt-32 pb-8 md:pb-12">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-500/15 border border-orange-500/30 backdrop-blur-xl shadow-lg shadow-orange-500/10 mb-6">
             <Cloud className="h-4 w-4 text-orange-500" />
             <span className="text-sm font-medium text-orange-500 tracking-wide">Amazon Web Services</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
             Master the <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600">Cloud</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
             Learn AWS from the ground up with hands-on projects, real-world scenarios, and industry best practices.
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-orange-500/15 mb-4 mx-auto">
-                <Users className="h-6 w-6 text-orange-500" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto mb-8 md:mb-12">
+            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
+                <Users className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
               </div>
-              <div className="text-2xl font-bold text-foreground mb-1">200+</div>
-              <div className="text-sm text-muted-foreground font-medium">Services Available</div>
+              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">200+</div>
+              <div className="text-xs md:text-sm text-muted-foreground font-medium">Services Available</div>
             </div>
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-orange-500/15 mb-4 mx-auto">
-                <TrendingUp className="h-6 w-6 text-orange-500" />
+            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
+                <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
               </div>
-              <div className="text-2xl font-bold text-foreground mb-1">32%</div>
-              <div className="text-sm text-muted-foreground font-medium">Market Share</div>
+              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">32%</div>
+              <div className="text-xs md:text-sm text-muted-foreground font-medium">Market Share</div>
             </div>
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-orange-500/15 mb-4 mx-auto">
-                <Star className="h-6 w-6 text-orange-500" />
+            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
+                <Star className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
               </div>
-              <div className="text-2xl font-bold text-foreground mb-1">99.99%</div>
-              <div className="text-sm text-muted-foreground font-medium">Uptime SLA</div>
+              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">99.99%</div>
+              <div className="text-xs md:text-sm text-muted-foreground font-medium">Uptime SLA</div>
             </div>
           </div>
         </motion.div>
@@ -146,7 +146,7 @@ export default function AWSPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">

@@ -234,43 +234,43 @@ export default function LearningPathsPage() {
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
       
       {/* Hero Section */}
-      <section className="relative pt-28 md:pt-32 pb-16 md:pb-24">
-        <div className="container px-4 mx-auto">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 lg:pb-24">
+        <div className="container px-3 sm:px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12 md:mb-16 pt-8 md:pt-0"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16 pt-4 md:pt-0"
           >
             <div className="inline-flex px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
               LEARNING PATHS
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 tracking-tight leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 tracking-tight leading-tight">
               Master DevOps & Cloud Computing
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               Structured learning paths to guide your journey from beginner to expert
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8 md:mb-12">
-              <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-2xl md:text-3xl font-bold text-primary mb-1 tracking-tight">9+</div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto mb-6 md:mb-8 lg:mb-12">
+              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">9+</div>
                 <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Learning Paths</div>
               </div>
-              <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-2xl md:text-3xl font-bold text-primary mb-1 tracking-tight">48+</div>
+              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">48+</div>
                 <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Weeks of Content</div>
               </div>
-              <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-2xl md:text-3xl font-bold text-primary mb-1 tracking-tight">1000+</div>
+              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">1000+</div>
                 <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Students Enrolled</div>
               </div>
             </div>
 
             {/* Search and Filter */}
             <div className="max-w-2xl mx-auto">
-              <div className="relative mb-4 md:mb-6">
+              <div className="relative mb-3 md:mb-4 lg:mb-6">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   type="text"
@@ -308,13 +308,13 @@ export default function LearningPathsPage() {
       </section>
 
       {/* Learning Paths Grid */}
-      <section className="py-8 md:py-16">
-        <div className="container px-4 mx-auto">
+      <section className="py-6 md:py-8 lg:py-16">
+        <div className="container px-3 sm:px-4 mx-auto">
           <motion.div 
             variants={container}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6"
           >
             {filteredPaths.map((path) => (
               <MotionCard

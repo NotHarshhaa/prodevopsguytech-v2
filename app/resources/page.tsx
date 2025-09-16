@@ -144,14 +144,14 @@ export default function ResourcesPage() {
         <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
       </div>
 
-      <section className="relative pt-28 md:pt-32 pb-16">
-        <div className="container px-4 mx-auto">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16">
+        <div className="container px-3 sm:px-4 mx-auto">
           {/* Hero Section */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12 md:mb-20 pt-8 md:pt-0"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-20 pt-4 md:pt-0"
           >
             <motion.span 
               initial={{ scale: 0 }}
@@ -161,24 +161,24 @@ export default function ResourcesPage() {
             >
               RESOURCES HUB
             </motion.span>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
               DevOps & Cloud Resources
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
               Your Gateway to DevOps Excellence — Curated Resources for Every Stage of Your Journey
             </p>
             
             {/* Stats Section */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
               {Object.entries(resourceStats).map(([key, value], index) => (
                 <motion.div
                   key={key}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
+                  className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
                 >
-                  <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{value}</div>
+                  <div className="text-lg md:text-xl lg:text-2xl font-bold text-primary mb-1 tracking-tight">{value}</div>
                   <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </div>
@@ -187,16 +187,16 @@ export default function ResourcesPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 md:mb-12">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-6 md:mb-8 lg:mb-12">
               <a 
                 href="https://topmate.io/prodevopsguytech/800566"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full md:w-auto"
               >
-                <Button size="lg" className="w-full md:w-auto group rounded-full">
+                <Button size="lg" className="w-full md:w-auto group rounded-full text-sm md:text-base">
                   Start Learning
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
                 </Button>
               </a>
               <a 
@@ -205,14 +205,14 @@ export default function ResourcesPage() {
                 rel="noopener noreferrer"
                 className="w-full md:w-auto"
               >
-                <Button variant="outline" size="lg" className="w-full md:w-auto rounded-full">
+                <Button variant="outline" size="lg" className="w-full md:w-auto rounded-full text-sm md:text-base">
                   View Roadmap
                 </Button>
               </a>
             </div>
 
             {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto mb-8 md:mb-12">
+            <div className="relative max-w-xl mx-auto mb-6 md:mb-8 lg:mb-12">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
@@ -225,7 +225,7 @@ export default function ResourcesPage() {
           </motion.div>
 
           {/* Category Tabs */}
-          <Tabs defaultValue="all" className="mb-6 md:mb-8">
+          <Tabs defaultValue="all" className="mb-8 md:mb-6 lg:mb-8">
             <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 bg-transparent">
               {categories.map((category) => {
                 const Icon = category.icon;
@@ -246,7 +246,7 @@ export default function ResourcesPage() {
           </Tabs>
 
           {/* Resource Cards */}
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-20">
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12 lg:mb-20">
             <AnimatePresence>
               {filteredResources.map((resource, index) => (
                 <motion.div
@@ -260,20 +260,20 @@ export default function ResourcesPage() {
                   <Card 
                     className={`group relative overflow-hidden border border-border/20 bg-background/60 backdrop-blur-xl transition-all duration-300 ease-out rounded-2xl hover:shadow-xl hover:scale-105 ${resource.borderGradient}`}
                   >
-                    <CardContent className="p-6">
-                      <div className="text-4xl mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-12">
+                    <CardContent className="p-4 md:p-6">
+                      <div className="text-3xl md:text-4xl mb-3 md:mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-12">
                         {resource.icon && React.createElement(resource.icon, {
-                          size: 40,
+                          size: 32,
                           className: "text-primary"
                         })}
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors tracking-wide">
+                      <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors tracking-wide">
                         {resource.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3 md:mb-4">
                         {resource.description}
                       </p>
-                      <div className="flex gap-4 text-xs text-muted-foreground mt-4">
+                      <div className="flex gap-3 md:gap-4 text-xs text-muted-foreground mt-3 md:mt-4">
                         {Object.entries(resource.stats).map(([key, value]) => (
                           <div key={key} className="flex items-center">
                             <span className="font-semibold text-primary">{value}</span>
@@ -287,10 +287,10 @@ export default function ResourcesPage() {
                         href={resource.url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="w-full p-4 text-center font-medium text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2 group-hover:bg-muted/50"
+                        className="w-full p-3 md:p-4 text-center font-medium text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2 group-hover:bg-muted/50 text-xs md:text-sm"
                       >
                         Explore Resource
-                        <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                        <ExternalLink className="h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
                       </a>
                     </CardFooter>
                   </Card>
