@@ -22,17 +22,20 @@ import {
   TrendingUp,
   Network,
   Settings,
-  Shield
+  Shield,
+  Sparkles,
+  Rocket,
+  Heart
 } from "lucide-react";
 
 export default function KubernetesPage() {
   const concepts = [
-    { name: "Pods", description: "Smallest deployable units in Kubernetes", icon: Package },
-    { name: "Services", description: "Network abstraction for accessing pods", icon: Network },
-    { name: "Deployments", description: "Manage replica sets and rolling updates", icon: Layers },
-    { name: "ConfigMaps", description: "Store configuration data separately", icon: Settings },
-    { name: "Secrets", description: "Store sensitive data securely", icon: Shield },
-    { name: "Ingress", description: "Manage external access to services", icon: Globe }
+    { name: "Pods", description: "Smallest deployable units in Kubernetes", icon: Package, color: "from-blue-600 to-cyan-600" },
+    { name: "Services", description: "Network abstraction for accessing pods", icon: Network, color: "from-green-600 to-emerald-600" },
+    { name: "Deployments", description: "Manage replica sets and rolling updates", icon: Layers, color: "from-yellow-600 to-orange-600" },
+    { name: "ConfigMaps", description: "Store configuration data separately", icon: Settings, color: "from-purple-600 to-pink-600" },
+    { name: "Secrets", description: "Store sensitive data securely", icon: Shield, color: "from-indigo-600 to-purple-600" },
+    { name: "Ingress", description: "Manage external access to services", icon: Globe, color: "from-red-600 to-pink-600" }
   ];
 
   const learningPaths = [
@@ -81,39 +84,50 @@ export default function KubernetesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* macOS Grill Pattern Background */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/80"></div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-blue-600/20 opacity-30 blur-[128px] rounded-full animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-blue-500/20 to-cyan-600/20 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-indigo-600/20 to-blue-600/20 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 -z-10">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-600/30 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute left-1/4 top-1/4 -z-10 h-96 w-96 rounded-full bg-blue-600/20 blur-[100px] animate-pulse"></div>
-        <div className="absolute right-1/4 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue-500/20 blur-[100px] animate-pulse delay-700"></div>
-        <div className="absolute bottom-1/4 left-1/3 -z-10 h-96 w-96 rounded-full bg-blue-700/20 blur-[100px] animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="container mx-auto px-3 sm:px-4 pt-24 md:pt-32 pb-8 md:pb-12">
+      <div className="container mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-6 md:pb-12">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600/15 border border-blue-600/30 backdrop-blur-xl shadow-lg shadow-blue-600/10 mb-6">
-            <Layers className="h-4 w-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-600 tracking-wide">Kubernetes</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-gradient-to-r from-blue-600/20 to-blue-600/10 border border-blue-600/30 backdrop-blur-xl shadow-lg shadow-blue-600/10 mb-4 md:mb-6">
+            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
+            <span className="text-xs md:text-sm font-bold text-blue-600 tracking-widest uppercase">Kubernetes</span>
+            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-3 md:mb-6">
             Orchestrate <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-700">Containers</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-base md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
             Master Kubernetes container orchestration with comprehensive learning paths and production-ready deployments.
           </p>
 

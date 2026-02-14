@@ -20,17 +20,20 @@ import {
   CheckCircle2,
   Star,
   Users,
-  TrendingUp
+  TrendingUp,
+  Sparkles,
+  Rocket,
+  Heart
 } from "lucide-react";
 
 export default function AWSPage() {
   const services = [
-    { name: "EC2", description: "Virtual servers in the cloud", icon: Server },
-    { name: "S3", description: "Object storage service", icon: Database },
-    { name: "Lambda", description: "Serverless compute", icon: Zap },
-    { name: "RDS", description: "Managed database service", icon: Database },
-    { name: "CloudFront", description: "Content delivery network", icon: Globe },
-    { name: "IAM", description: "Identity and access management", icon: Shield }
+    { name: "EC2", description: "Virtual servers in the cloud", icon: Server, color: "from-orange-500 to-red-500" },
+    { name: "S3", description: "Object storage service", icon: Database, color: "from-blue-500 to-cyan-500" },
+    { name: "Lambda", description: "Serverless compute", icon: Zap, color: "from-yellow-500 to-orange-500" },
+    { name: "RDS", description: "Managed database service", icon: Database, color: "from-purple-500 to-pink-500" },
+    { name: "CloudFront", description: "Content delivery network", icon: Globe, color: "from-green-500 to-emerald-500" },
+    { name: "IAM", description: "Identity and access management", icon: Shield, color: "from-indigo-500 to-purple-500" }
   ];
 
   const learningPaths = [
@@ -79,64 +82,84 @@ export default function AWSPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* macOS Grill Pattern Background */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background/80"></div>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-orange-500/20 opacity-30 blur-[128px] rounded-full animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-orange-400/20 to-red-500/20 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-yellow-500/20 to-orange-500/20 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 -z-10">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-orange-500/30 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute left-1/4 top-1/4 -z-10 h-96 w-96 rounded-full bg-orange-500/20 blur-[100px] animate-pulse"></div>
-        <div className="absolute right-1/4 top-1/3 -z-10 h-96 w-96 rounded-full bg-orange-400/20 blur-[100px] animate-pulse delay-700"></div>
-        <div className="absolute bottom-1/4 left-1/3 -z-10 h-96 w-96 rounded-full bg-orange-600/20 blur-[100px] animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="container mx-auto px-3 sm:px-4 pt-24 md:pt-32 pb-8 md:pb-12">
+      <div className="container mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-6 md:pb-12">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-500/15 border border-orange-500/30 backdrop-blur-xl shadow-lg shadow-orange-500/10 mb-6">
-            <Cloud className="h-4 w-4 text-orange-500" />
-            <span className="text-sm font-medium text-orange-500 tracking-wide">Amazon Web Services</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-500/10 border border-orange-500/30 backdrop-blur-xl shadow-lg shadow-orange-500/10 mb-4 md:mb-6">
+            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-orange-500" />
+            <span className="text-xs md:text-sm font-bold text-orange-500 tracking-widest uppercase">Amazon Web Services</span>
+            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-orange-500" />
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 md:mb-6">
+          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-3 md:mb-6">
             Master the <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600">Cloud</span>
           </h1>
           
-          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
+          <p className="text-base md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
             Learn AWS from the ground up with hands-on projects, real-world scenarios, and industry best practices.
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto mb-8 md:mb-12">
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
-                <Users className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 max-w-4xl mx-auto mb-6 md:mb-12">
+            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
+                  <Users className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
+                </div>
+                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">200+</div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium">Services Available</div>
               </div>
-              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">200+</div>
-              <div className="text-xs md:text-sm text-muted-foreground font-medium">Services Available</div>
             </div>
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
-                <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
+            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
+                  <TrendingUp className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
+                </div>
+                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">32%</div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium">Market Share</div>
               </div>
-              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">32%</div>
-              <div className="text-xs md:text-sm text-muted-foreground font-medium">Market Share</div>
             </div>
-            <div className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-4 md:p-6 hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="flex items-center justify-center w-10 md:w-12 h-10 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 mx-auto">
-                <Star className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
+            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
+                  <Star className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
+                </div>
+                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">99.99%</div>
+                <div className="text-xs md:text-sm text-muted-foreground font-medium">Uptime SLA</div>
               </div>
-              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">99.99%</div>
-              <div className="text-xs md:text-sm text-muted-foreground font-medium">Uptime SLA</div>
             </div>
           </div>
         </motion.div>
@@ -146,18 +169,18 @@ export default function AWSPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 md:mb-16"
+          className="mb-8 md:mb-16"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-3 md:mb-4">
               Core AWS Services
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Master the essential AWS services that power modern cloud applications
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={service.name}
@@ -165,16 +188,16 @@ export default function AWSPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-6 rounded-2xl transition-all duration-300 ease-out hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10 hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 ease-out hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 hover:scale-105">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                   <div className="relative">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-orange-500/15 mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="h-6 w-6 text-orange-500" />
+                    <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-orange-500 transition-colors tracking-wide">
+                    <h3 className="text-lg md:text-xl font-semibold mb-2 group-hover:text-orange-500 transition-colors tracking-wide">
                       {service.name}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -189,13 +212,13 @@ export default function AWSPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-3 md:mb-4">
               Learning Paths
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Structured learning journeys designed for different skill levels
             </p>
           </div>
@@ -208,31 +231,31 @@ export default function AWSPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-8 rounded-2xl transition-all duration-300 ease-out hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10 hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-6 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-500 ease-out hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
-                    <div className="flex items-center justify-between mb-4">
-                      <Badge variant="secondary" className="rounded-full bg-orange-500/15 text-orange-500 border-orange-500/30">
+                    <div className="flex items-center justify-between mb-3 md:mb-4">
+                      <Badge variant="secondary" className="rounded-full bg-orange-500/15 text-orange-500 border-orange-500/30 text-xs md:text-sm">
                         {path.level}
                       </Badge>
-                      <span className="text-sm text-muted-foreground font-medium">{path.duration}</span>
+                      <span className="text-xs md:text-sm text-muted-foreground font-medium">{path.duration}</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors tracking-wide">
+                    <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 group-hover:text-orange-500 transition-colors tracking-wide">
                       {path.title}
                     </h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 leading-relaxed">
                       {path.description}
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-1 md:space-y-2">
                       {path.topics.map((topic, topicIndex) => (
-                        <div key={topicIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="h-4 w-4 text-orange-500" />
+                        <div key={topicIndex} className="flex items-center gap-2 text-xs md:text-sm text-muted-foreground">
+                          <CheckCircle2 className="h-3 w-3 md:h-4 md:w-4 text-orange-500" />
                           <span>{topic}</span>
                         </div>
                       ))}
                     </div>
-                    <Button className="w-full mt-6 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group">
-                      <BookOpen className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
+                    <Button className="w-full mt-4 md:mt-6 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 group">
+                      <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2 transition-transform group-hover:scale-110" />
                       Start Learning
                     </Button>
                   </div>
@@ -247,13 +270,13 @@ export default function AWSPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-3 md:mb-4">
               Hands-On Projects
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Apply your AWS knowledge with real-world projects
             </p>
           </div>
@@ -266,22 +289,22 @@ export default function AWSPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="group relative overflow-hidden border-border/20 bg-background/60 backdrop-blur-xl p-6 rounded-2xl transition-all duration-300 ease-out hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10 hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 ease-out hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 hover:scale-105">
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
-                    <div className="flex items-center justify-between mb-4">
-                      <Badge variant="outline" className="rounded-full border-orange-500/30 text-orange-500">
+                    <div className="flex items-center justify-between mb-3 md:mb-4">
+                      <Badge variant="outline" className="rounded-full border-orange-500/30 text-orange-500 text-xs md:text-sm">
                         {project.difficulty}
                       </Badge>
-                      <Code2 className="h-5 w-5 text-orange-500" />
+                      <Code2 className="h-4 w-4 md:h-5 md:w-5 text-orange-500" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-3 group-hover:text-orange-500 transition-colors tracking-wide">
+                    <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 group-hover:text-orange-500 transition-colors tracking-wide">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground mb-3 md:mb-4 leading-relaxed">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-1 md:gap-2 mb-3 md:mb-4">
                       {project.tech.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="secondary" className="rounded-full text-xs">
                           {tech}
@@ -289,7 +312,7 @@ export default function AWSPage() {
                       ))}
                     </div>
                     <Button variant="outline" className="w-full rounded-full border-border/30 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group">
-                      <PlayCircle className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
+                      <PlayCircle className="h-3 w-3 md:h-4 md:w-4 mr-2 transition-transform group-hover:scale-110" />
                       Start Project
                     </Button>
                   </div>
@@ -306,20 +329,24 @@ export default function AWSPage() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center"
         >
-          <Card className="bg-background/60 backdrop-blur-xl rounded-2xl border border-border/20 shadow-lg p-12">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-4">
-              Ready to Start Your AWS Journey?
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+          <Card className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-8 md:p-12">
+            <div className="flex items-center justify-center mb-4 md:mb-6">
+              <Heart className="h-4 w-4 md:h-6 md:w-6 text-orange-500 mr-2" />
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                Ready to Start Your AWS Journey?
+              </h2>
+              <Heart className="h-4 w-4 md:h-6 md:w-6 text-orange-500 ml-2" />
+            </div>
+            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed mb-6 md:mb-8 max-w-2xl mx-auto">
               Join thousands of developers who have mastered AWS and transformed their careers
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 rounded-full bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <BookOpen className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <Button size="lg" className="px-6 py-3 md:px-8 md:py-4 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <Rocket className="h-4 w-4 md:h-5 md:w-5 mr-2 transition-transform group-hover:scale-110" />
                 Browse Learning Paths
               </Button>
-              <Button size="lg" variant="outline" className="px-8 rounded-full border-border/30 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group">
-                <ExternalLink className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+              <Button size="lg" variant="outline" className="px-6 py-3 md:px-8 md:py-4 rounded-full border-border/30 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-300 group">
+                <ExternalLink className="h-4 w-4 md:h-5 md:w-5 mr-2 transition-transform group-hover:scale-110" />
                 View All Projects
               </Button>
             </div>
