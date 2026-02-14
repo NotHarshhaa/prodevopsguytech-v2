@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Clock, Search, BookOpen, Users, Trophy, ArrowRight } from "lucide-react";
+import { Clock, Search, BookOpen, Users, Trophy, ArrowRight, Sparkles, Rocket, Heart, Star, TrendingUp } from "lucide-react";
 
 const MotionCard = motion(Card);
 
@@ -227,45 +227,97 @@ export default function LearningPathsPage() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
-  
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
-      {/* Background Grid */}
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
+      {/* Enhanced Animated Background */}
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-gradient-to-r from-primary/20 to-primary/30 opacity-30 blur-[128px] rounded-full animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-primary/20 to-primary/40 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-primary/25 to-primary/35 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+      
+      {/* Floating particles */}
+      <div className="absolute inset-0 -z-10">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
+      </div>
       
       {/* Hero Section */}
-      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 lg:pb-24">
+      <section className="relative pt-16 md:pt-32 pb-6 md:pb-12">
         <div className="container px-3 sm:px-4 mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16 pt-4 md:pt-0"
+            className="text-center max-w-3xl mx-auto mb-6 md:mb-12 lg:mb-16 pt-2 md:pt-0"
           >
-            <div className="inline-flex px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
-              LEARNING PATHS
-            </div>
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 tracking-tight leading-tight">
+            <motion.div 
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
+            >
+              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
+              Learning Paths
+              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
+            </motion.div>
+            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
               Master DevOps & Cloud Computing
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground mb-6 md:mb-8 leading-relaxed">
+            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-4 md:mb-8 leading-relaxed">
               Structured learning paths to guide your journey from beginner to expert
             </p>
             
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto mb-6 md:mb-8 lg:mb-12">
-              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">9+</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Learning Paths</div>
-              </div>
-              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">48+</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Weeks of Content</div>
-              </div>
-              <div className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
-                <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary mb-1 tracking-tight">1000+</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Students Enrolled</div>
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto mb-4 md:mb-8 lg:mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">9+</div>
+                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Learning Paths</div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">48+</div>
+                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Weeks of Content</div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">1000+</div>
+                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Students Enrolled</div>
+                </div>
+              </motion.div>
             </div>
 
             {/* Search and Filter */}
@@ -275,7 +327,7 @@ export default function LearningPathsPage() {
                 <Input
                   type="text"
                   placeholder="Search learning paths..."
-                  className="pl-10 bg-background/60 backdrop-blur-sm border-border/30 rounded-full"
+                  className="pl-10 bg-background/70 backdrop-blur-sm border-border/30 rounded-full focus:border-primary/50 transition-all duration-300"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -320,10 +372,10 @@ export default function LearningPathsPage() {
               <MotionCard
                 key={path.id}
                 variants={item}
-                className="group relative overflow-hidden border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300 ease-out rounded-2xl"
+                className={`group relative overflow-hidden border border-border/30 bg-background/70 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out rounded-2xl md:rounded-3xl ${getPathCardClass(path.level)}`}
                 whileHover={{ y: -5 }}
               >
-                <CardContent className="p-4 md:p-6">
+                <CardContent className="p-4 md:p-6 relative z-10">
                   <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
                     <Badge className={getLevelBadgeClass(path.level)}>
                       {path.level}
@@ -334,19 +386,19 @@ export default function LearningPathsPage() {
                     </div>
                   </div>
                   
-                  <h3 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 tracking-wide">
+                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors">
                     {path.title}
                   </h3>
-                  <p className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">{path.description}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-4 leading-relaxed">{path.description}</p>
                   
                   {/* Course Stats */}
                   <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4 text-xs md:text-sm">
                     <div className="flex items-center text-muted-foreground">
-                      <Users className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
+                      <Users className="h-3 w-3 md:h-4 md:w-4 mr-1" />
                       {path.enrolled.toLocaleString()} enrolled
                     </div>
                     <div className="flex items-center text-muted-foreground">
-                      <Trophy className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
+                      <Trophy className="h-3 w-3 md:h-4 md:w-4 mr-1" />
                       {path.completion_rate}% completion
                     </div>
                   </div>
@@ -363,11 +415,12 @@ export default function LearningPathsPage() {
                     </ul>
                   </div>
                 </CardContent>
-                <CardFooter className="p-0">
+                <CardFooter className="p-0 relative z-10">
                   <Link 
                     href={path.url}
-                    className="w-full p-3 md:p-4 text-center font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-colors rounded-b-2xl flex items-center justify-center group"
+                    className="w-full p-3 md:p-4 text-center font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-colors rounded-b-2xl flex items-center justify-center group border-t border-border/20"
                   >
+                    <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2" />
                     <span className="text-sm md:text-base">Explore Path</span>
                     <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transform group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -382,7 +435,7 @@ export default function LearningPathsPage() {
               animate={{ opacity: 1 }}
               className="text-center py-8 md:py-12"
             >
-              <div className="bg-background/60 backdrop-blur-xl border border-border/20 rounded-2xl p-8 shadow-lg">
+              <div className="bg-background/70 backdrop-blur-xl border border-border/30 rounded-2xl p-8 shadow-lg">
                 <h3 className="text-lg md:text-xl font-semibold mb-2 tracking-wide">No learning paths found</h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                   Try adjusting your search or filter criteria
@@ -394,4 +447,4 @@ export default function LearningPathsPage() {
       </section>
     </div>
   );
-} 
+}
