@@ -16,7 +16,10 @@ import {
   FileCode,
   Bookmark,
   GraduationCap,
-  Heart
+  Heart,
+  Sparkles,
+  Rocket,
+  Star
 } from "lucide-react";
 
 import {
@@ -199,9 +202,9 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
       </DialogDescription>
       <CommandInput 
         placeholder="Type a command or search..." 
-        className="bg-background/60 backdrop-blur-sm border-border/30 rounded-full"
+        className="bg-background/70 backdrop-blur-xl border-border/30 rounded-full"
       />
-      <CommandList className="bg-background/95 backdrop-blur-xl border border-border/20 rounded-2xl shadow-2xl">
+      <CommandList className="bg-background/95 backdrop-blur-xl border border-border/30 rounded-2xl shadow-2xl">
         <CommandEmpty className="text-muted-foreground font-medium">No results found.</CommandEmpty>
         
         <CommandGroup heading="Navigation" className="text-sm font-medium tracking-wide text-muted-foreground">
@@ -209,14 +212,14 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
             <CommandItem
               key={item.label}
               onSelect={() => handleSelect(item.href)}
-              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/5 transition-all duration-200 ease-out group"
+              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/10 transition-all duration-300 ease-out group"
             >
-              <div className="p-1.5 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-200">
+              <div className="p-1.5 rounded-full bg-primary/15 group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
                 <item.icon className="h-4 w-4 text-primary" />
               </div>
               <span className="font-medium tracking-wide">{item.label}</span>
               {item.isExternal && (
-                <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
+                <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
               )}
               {item.shortcut && (
                 <CommandShortcut className="ml-auto bg-muted/50 text-muted-foreground rounded-md px-2 py-1 text-xs font-mono">
@@ -227,44 +230,44 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
           ))}
         </CommandGroup>
 
-        <CommandSeparator className="bg-border/20" />
+        <CommandSeparator className="bg-border/30" />
 
         <CommandGroup heading="Quick Actions" className="text-sm font-medium tracking-wide text-muted-foreground">
           {quickActions.map((item) => (
             <CommandItem
               key={item.label}
               onSelect={() => handleSelect(item.href)}
-              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/5 transition-all duration-200 ease-out group"
+              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/10 transition-all duration-300 ease-out group"
             >
-              <div className="p-1.5 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-200">
+              <div className="p-1.5 rounded-full bg-primary/15 group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
                 <item.icon className="h-4 w-4 text-primary" />
               </div>
               <span className="font-medium tracking-wide">{item.label}</span>
               {item.isExternal && (
-                <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
+                <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
               )}
             </CommandItem>
           ))}
         </CommandGroup>
 
-        <CommandSeparator className="bg-border/20" />
+        <CommandSeparator className="bg-border/30" />
 
         <CommandGroup heading="Social Links" className="text-sm font-medium tracking-wide text-muted-foreground">
           {socialLinks.map((item) => (
             <CommandItem
               key={item.label}
               onSelect={() => handleSelect(item.href)}
-              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/5 transition-all duration-200 ease-out group"
+              className="flex items-center gap-3 cursor-pointer rounded-lg hover:bg-primary/10 transition-all duration-300 ease-out group"
             >
-              <div className="p-1.5 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors duration-200">
+              <div className="p-1.5 rounded-full bg-primary/15 group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
                 <item.icon className="h-4 w-4 text-primary" />
               </div>
               <span className="font-medium tracking-wide">{item.label}</span>
-              <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
+              <ExternalLink className="h-3 w-3 ml-auto opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
             </CommandItem>
           ))}
         </CommandGroup>
       </CommandList>
     </CommandDialog>
   );
-} 
+}
