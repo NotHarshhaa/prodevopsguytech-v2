@@ -11,6 +11,13 @@ export default function Features() {
     transition: { duration: 0.5 }
   };
 
+  const particles = Array.from({ length: 6 }, (_, i) => ({
+    left: `${(i * 19.73 + 9.4) % 100}%`,
+    top: `${(i * 31.17 + 17.8) % 100}%`,
+    animationDelay: `${(i * 0.71) % 5}s`,
+    animationDuration: `${3 + ((i * 1.29) % 4)}s`
+  }));
+
   const staggerContainer = {
     animate: {
       transition: {
@@ -30,16 +37,11 @@ export default function Features() {
       
       {/* Floating particles */}
       <div className="absolute inset-0 -z-10">
-        {[...Array(6)].map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
+            style={particle}
           />
         ))}
       </div>

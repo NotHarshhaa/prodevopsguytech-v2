@@ -72,6 +72,13 @@ export default function CloudServices() {
     }
   ];
 
+  const particles = Array.from({ length: 6 }, (_, i) => ({
+    left: `${(i * 21.41 + 6.8) % 100}%`,
+    top: `${(i * 27.89 + 14.2) % 100}%`,
+    animationDelay: `${(i * 0.83) % 5}s`,
+    animationDuration: `${3 + ((i * 1.37) % 4)}s`
+  }));
+
   const cloudProviders = [
     {
       name: "Amazon Web Services",
@@ -146,16 +153,11 @@ export default function CloudServices() {
       
       {/* Floating particles */}
       <div className="absolute inset-0 -z-10">
-        {[...Array(6)].map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
+            style={particle}
           />
         ))}
       </div>

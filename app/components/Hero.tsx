@@ -12,6 +12,13 @@ export default function Hero() {
     { label: "GitHub Stars", value: "2K+", icon: Star },
   ];
 
+  const particles = Array.from({ length: 8 }, (_, i) => ({
+    left: `${(i * 17.37 + 13.5) % 100}%`,
+    top: `${(i * 29.53 + 21.7) % 100}%`,
+    animationDelay: `${(i * 0.63) % 5}s`,
+    animationDuration: `${3 + ((i * 1.11) % 4)}s`
+  }));
+
   return (
     <div className="relative min-h-[90vh] flex items-center">
       {/* Background Effects */}
@@ -31,16 +38,11 @@ export default function Hero() {
         <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
           <div className="absolute inset-0 bg-grid-white/[0.02]" />
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-primary/10" />
-          {[...Array(8)].map((_, i) => (
+          {particles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`
-              }}
+              style={particle}
             />
           ))}
         </div>
