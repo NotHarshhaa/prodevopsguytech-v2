@@ -1,54 +1,54 @@
 'use client';
 
-import { createContext, useState, useEffect, useContext } from 'react';
-
-type Theme = 'light' | 'dark';
-
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
-  toggleTheme: () => {},
-});
+import * as React from 'react';
+import { ThemeProvider as NextThemesProvider, useTheme as useNextTheme } from 'next-themes';
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
-  
-  // Initialize theme from localStorage if available
-  useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme | null;
-    
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // If no stored theme but user prefers dark mode
-      setTheme('dark');
-    }
-  }, []);
-  
-  // Apply theme changes to HTML element and save to localStorage
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-  
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-  
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem={true}
+      disableTransitionOnChange
+    >
       {children}
-    </ThemeContext.Provider>
+    </NextThemesProvider>
   );
 }
 
-export const useTheme = () => useContext(ThemeContext); 
+export function useTheme() {
+  const { theme, setTheme, resolvedTheme } = useNextTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const activeTheme = mounted ? (resolvedTheme || theme || 'dark') : 'dark';
+  const isDark = activeTheme === 'dark';
+
+  const toggleTheme = React.useCallback(() => {
+    // Determine the opposite theme
+    const current = resolvedTheme || theme || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    
+    // Explicitly update DOM class immediately
+    if (typeof document !== 'undefined') {
+      if (next === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    
+    setTheme(next);
+  }, [resolvedTheme, theme, setTheme]);
+
+  return {
+    theme: activeTheme,
+    setTheme,
+    toggleTheme,
+    isDark,
+    mounted
+  };
+}

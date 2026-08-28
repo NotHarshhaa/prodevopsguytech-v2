@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import BackgroundEffects from "./components/BackgroundEffects";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Analytics } from "./components/analytics";
 
@@ -71,8 +72,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${mono.variable}`} suppressHydrationWarning>
       <head />
-      <body className="min-h-screen font-sans antialiased overflow-x-hidden">
+      <body className="min-h-screen font-sans antialiased overflow-x-hidden bg-background text-foreground">
         <ThemeProvider>
+          <BackgroundEffects variant="hero" />
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">

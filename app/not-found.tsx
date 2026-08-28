@@ -12,11 +12,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-6 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute left-1/4 top-1/4 -z-10 h-96 w-96 rounded-full bg-primary/20 blur-[100px] animate-pulse"></div>
-        <div className="absolute right-1/4 top-1/3 -z-10 h-96 w-96 rounded-full bg-secondary/20 blur-[100px] animate-pulse delay-700"></div>
-        <div className="absolute bottom-1/4 left-1/3 -z-10 h-96 w-96 rounded-full bg-primary/20 blur-[100px] animate-pulse delay-1000"></div>
+      <div className="absolute inset-0 -z-10 overflow-hidden bg-dot-pattern opacity-40">
       </div>
 
       <div className="text-center max-w-2xl mx-auto">

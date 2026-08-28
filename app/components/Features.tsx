@@ -1,381 +1,248 @@
 'use client';
 
+import Link from 'next/link';
 import { Card } from "@/components/ui/card";
-import { Rocket, Settings, BookOpen, Globe, GitBranch, LightbulbIcon, ArrowRight, Terminal, MessageCircle, Sparkles, Heart, TrendingUp, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { 
+  Rocket, 
+  Settings, 
+  BookOpen, 
+  GitBranch, 
+  ArrowRight, 
+  Terminal, 
+  Sparkles, 
+  Users, 
+  Layers, 
+  ShieldCheck, 
+  CheckCircle2,
+  ExternalLink,
+  Code2
+} from "lucide-react";
 
 export default function Features() {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
-  };
-
-  const particles = Array.from({ length: 6 }, (_, i) => ({
-    left: `${(i * 19.73 + 9.4) % 100}%`,
-    top: `${(i * 31.17 + 17.8) % 100}%`,
-    animationDelay: `${(i * 0.71) % 5}s`,
-    animationDuration: `${3 + ((i * 1.29) % 4)}s`
-  }));
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  const stackTags = [
+    { name: "AWS", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
+    { name: "Azure", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
+    { name: "Kubernetes", color: "bg-indigo-500/10 text-indigo-500 border-indigo-500/20" },
+    { name: "Docker", color: "bg-sky-500/10 text-sky-500 border-sky-500/20" },
+    { name: "Terraform", color: "bg-purple-500/10 text-purple-500 border-purple-500/20" },
+    { name: "GitOps (ArgoCD)", color: "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" },
+  ];
 
   return (
-    <section className="py-8 md:py-20 px-3 sm:px-4 overflow-hidden relative">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px]" />
-        <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-primary/5 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-primary/5 to-transparent" />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {particles.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={particle}
-          />
-        ))}
-      </div>
-
-      <div className="container mx-auto relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8 md:mb-12 lg:mb-16"
-        >
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-          >
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-            Features & Capabilities
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-          </motion.div>
-          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-            Bringing DevOps to every engineer.
+    <section className="py-16 md:py-24 relative overflow-hidden">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/10 border border-primary/25 text-primary mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Modern Engineering Toolset</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+            Everything you need to engineer{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">
+              production-grade systems.
+            </span>
           </h2>
-        </motion.div>
-        
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 xl:gap-10 mb-8 md:mb-12 lg:mb-16"
-        >
-          {/* Real-time DevOps Projects */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-blue-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Rocket className="h-4 w-4 md:h-6 md:w-6 text-blue-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-blue-500 transition-colors tracking-wide">Real-time DevOps & Cloud Projects</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">Hands-on projects with AWS, Azure, Terraform, Kubernetes, Docker & more.</p>
-              <a href="https://projects.prodevopsguytech.com" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-blue-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
+          <p className="mt-3 text-base text-muted-foreground">
+            Practical, zero-fluff architecture blueprints, automated setup scripts, and structured curricula.
+          </p>
+        </div>
 
-          {/* Automation Scripts */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-purple-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Settings className="h-4 w-4 md:h-6 md:w-6 text-purple-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-purple-500 transition-colors tracking-wide">Automation Scripts</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">Ready-to-use scripts for tool installations & configurations to streamline your workflow.</p>
-              <a href="https://github.com/topics/devops-automation" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-purple-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
-
-          {/* Interview Resources */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-green-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <BookOpen className="h-4 w-4 md:h-6 md:w-6 text-green-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-green-500 transition-colors tracking-wide">Interview Resources</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">In-depth interview questions and cheat sheets for DevOps and Cloud roles.</p>
-              <a href="https://roadmap.sh/devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-green-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
-
-          {/* Learning Paths */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-orange-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Globe className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-orange-500 transition-colors tracking-wide">Learning Paths</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">Curated learning paths designed for beginners to advanced DevOps engineers.</p>
-              <a href="https://learn.microsoft.com/en-us/devops/plan/what-is-devops" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-orange-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
-
-          {/* Version Control */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-indigo-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <GitBranch className="h-4 w-4 md:h-6 md:w-6 text-indigo-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-indigo-500 transition-colors tracking-wide">Version Control</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">Master Git workflows and best practices for collaborative development.</p>
-              <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-indigo-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
-
-          {/* Open Source */}
-          <motion.div variants={fadeInUp}>
-            <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl transition-all duration-500 ease-out hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-              <div className="mb-3 md:mb-6 size-8 md:size-12 rounded-full bg-yellow-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <LightbulbIcon className="h-4 w-4 md:h-6 md:w-6 text-yellow-500" />
-              </div>
-              <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-yellow-500 transition-colors tracking-wide">Open Source Community</h3>
-              <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">Building a collaborative space for open-source contributions and knowledge sharing.</p>
-              <a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer" className="flex items-center text-xs md:text-sm text-muted-foreground group-hover:text-yellow-500 transition-colors font-medium">
-                <span>Learn more</span>
-                <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 transition-transform group-hover:translate-x-0.5" />
-              </a>
-            </Card>
-          </motion.div>
-        </motion.div>
-
-        {/* Git Deploy and Collaborative Sections */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-16 gap-y-12 md:gap-y-20"
-        >
-          {/* Git Deploy Section */}
-          <motion.div variants={fadeInUp}>
-            <div className="flex items-center gap-2 text-primary mb-4 md:mb-6">
-              <Terminal className="h-5 w-5" />
-              <span className="text-sm font-medium">Git-connected Deploys</span>
-            </div>
-            
-            <div className="mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
-                From localhost to https, in seconds.
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground">Deploy from Git or your CLI.</p>
-            </div>
-
-            <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg overflow-hidden rounded-2xl">
-              <div className="p-6 font-mono text-sm bg-muted/20">
-                <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                  <span className="size-3 rounded-full bg-red-500/80"></span>
-                  <span className="size-3 rounded-full bg-yellow-500/80"></span>
-                  <span className="size-3 rounded-full bg-green-500/80"></span>
-                </div>
-                <div className="space-y-2">
-                  <p><span className="text-blue-400">~</span> prodevopsguy-site/ git push</p>
-                  <p className="text-muted-foreground">Enumerating objects: 1, done.</p>
-                  <p className="text-muted-foreground">Counting objects: 100% (1/1), done.</p>
-                  <p className="text-muted-foreground">Writing objects: 100% (1/1), 72 bytes</p>
-                  <p className="text-muted-foreground">Total 1 (delta 0), reused 0 (delta 0)</p>
-                  <p>To github.com:prodevopsguy/site.git</p>
-                  <p><span className="text-primary">21326a9..8</span> <span className="text-muted-foreground">main → main</span></p>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
-
-          {/* Collaborative Section */}
-          <motion.div variants={fadeInUp}>
-            <div className="flex items-center gap-2 text-primary mb-4 md:mb-6">
-              <MessageCircle className="h-5 w-5" />
-              <span className="text-sm font-medium">Collaborative Learning</span>
-            </div>
-            
-            <div className="mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
-                Every deploy is remarkable.
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground">Chat with your team on real, production-grade projects, not just theory. Learn by doing.</p>
-            </div>
-
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Bento Card 1: Wide Featured Project Card (Spans 2 cols on LG) */}
+          <div className="lg:col-span-2 rounded-3xl border border-border/60 bg-card/70 hover:bg-card p-6 md:p-8 transition-all duration-200 hover:shadow-xl hover:border-primary/40 group relative overflow-hidden flex flex-col justify-between">
             <div className="space-y-4">
-              <motion.div
-                variants={fadeInUp}
-                className="transform hover:translate-y-[-2px] transition-transform"
-              >
-                <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-6 rounded-2xl">
-                  <div className="flex items-start gap-4">
-                    <div className="size-10 rounded-full bg-blue-500/20 flex items-center justify-center ring-2 ring-blue-500/20">
-                      <span className="text-sm font-medium text-blue-400">P</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium mb-2">Pranath</p>
-                      <div className="inline-block rounded-lg bg-muted/20 px-4 py-2 backdrop-blur-sm">
-                        <p className="text-sm">Swapped out the <code className="text-xs bg-primary/20 rounded px-1.5 py-0.5">button</code> for some variants we needed.</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
+              <div className="flex items-center justify-between">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-500 flex items-center justify-center">
+                  <Rocket className="w-6 h-6" />
+                </div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  Flagship Blueprint
+                </span>
+              </div>
 
-              <motion.div
-                variants={fadeInUp}
-                className="transform hover:translate-y-[-2px] transition-transform"
-              >
-                <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-6 rounded-2xl">
-                  <div className="flex items-start gap-4">
-                    <div className="size-10 rounded-full bg-red-500/20 flex items-center justify-center ring-2 ring-red-500/20">
-                      <span className="text-sm font-medium text-red-400">R</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium mb-2">Rauno</p>
-                      <div className="inline-block rounded-lg bg-muted/20 px-4 py-2 backdrop-blur-sm">
-                        <p className="text-sm">I like it. Does this work with the brand tweaks <span className="text-primary">@mamuso</span>?</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                  Real-Time DevOps & Cloud Projects
+                </h3>
+                <p className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  Step-by-step implementations of complete enterprise stacks: highly available Kubernetes clusters on AWS EKS, automated Terraform provisioning, ArgoCD continuous delivery, and end-to-end monitoring.
+                </p>
+              </div>
+
+              {/* Stack Tags */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {stackTags.map((tag) => (
+                  <span 
+                    key={tag.name}
+                    className={`text-xs font-medium px-2.5 py-1 rounded-lg border ${tag.color}`}
+                  >
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
 
-        {/* Analytics Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-16 md:mt-24"
-        >
-          <div className="flex items-center gap-2 text-primary mb-4 md:mb-6">
-            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 21H4.6c-.6 0-1.1-.5-1.1-1.1V3" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M19 15.5L14.5 11 9.5 16 5 11.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="text-sm font-medium">Infrastructure Monitoring</span>
-          </div>
-          
-          <div className="mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground/80 to-foreground/50">
-              Real-time Infrastructure Analytics
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">Monitor your cloud infrastructure, container health, and deployment metrics in real-time.</p>
+            <div className="pt-6 mt-6 border-t border-border/40 flex items-center justify-between">
+              <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                Full source code & architectural diagrams included
+              </span>
+              <a 
+                href="https://projects.prodevopsguytech.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-primary group-hover:translate-x-1 transition-transform"
+              >
+                <span>Browse Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <Card className="col-span-2 border border-border/50 bg-gradient-to-b from-background/50 to-background/80 shadow-md p-8 backdrop-blur-sm">
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">Infrastructure Health</h3>
-                  <span className="text-sm text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">98.5% Uptime</span>
+          {/* Bento Card 2: Automation Scripts */}
+          <div className="rounded-3xl border border-border/60 bg-card/70 hover:bg-card p-6 md:p-8 transition-all duration-200 hover:shadow-xl hover:border-purple-500/40 group flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-500 flex items-center justify-center">
+                <Settings className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-bold tracking-tight text-foreground group-hover:text-purple-500 transition-colors">
+                  Automation Scripts & CLI Tools
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  Battle-tested bash and python scripts to install, configure, and harden DevOps tools in minutes without manual guesswork.
+                </p>
+              </div>
+
+              {/* Terminal Code Pill */}
+              <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center gap-2">
+                <Terminal className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+                <span className="truncate">curl -sSL get.prodevopsguytech.com/k8s | bash</span>
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-border/40">
+              <Link 
+                href="/resources" 
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-purple-500 group-hover:translate-x-1 transition-transform"
+              >
+                <span>Explore Automation</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Card 3: Learning Paths */}
+          <div className="rounded-3xl border border-border/60 bg-card/70 hover:bg-card p-6 md:p-8 transition-all duration-200 hover:shadow-xl hover:border-emerald-500/40 group flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-bold tracking-tight text-foreground group-hover:text-emerald-500 transition-colors">
+                  Structured Learning Paths
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  Curated progression paths from beginner fundamentals (Linux & Git) to advanced Cloud Infrastructure and SRE concepts.
+                </p>
+              </div>
+
+              <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="flex items-center justify-between p-2 rounded-lg bg-accent/40">
+                  <span>DevOps Foundations</span>
+                  <span className="font-semibold text-emerald-500">4 Weeks</span>
                 </div>
-                <div className="grid grid-cols-3 gap-6">
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground">Kubernetes Pods</p>
-                    <p className="text-2xl font-bold">45/46</p>
-                    <div className="h-2 bg-muted/20 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "98%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="h-full bg-emerald-500/80 rounded-full"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground">CPU Usage</p>
-                    <p className="text-2xl font-bold">65%</p>
-                    <div className="h-2 bg-muted/20 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "65%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.6 }}
-                        className="h-full bg-blue-500/80 rounded-full"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <p className="text-sm text-muted-foreground">Memory</p>
-                    <p className="text-2xl font-bold">82%</p>
-                    <div className="h-2 bg-muted/20 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "82%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.7 }}
-                        className="h-full bg-purple-500/80 rounded-full"
-                      />
-                    </div>
-                  </div>
+                <div className="flex items-center justify-between p-2 rounded-lg bg-accent/40">
+                  <span>Kubernetes & GitOps</span>
+                  <span className="font-semibold text-emerald-500">6 Weeks</span>
                 </div>
               </div>
-            </Card>
+            </div>
 
-            <Card className="border border-border/20 bg-background/60 backdrop-blur-xl shadow-lg p-8 rounded-2xl">
-              <div className="h-full flex flex-col">
-                <h3 className="font-semibold mb-6">Active Deployments</h3>
-                <div className="flex-1 space-y-4">
-                  <div className="p-3 rounded-lg bg-muted/20 flex items-center gap-3">
-                    <div className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <div>
-                      <p className="text-sm font-medium">Production</p>
-                      <p className="text-xs text-muted-foreground">v2.1.0 - 2m ago</p>
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-muted/20 flex items-center gap-3">
-                    <div className="size-2 rounded-full bg-blue-500 animate-pulse" />
-                    <div>
-                      <p className="text-sm font-medium">Staging</p>
-                      <p className="text-xs text-muted-foreground">v2.1.1 - 30s ago</p>
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-muted/20 flex items-center gap-3">
-                    <div className="size-2 rounded-full bg-purple-500 animate-pulse" />
-                    <div>
-                      <p className="text-sm font-medium">Development</p>
-                      <p className="text-xs text-muted-foreground">v2.2.0 - 5s ago</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
+            <div className="pt-6 mt-6 border-t border-border/40">
+              <Link 
+                href="/learning-paths" 
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-emerald-500 group-hover:translate-x-1 transition-transform"
+              >
+                <span>View All Paths</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-        </motion.div>
+
+          {/* Bento Card 4: Interview & Cheatsheets */}
+          <div className="rounded-3xl border border-border/60 bg-card/70 hover:bg-card p-6 md:p-8 transition-all duration-200 hover:shadow-xl hover:border-amber-500/40 group flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-500 flex items-center justify-center">
+                <Code2 className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-bold tracking-tight text-foreground group-hover:text-amber-500 transition-colors">
+                  Interview Prep & Cheatsheets
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  Hundreds of scenario-based technical interview questions, architecture review questions, and quick syntax cheatsheets.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="px-2 py-1 rounded bg-amber-500/10 text-amber-500 font-mono">Docker</span>
+                <span className="px-2 py-1 rounded bg-amber-500/10 text-amber-500 font-mono">Kubernetes</span>
+                <span className="px-2 py-1 rounded bg-amber-500/10 text-amber-500 font-mono">AWS SRE</span>
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-border/40">
+              <Link 
+                href="/resources" 
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-amber-500 group-hover:translate-x-1 transition-transform"
+              >
+                <span>Access Cheatsheets</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Card 5: Active Community */}
+          <div className="rounded-3xl border border-border/60 bg-card/70 hover:bg-card p-6 md:p-8 transition-all duration-200 hover:shadow-xl hover:border-blue-500/40 group flex flex-col justify-between">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-500 flex items-center justify-center">
+                <Users className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-lg md:text-xl font-bold tracking-tight text-foreground group-hover:text-blue-500 transition-colors">
+                  Thriving Tech Community
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  Join 15,000+ active engineers across Telegram and GitHub. Get unblocked, share architectures, and collaborate on open-source projects.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-blue-600 border-2 border-background flex items-center justify-center text-[10px] font-bold text-white">H</div>
+                  <div className="w-8 h-8 rounded-full bg-indigo-600 border-2 border-background flex items-center justify-center text-[10px] font-bold text-white">P</div>
+                  <div className="w-8 h-8 rounded-full bg-emerald-600 border-2 border-background flex items-center justify-center text-[10px] font-bold text-white">D</div>
+                  <div className="w-8 h-8 rounded-full bg-purple-600 border-2 border-background flex items-center justify-center text-[10px] font-bold text-white">+15k</div>
+                </div>
+                <span className="text-xs text-muted-foreground font-medium">Engineers active now</span>
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-border/40">
+              <Link 
+                href="/community" 
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-blue-500 group-hover:translate-x-1 transition-transform"
+              >
+                <span>Join Community</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
-} 
+}

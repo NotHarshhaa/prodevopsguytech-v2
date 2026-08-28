@@ -1,32 +1,56 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Github, Twitter, Linkedin, Youtube, ArrowRight, Mail, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { 
+  Github, 
+  Twitter, 
+  Linkedin, 
+  Youtube, 
+  ArrowRight, 
+  Mail, 
+  CheckCircle2,
+  Sparkles,
+  Cpu,
+  Heart
+} from "lucide-react";
 import { PrivacyDialog } from './PrivacyDialog';
 import { TermsDialog } from './TermsDialog';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsSubscribed(true);
+    setTimeout(() => {
+      setEmail('');
+      setIsSubscribed(false);
+    }, 4000);
+  };
 
   const footerLinks = {
     quickLinks: [
-      { href: "https://projects.prodevopsguytech.com/", label: "Projects" },
-      { href: "/resources", label: "Resources" },
-      { href: "/learning-paths", label: "Learning Paths" },
-      { href: "/community", label: "Community" },
-      { href: "/about", label: "About Us" }
+      { href: "https://projects.prodevopsguytech.com/", label: "DevOps Projects" },
+      { href: "/learning-paths", label: "Learning Roadmaps" },
+      { href: "/resources", label: "Resources & Cheatsheets" },
+      { href: "/community", label: "Community Hub" },
+      { href: "/about", label: "About Us" },
+      { href: "/contact", label: "Contact & Support" }
     ],
     technologies: [
-      { href: "/technologies/aws", label: "AWS" },
-      { href: "/technologies/azure", label: "Azure" },
-      { href: "/technologies/terraform", label: "Terraform" },
-      { href: "/technologies/kubernetes", label: "Kubernetes" },
-      { href: "/technologies/docker", label: "Docker" }
+      { href: "/technologies/aws", label: "Amazon Web Services (AWS)" },
+      { href: "/technologies/azure", label: "Microsoft Azure" },
+      { href: "/technologies/kubernetes", label: "Kubernetes & Helm" },
+      { href: "/technologies/docker", label: "Docker Containers" },
+      { href: "/technologies/terraform", label: "Terraform IaC" }
     ]
   };
 
@@ -38,65 +62,87 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-background via-background/95 to-background border-t border-border/20">
+    <footer className="relative bg-card/60 border-t border-border/40 mt-12">
       {/* Newsletter Section */}
-      <div className="relative bg-background/60 backdrop-blur-xl border border-border/20 rounded-2xl mx-3 sm:mx-4 mb-6 md:mb-8 shadow-lg">
-        <div className="container px-3 sm:px-4 mx-auto py-12 md:py-16">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
-              NEWSLETTER
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-12">
+        <div className="rounded-3xl border border-border/60 bg-gradient-to-br from-card via-card/90 to-primary/5 p-8 md:p-12 shadow-lg">
+          <div className="max-w-2xl mx-auto text-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+              <Mail className="w-3.5 h-3.5" />
+              <span>Weekly DevOps Dispatch</span>
             </div>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-foreground tracking-tight leading-tight">
-              Join Our DevOps Community
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+              Stay ahead in Cloud & DevOps engineering
             </h2>
-            <p className="text-sm md:text-base text-muted-foreground mb-6 md:mb-8 leading-relaxed">
-              Get weekly insights on DevOps best practices, cloud architecture, and automation techniques.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Curated architectural deep-dives, production Kubernetes tips, and new hands-on project releases delivered to your inbox every week.
             </p>
-            <form className="flex gap-3 max-w-md mx-auto">
+
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto pt-2">
               <Input 
                 type="email" 
-                placeholder="Enter your email" 
-                className="flex-1 bg-background/60 backdrop-blur-sm border-border/30 focus-visible:ring-primary rounded-full"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your work email" 
+                required
+                className="h-11 rounded-full bg-background border-border/60 focus-visible:ring-primary text-xs px-4"
               />
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 rounded-full font-medium group">
-                Subscribe
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <Button 
+                type="submit"
+                disabled={isSubscribed}
+                className="h-11 px-6 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs shrink-0 flex items-center justify-center gap-2 transition-all"
+              >
+                {isSubscribed ? (
+                  <>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Subscribed!</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Subscribe</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </>
+                )}
               </Button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Main Footer Content */}
-      <div className="container px-3 sm:px-4 mx-auto py-8 md:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Branding and Description */}
-          <div className="lg:col-span-4">
-            <Link href="/" className="inline-block group">
-              <div className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 relative tracking-tight leading-tight">
-                ProDevOpsGuy
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">Tech</span>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 transition-all duration-300 group-hover:w-full"></span>
+      {/* Main Footer Links */}
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          {/* Brand & Mission */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white">
+                <Cpu className="w-4 h-4" />
               </div>
+              <span className="font-bold text-lg text-foreground">
+                ProDevOpsGuy<span className="text-primary">Tech</span>
+              </span>
             </Link>
-            <p className="text-sm md:text-base text-muted-foreground mb-4 md:mb-6 leading-relaxed">
-              Empowering the next generation of DevOps engineers with hands-on projects, comprehensive resources, and a supportive community.
+
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-sm">
+              Empowering engineers worldwide with production-tested blueprints, end-to-end cloud projects, and an active developer community.
             </p>
-            
-            {/* Tech Stack Logos */}
-            <div className="mb-4 md:mb-6">
-              <p className="text-xs md:text-sm text-muted-foreground mb-2 md:mb-3 font-medium tracking-wide">Trusted Cloud Partners:</p>
-              <div className="grid grid-cols-4 gap-3 md:gap-4">
+
+            {/* Cloud Partners */}
+            <div className="space-y-2 pt-2">
+              <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                Supported Ecosystems
+              </span>
+              <div className="grid grid-cols-4 gap-2 max-w-xs">
                 {techLogos.map((logo) => (
                   <div 
                     key={logo.alt}
-                    className="relative h-6 md:h-8 bg-background/60 backdrop-blur-sm rounded-2xl p-1 md:p-1.5 hover:bg-background/80 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 border border-border/20 hover:border-primary/30"
+                    className="relative h-7 bg-background/80 rounded-lg p-1 border border-border/40 flex items-center justify-center"
                   >
                     <Image
                       src={logo.src}
                       alt={logo.alt}
                       fill
-                      className="object-contain filter brightness-90 hover:brightness-100 transition-all"
+                      className="object-contain p-1 filter opacity-75 hover:opacity-100 transition-opacity"
                     />
                   </div>
                 ))}
@@ -104,58 +150,55 @@ export default function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-2 md:gap-3">
+            <div className="flex gap-2 pt-2">
               {[
-                { href: "https://github.com/prodevopsguy", icon: Github, label: "GitHub", color: "hover:bg-[#2da44e]/10 hover:text-[#2da44e]" },
-                { href: "https://twitter.com/prodevopsguy", icon: Twitter, label: "Twitter", color: "hover:bg-[#1da1f2]/10 hover:text-[#1da1f2]" },
-                { href: "https://linkedin.com/in/prodevopsguy", icon: Linkedin, label: "LinkedIn", color: "hover:bg-[#0a66c2]/10 hover:text-[#0a66c2]" },
-                { href: "https://youtube.com/c/prodevopsguy", icon: Youtube, label: "YouTube", color: "hover:bg-[#ff0000]/10 hover:text-[#ff0000]" }
-              ].map((social) => (
-                <a 
-                  key={social.label}
-                  href={social.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label={social.label}
-                  className={`h-8 w-8 md:h-10 md:w-10 flex items-center justify-center rounded-full bg-background/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 border border-border/20 hover:border-primary/30 ${social.color}`}
-                >
-                  <social.icon className="h-4 w-4 md:h-5 md:w-5" />
-                </a>
-              ))}
+                { href: "https://github.com/prodevopsguy", icon: Github, label: "GitHub" },
+                { href: "https://twitter.com/prodevopsguy", icon: Twitter, label: "Twitter" },
+                { href: "https://linkedin.com/in/prodevopsguy", icon: Linkedin, label: "LinkedIn" },
+                { href: "https://youtube.com/c/prodevopsguy", icon: Youtube, label: "YouTube" }
+              ].map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a 
+                    key={social.label}
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label={social.label}
+                    className="w-8 h-8 rounded-full bg-secondary/80 hover:bg-primary hover:text-white flex items-center justify-center text-muted-foreground transition-all"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-8 gap-6 md:gap-8 lg:gap-12">
-            {/* Quick Links */}
+          {/* Directory Links */}
+          <div className="md:col-span-7 grid grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-base md:text-lg mb-3 md:mb-4 tracking-wide">Quick Links</h3>
-              <ul className="space-y-2 md:space-y-3">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-foreground mb-4">
+                Platform
+              </h3>
+              <ul className="space-y-2.5 text-xs text-muted-foreground">
                 {footerLinks.quickLinks.map((link) => (
                   <li key={link.label}>
-                    <Link 
-                      href={link.href} 
-                      className="text-muted-foreground hover:text-foreground transition-colors flex items-center group font-medium"
-                    >
-                      <ArrowRight className="h-4 w-4 mr-2 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-primary" />
-                      {link.label}
+                    <Link href={link.href} className="hover:text-primary transition-colors flex items-center gap-1">
+                      <span>{link.label}</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Technologies */}
             <div>
-              <h3 className="font-semibold text-base md:text-lg mb-3 md:mb-4 tracking-wide">Technologies</h3>
-              <ul className="space-y-2 md:space-y-3">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-foreground mb-4">
+                Technologies
+              </h3>
+              <ul className="space-y-2.5 text-xs text-muted-foreground">
                 {footerLinks.technologies.map((link) => (
                   <li key={link.label}>
-                    <Link 
-                      href={link.href} 
-                      className="text-muted-foreground hover:text-foreground transition-colors flex items-center group font-medium"
-                    >
-                      <ArrowRight className="h-4 w-4 mr-2 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-primary" />
+                    <Link href={link.href} className="hover:text-primary transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -165,13 +208,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <Separator className="my-6 md:my-8 border-border/20" />
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 text-xs md:text-sm text-muted-foreground">
-          <div className="font-medium">
-            © {year} <Link href="/" className="hover:text-foreground transition-colors">ProDevOpsGuy Tech Community</Link>
+        <Separator className="my-8 border-border/40" />
+
+        {/* Bottom copyright & Status */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="text-foreground font-medium">All systems operational</span>
+            <span className="text-muted-foreground">· © {year} ProDevOpsGuy Tech</span>
           </div>
-          <div className="flex gap-4 md:gap-6">
+
+          <div className="flex items-center gap-4">
             <PrivacyDialog />
             <TermsDialog />
           </div>
@@ -179,4 +226,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}

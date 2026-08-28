@@ -1,164 +1,330 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Rocket, Code, Users, Star, Sparkles, Heart, TrendingUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { 
+  ArrowRight, 
+  Rocket, 
+  Code2, 
+  Users, 
+  Star, 
+  Sparkles, 
+  Terminal, 
+  Check, 
+  Copy, 
+  Layers, 
+  Cloud, 
+  GitBranch,
+  ShieldCheck,
+  Zap
+} from "lucide-react";
+
+interface CodeSnippet {
+  id: string;
+  tabLabel: string;
+  filename: string;
+  language: string;
+  icon: typeof Terminal;
+  code: string;
+  statusText: string;
+}
+
+const snippets: CodeSnippet[] = [
+  {
+    id: 'terraform',
+    tabLabel: 'Terraform',
+    filename: 'main.tf',
+    language: 'hcl',
+    icon: Cloud,
+    code: `module "eks_cluster" {
+  source          = "terraform-aws-modules/eks/aws"
+  cluster_name    = "prodevops-prod"
+  cluster_version = "1.30"
+  
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
+
+  eks_managed_node_groups = {
+    spot_nodes = {
+      min_size     = 2
+      max_size     = 10
+      desired_size = 3
+      instance_types = ["t3.medium", "t3a.medium"]
+    }
+  }
+}`,
+    statusText: 'Plan: 8 to add, 0 to change. Cluster online in us-east-1'
+  },
+  {
+    id: 'kubernetes',
+    tabLabel: 'Kubernetes',
+    filename: 'deployment.yaml',
+    language: 'yaml',
+    icon: Layers,
+    code: `apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-api
+  namespace: production
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: web
+        image: registry.prodevopsguytech.com/api:v2.4
+        resources:
+          limits: { memory: "512Mi", cpu: "500m" }`,
+    statusText: '5/5 pods healthy. 0 restarts in last 72 hours'
+  },
+  {
+    id: 'docker',
+    tabLabel: 'Docker',
+    filename: 'Dockerfile',
+    language: 'dockerfile',
+    icon: Code2,
+    code: `# Multi-stage lightweight production container
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --production=false
+COPY . .
+RUN npm run build
+
+FROM gcr.io/distroless/nodejs20-debian12
+WORKDIR /app
+COPY --from=builder /app/.next/standalone ./
+EXPOSE 3000
+CMD ["server.js"]`,
+    statusText: 'Image size: 38.2MB (Optimized with distroless)'
+  },
+  {
+    id: 'cicd',
+    tabLabel: 'CI/CD Pipeline',
+    filename: '.github/workflows/deploy.yml',
+    language: 'yaml',
+    icon: GitBranch,
+    code: `name: Production GitOps Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trivy Vulnerability Scan
+        run: trivy config ./k8s/ --severity HIGH,CRITICAL
+      - name: Sync ArgoCD Application
+        run: argocd app sync production-cluster --prune`,
+    statusText: 'Pipeline passed: Lint ✓ Security ✓ GitOps Sync ✓'
+  }
+];
 
 export default function Hero() {
+  const [activeTab, setActiveTab] = useState(snippets[0].id);
+  const [copied, setCopied] = useState(false);
+
+  const currentSnippet = snippets.find(s => s.id === activeTab) || snippets[0];
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(currentSnippet.code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const stats = [
-    { label: "Active Projects", value: "100+", icon: Code },
-    { label: "Community Members", value: "15K+", icon: Users },
-    { label: "GitHub Stars", value: "2K+", icon: Star },
+    { label: "Production Blueprints", value: "100+", icon: Rocket },
+    { label: "DevOps Engineers", value: "15,000+", icon: Users },
+    { label: "GitHub Community Stars", value: "2,000+", icon: Star },
+    { label: "Production Uptime", value: "99.99%", icon: ShieldCheck },
   ];
 
-  const particles = Array.from({ length: 8 }, (_, i) => ({
-    left: `${(i * 17.37 + 13.5) % 100}%`,
-    top: `${(i * 29.53 + 21.7) % 100}%`,
-    animationDelay: `${(i * 0.63) % 5}s`,
-    animationDuration: `${3 + ((i * 1.11) % 4)}s`
-  }));
-
   return (
-    <div className="relative min-h-[90vh] flex items-center">
-      {/* Background Effects */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Original Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-        
-        {/* Enhanced Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
-        
-        {/* Enhanced Gradient Orbs */}
-        <div className="absolute left-1/4 top-1/4 -z-10 w-full max-w-[50rem] h-[40rem] bg-gradient-to-r from-primary/20 to-primary/30 opacity-30 blur-[128px] rounded-full animate-pulse" />
-        <div className="absolute right-1/4 top-1/3 -z-10 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-primary/20 to-primary/40 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/4 left-1/3 -z-10 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-primary/25 to-primary/35 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
-          <div className="absolute inset-0 bg-grid-white/[0.02]" />
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/5 to-primary/10" />
-          {particles.map((particle, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-              style={particle}
-            />
-          ))}
-        </div>
-      </div>
+    <section className="relative pt-10 md:pt-16 pb-16 md:pb-24 overflow-hidden">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Left Column: Value Proposition & CTAs */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            {/* High-Tech Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/10 border border-primary/25 text-primary">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Next-Gen DevOps & Cloud Engineering</span>
+              <span className="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+            </div>
 
-      <section className="w-full pt-16 md:pt-32 pb-6 md:pb-12">
-        <div className="container px-3 sm:px-4 mx-auto">
-          {/* Main Content */}
-          <div className="max-w-5xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-4 md:space-y-8"
-            >
-              {/* Enhanced Floating Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-              >
-                <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-                Your DevOps Journey Starts Here
-                <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-              </motion.div>
+            {/* Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight text-foreground leading-[1.15]">
+              Master Real-World{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400">
+                DevOps, Cloud & GitOps.
+              </span>
+            </h1>
 
-              {/* Enhanced Title */}
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight"
+            {/* Subheading */}
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Step-by-step infrastructure projects, zero-lag architectures, and production-tested guides for AWS, Azure, Docker, Kubernetes, and Terraform.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <Link 
+                href="https://projects.prodevopsguytech.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
               >
-                Your complete platform for{' '}
-                <span className="relative">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
-                    DevOps and Cloud.
+                <Button 
+                  size="lg" 
+                  className="h-12 px-6 rounded-full font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] flex items-center gap-2"
+                >
+                  <Rocket className="w-4 h-4" />
+                  <span>Start Deploying</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+
+              <Link href="/learning-paths">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="h-12 px-6 rounded-full font-semibold border-border/80 bg-card/80 hover:bg-accent text-foreground transition-all hover:scale-[1.02] flex items-center gap-2"
+                >
+                  <Terminal className="w-4 h-4 text-primary" />
+                  <span>Browse Learning Paths</span>
+                </Button>
+              </Link>
+            </div>
+
+            {/* Key Value Checks */}
+            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-2 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span>Zero fluff, 100% hands-on</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span>Production ready IaC</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span>Free community access</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive DevOps Terminal Simulator */}
+          <div className="lg:col-span-5">
+            <div className="relative rounded-2xl border border-border/80 bg-slate-950/95 text-slate-100 shadow-2xl shadow-black/30 overflow-hidden">
+              {/* Window Header */}
+              <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  <span className="text-xs text-slate-400 font-mono ml-2 flex items-center gap-1.5">
+                    <Terminal className="w-3 h-3 text-cyan-400" />
+                    {currentSnippet.filename}
                   </span>
-                  <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-primary/50 via-primary/20 to-transparent blur-sm" />
-                </span>
-              </motion.h1>
+                </div>
 
-              {/* Description */}
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-base md:text-lg lg:text-xl text-muted-foreground mx-auto max-w-2xl leading-relaxed tracking-wide"
-              >
-                ProDevOpsGuy Tech provides the tools, resources, and community
-                to build, learn, and master modern DevOps practices.
-              </motion.p>
+                <button
+                  onClick={handleCopy}
+                  type="button"
+                  className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-slate-200 transition-colors bg-slate-800/80 px-2 py-1 rounded-md"
+                  aria-label="Copy snippet code"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3 h-3 text-emerald-400" />
+                      <span className="text-emerald-400">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
-              {/* Enhanced CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="flex flex-wrap justify-center gap-3 md:gap-4 pt-2 md:pt-6"
-              >
-                <Link href="https://projects.prodevopsguytech.com/">
-                  <Button size="lg" className="group relative overflow-hidden h-10 md:h-12 px-4 md:px-8 text-sm md:text-base rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground shadow-xl hover:shadow-2xl transition-all duration-300 ease-out border-0">
-                    <span className="relative z-10 flex items-center gap-2 font-medium">
-                      <Rocket className="h-4 w-4 md:h-5 md:w-5" />
-                      Start Deploying
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </Button>
-                </Link>
-                <Link href="/learning-paths">
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
-                    className="h-10 md:h-12 px-4 md:px-8 text-sm md:text-base relative overflow-hidden group rounded-full border-border/30 bg-background/50 hover:bg-background/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 ease-out"
-                  >
-                    <span className="relative z-10 font-medium">Get a Demo</span>
-                  </Button>
-                </Link>
-              </motion.div>
-
-              {/* Enhanced Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="grid grid-cols-3 gap-2 md:gap-6 max-w-4xl mx-auto mt-8 md:mt-20"
-              >
-                {stats.map((stat, index) => {
-                  const Icon = stat.icon;
+              {/* Interactive Tool Tabs */}
+              <div className="flex items-center gap-1 px-3 py-2 bg-slate-900/60 border-b border-slate-800/80 overflow-x-auto">
+                {snippets.map((snippet) => {
+                  const Icon = snippet.icon;
+                  const isActive = snippet.id === activeTab;
                   return (
-                    <motion.div
-                      key={stat.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
-                      className="relative group"
+                    <button
+                      key={snippet.id}
+                      onClick={() => setActiveTab(snippet.id)}
+                      type="button"
+                      className={`flex items-center gap-1.5 px-3 py-1 text-xs font-mono rounded-lg transition-all whitespace-nowrap ${
+                        isActive 
+                          ? 'bg-primary/20 text-cyan-300 border border-primary/40' 
+                          : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                      }`}
                     >
-                      <div className="relative p-3 md:p-6 rounded-2xl border border-border/30 bg-background/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out group-hover:scale-105">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                        <div className="relative flex flex-col items-center text-center">
-                          <div className="p-2 md:p-3 rounded-full bg-primary/15 mb-2 md:mb-3 group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
-                            <Icon className="h-4 w-4 md:h-6 md:w-6 text-primary" />
-                          </div>
-                          <div className="text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-1 tracking-tight">{stat.value}</div>
-                          <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
-                        </div>
-                      </div>
-                    </motion.div>
+                      <Icon className="w-3.5 h-3.5" />
+                      <span>{snippet.tabLabel}</span>
+                    </button>
                   );
                 })}
-              </motion.div>
-            </motion.div>
+              </div>
+
+              {/* Code Display Area */}
+              <div className="p-4 font-mono text-[12px] leading-relaxed text-slate-300 overflow-x-auto min-h-[250px]">
+                <pre className="selection:bg-cyan-500/30">
+                  <code>{currentSnippet.code}</code>
+                </pre>
+              </div>
+
+              {/* Live Simulated Status Bar */}
+              <div className="px-4 py-2.5 bg-slate-900/95 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono">
+                <div className="flex items-center gap-2 text-emerald-400 truncate">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="truncate">{currentSnippet.statusText}</span>
+                </div>
+                <span className="text-slate-500 shrink-0 hidden sm:inline">LIVE SIM</span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-border/40">
+          {stats.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <div 
+                key={stat.label}
+                className="p-4 rounded-2xl border border-border/50 bg-card/60 hover:bg-card transition-all duration-200"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold tracking-tight text-foreground">
+                      {stat.value}
+                    </div>
+                    <div className="text-xs text-muted-foreground font-medium">
+                      {stat.label}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
-} 
+}

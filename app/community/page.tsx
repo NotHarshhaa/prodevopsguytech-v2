@@ -104,304 +104,197 @@ export default function CommunityPage() {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-gradient-to-r from-primary/20 to-primary/30 opacity-30 blur-[128px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-primary/20 to-primary/40 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-primary/25 to-primary/35 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
-
-      <section className="relative pt-16 md:pt-32 pb-6 md:pb-12">
-        <div className="container px-3 sm:px-4 mx-auto">
+    <div className="min-h-screen overflow-x-hidden relative">
+      <section className="relative pt-8 md:pt-14 pb-20">
+        <div className="container max-w-7xl px-4 sm:px-6 mx-auto">
+          {/* Header Section */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-6 md:mb-12 lg:mb-16 pt-2 md:pt-0"
+            transition={{ duration: 0.4 }}
+            className="text-center max-w-3xl mx-auto mb-10"
           >
-            <motion.span 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-            >
-              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-              Join Our Community
-              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-            </motion.span>
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-              DevOps Community Hub
+            <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full mb-4 border border-primary/20">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Global Developer Network</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-foreground leading-tight">
+              DevOps Community{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">
+                Hub
+              </span>
             </h1>
-            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground leading-relaxed mb-4 md:mb-8">
-              Join a passionate community of DevOps and Cloud enthusiasts, where knowledge sharing and collaboration drive innovation.
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+              Connect with 15,000+ DevOps and Cloud practitioners worldwide. Share architectures, ask questions, and collaborate on open-source toolchains.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-4 md:mb-8 lg:mb-12">
-              {stats.map((stat, index) => {
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
+              {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <motion.div
+                  <div
                     key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
+                    className="p-3.5 rounded-2xl bg-card border border-border/60 shadow-sm text-center"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                    <div className="relative z-10">
-                      <Icon className="h-4 w-4 md:h-6 md:w-6 mx-auto mb-2 text-primary" />
-                      <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">{stat.value}</div>
-                      <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                )}
-              )}
+                    <Icon className="h-4 w-4 mx-auto mb-1.5 text-primary" />
+                    <div className="text-xl sm:text-2xl font-bold text-foreground mb-0.5">{stat.value}</div>
+                    <div className="text-[11px] text-muted-foreground font-medium">{stat.label}</div>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mb-6 md:mb-12 lg:mb-16"
-          >
-            {communityOptions.map((option, index) => (
-              <motion.div
+          {/* Community Channels Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            {communityOptions.map((option) => (
+              <div
                 key={option.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                onHoverStart={() => setHoveredCard(option.id)}
-                onHoverEnd={() => setHoveredCard(null)}
+                className="rounded-3xl border border-border/60 bg-card p-6 flex flex-col justify-between hover:border-primary/40 hover:shadow-xl transition-all duration-200 group"
               >
-                <Card className={cn(
-                  "border border-border/30 bg-background/70 backdrop-blur-xl shadow-lg transition-all duration-500 ease-out rounded-2xl md:rounded-3xl relative overflow-hidden group",
-                  hoveredCard === option.id ? "transform -translate-y-2 shadow-xl hover:scale-105" : "hover:shadow-xl hover:scale-105"
-                )}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${
-                    option.color === 'blue' ? 'from-blue-500/20 to-blue-600/20' :
-                    option.color === 'green' ? 'from-green-500/20 to-green-600/20' :
-                    'from-purple-500/20 to-purple-600/20'
-                  } opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                  <CardContent className="pt-4 md:pt-6 relative z-10">
-                    <motion.div
-                      animate={{
-                        rotate: hoveredCard === option.id ? 360 : 0
-                      }}
-                      transition={{ duration: 0.5 }}
-                      className={cn(
-                        "w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300",
-                        option.color === 'blue' && "bg-blue-500/15 text-blue-600 dark:bg-blue-900 dark:text-blue-400",
-                        option.color === 'green' && "bg-green-500/15 text-green-600 dark:bg-green-900 dark:text-green-400",
-                        option.color === 'purple' && "bg-purple-500/15 text-purple-600 dark:bg-purple-900 dark:text-purple-400"
-                      )}
-                    >
-                      {option.icon}
-                    </motion.div>
-                    <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors">{option.title}</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 leading-relaxed">{option.description}</p>
-                    
-                    {/* Stats */}
-                    <div className="flex flex-wrap gap-2 md:gap-4 text-xs text-muted-foreground mb-3 md:mb-4">
-                      {'memberCount' in option && (
-                        <div className="flex items-center bg-background/50 px-2 py-1 rounded-full">
-                          <Users className="h-3 w-3 mr-1" />
-                          <span>{option.memberCount} members</span>
-                        </div>
-                      )}
-                      {'activeNow' in option && (
-                        <div className="flex items-center bg-background/50 px-2 py-1 rounded-full">
-                          <div className="h-2 w-2 bg-green-500 rounded-full mr-1" />
-                          <span>{option.activeNow} online</span>
-                        </div>
-                      )}
-                      {'articleCount' in option && (
-                        <div className="flex items-center bg-background/50 px-2 py-1 rounded-full">
-                          <BookOpen className="h-3 w-3 mr-1" />
-                          <span>{option.articleCount} articles</span>
-                        </div>
-                      )}
-                      {'projects' in option && (
-                        <div className="flex items-center bg-background/50 px-2 py-1 rounded-full">
-                          <Github className="h-3 w-3 mr-1" />
-                          <span>{option.projects} projects</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {option.buttonUrl.startsWith('http') ? (
-                      <a 
-                        href={option.buttonUrl} 
-                        className={cn(
-                          "inline-flex items-center px-3 md:px-4 py-2 rounded-full font-medium text-xs md:text-sm transition-all duration-300 ease-out",
-                          option.color === 'blue' && "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 hover:scale-105",
-                          option.color === 'green' && "bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105",
-                          option.color === 'purple' && "bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 hover:scale-105"
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                        {option.buttonText}
-                        <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
-                      </a>
-                    ) : (
-                      <Link 
-                        href={option.buttonUrl}
-                        className={cn(
-                          "inline-flex items-center px-3 md:px-4 py-2 rounded-full font-medium text-xs md:text-sm transition-all duration-300 ease-out",
-                          option.color === 'blue' && "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 hover:scale-105",
-                          option.color === 'green' && "bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105",
-                          option.color === 'purple' && "bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:from-purple-700 hover:to-purple-800 hover:scale-105"
-                        )}
-                      >
-                        <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                        {option.buttonText}
-                        <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
-                      </Link>
+                <div className="space-y-4">
+                  <div className={cn(
+                    "w-12 h-12 rounded-2xl flex items-center justify-center border",
+                    option.color === 'blue' && "bg-blue-500/10 text-blue-500 border-blue-500/20",
+                    option.color === 'green' && "bg-emerald-500/10 text-emerald-500 border-emerald-500/20",
+                    option.color === 'purple' && "bg-purple-500/10 text-purple-500 border-purple-500/20"
+                  )}>
+                    {option.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      {option.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                      {option.description}
+                    </p>
+                  </div>
+                  
+                  {/* Channel Stats */}
+                  <div className="flex flex-wrap gap-1.5 pt-1 text-xs text-muted-foreground">
+                    {'memberCount' in option && (
+                      <span className="px-2 py-0.5 rounded-md bg-secondary/80 text-foreground font-mono text-[11px] border border-border/40">
+                        {option.memberCount} members
+                      </span>
                     )}
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+                    {'activeNow' in option && (
+                      <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500 font-mono text-[11px] border border-emerald-500/20 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                        {option.activeNow} online
+                      </span>
+                    )}
+                    {'articleCount' in option && (
+                      <span className="px-2 py-0.5 rounded-md bg-secondary/80 text-foreground font-mono text-[11px] border border-border/40">
+                        {option.articleCount} guides
+                      </span>
+                    )}
+                    {'projects' in option && (
+                      <span className="px-2 py-0.5 rounded-md bg-secondary/80 text-foreground font-mono text-[11px] border border-border/40">
+                        {option.projects} repositories
+                      </span>
+                    )}
+                  </div>
+                </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-background/70 backdrop-blur-xl py-8 md:py-12 px-4 rounded-2xl md:rounded-3xl mb-8 md:mb-12 lg:mb-16 border border-border/30 shadow-lg hover:shadow-2xl transition-all duration-500"
-          >
-            <div className="text-center mb-6 md:mb-8">
-              <motion.div 
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-              >
-                <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-                Upcoming Events
-                <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-              </motion.div>
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-                Join Our Events
+                <div className="pt-5 mt-5 border-t border-border/40">
+                  <a 
+                    href={option.buttonUrl}
+                    target={option.buttonUrl.startsWith('http') ? "_blank" : undefined}
+                    rel={option.buttonUrl.startsWith('http') ? "noopener noreferrer" : undefined}
+                    className="w-full h-10 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+                  >
+                    <span>{option.buttonText}</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Events Section */}
+          <div className="rounded-3xl border border-border/60 bg-card p-6 md:p-10 mb-16 shadow-lg">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full mb-2 border border-primary/20">
+                <Calendar className="h-3.5 w-3.5" />
+                <span>Live Community Sessions</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
+                Upcoming Community Events
               </h2>
-              <p className="text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Join our virtual meetups, workshops, and webinars to learn from experts and connect with fellow community members.
+              <p className="text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto mt-2">
+                Join our interactive architecture reviews, live demos, and AMA sessions with industry specialists.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
-              {events.map((event, index) => (
-                <motion.div
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {events.map((event) => (
+                <div 
                   key={event.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
+                  className="rounded-2xl border border-border/60 bg-background/50 p-5 flex flex-col justify-between hover:border-primary/40 transition-colors"
                 >
-                  <Card className="border border-border/30 bg-background/70 backdrop-blur-xl overflow-hidden rounded-2xl md:rounded-3xl hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out">
-                    <CardContent className="p-4 md:p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <Badge className={getTagColorClass(event.tagColor)}>
-                          {event.tag}
-                        </Badge>
-                        <Badge variant="outline" className="text-xs md:text-sm">{event.level}</Badge>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <Badge className={getTagColorClass(event.tagColor)}>
+                        {event.tag}
+                      </Badge>
+                      <span className="text-[11px] font-mono text-muted-foreground">{event.level}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-foreground leading-snug">{event.title}</h3>
+                      <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{event.description}</p>
+                    </div>
+                    <div className="space-y-1 text-xs text-muted-foreground pt-1 font-mono">
+                      <div className="flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5 text-primary" />
+                        <span>{event.date}</span>
                       </div>
-                      <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 tracking-wide">{event.title}</h3>
-                      <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 leading-relaxed">{event.description}</p>
-                      <div className="space-y-1 md:space-y-2 text-xs md:text-sm text-muted-foreground">
-                        <div className="flex items-center">
-                          <Calendar className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                          <span>{event.date}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                          <span>{event.time}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Users className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                          <span>{event.attendees} attendees</span>
-                        </div>
-                        <div className="flex items-center">
-                          <MessageCircle className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                          <span>Speaker: {event.speaker}</span>
-                        </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5 text-primary" />
+                        <span>{event.time}</span>
                       </div>
-                    </CardContent>
-                    <CardFooter className="bg-background/40 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 flex justify-between items-center border-t border-border/20">
-                      <span className="text-xs md:text-sm text-muted-foreground font-medium">
-                        {event.attendees} spots left
-                      </span>
-                      <Button variant="default" size="sm" className="group rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white">
-                        <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                        <span className="text-xs md:text-sm">Register Now</span>
-                        <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-border/40 flex items-center justify-between">
+                    <span className="text-[11px] text-muted-foreground">
+                      Speaker: <strong className="text-foreground">{event.speaker}</strong>
+                    </span>
+                    <Button size="sm" className="h-8 px-3 rounded-lg text-xs font-semibold">
+                      Register
+                    </Button>
+                  </div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="max-w-3xl mx-auto text-center p-6 md:p-12 border border-border/30 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl shadow-lg hover:shadow-2xl transition-all duration-500"
-          >
-            <div className="flex items-center justify-center mb-4 md:mb-6">
-              <Heart className="h-4 w-4 md:h-6 md:w-6 text-primary mr-2" />
-              <h2 className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-                Ready to Join Our Community?
-              </h2>
-              <Heart className="h-4 w-4 md:h-6 md:w-6 text-primary ml-2" />
-            </div>
-            <p className="text-sm md:text-lg text-muted-foreground mb-4 md:mb-8 leading-relaxed max-w-2xl mx-auto">
-              Connect with like-minded professionals, learn from experts, and contribute to open-source projects.
-              Join our growing community of DevOps enthusiasts today!
+          {/* Join CTA Section */}
+          <div className="max-w-3xl mx-auto text-center p-8 md:p-12 border border-border/60 rounded-3xl bg-card shadow-lg">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3 tracking-tight">
+              Ready to collaborate with DevOps engineers?
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-6 leading-relaxed max-w-xl mx-auto">
+              Join our active community discussions, get help with real-world infrastructure errors, and build your cloud network.
             </p>
-            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-4">
-              <Link href="/join" className="w-full md:w-auto">
-                <Button size="lg" className="w-full md:w-auto group rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Rocket className="h-4 w-4 md:h-5 md:w-5 mr-2" />
-                  Join Community
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Button>
-              </Link>
+            <div className="flex flex-wrap justify-center gap-3">
               <a 
                 href="https://t.me/prodevopsguy" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto"
               >
-                <Button variant="outline" size="lg" className="w-full md:w-auto group rounded-full border-border/30 bg-background/60 backdrop-blur-sm hover:bg-background/80 transition-all duration-300">
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  <span className="text-sm md:text-base">Telegram Server</span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                <Button className="h-10 px-6 rounded-full bg-primary text-primary-foreground font-semibold text-xs flex items-center gap-2">
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Join Telegram Group</span>
                 </Button>
               </a>
+              <Link href="/learning-paths">
+                <Button variant="outline" className="h-10 px-6 rounded-full text-xs font-semibold border-border/70 bg-card">
+                  Browse Roadmaps
+                </Button>
+              </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

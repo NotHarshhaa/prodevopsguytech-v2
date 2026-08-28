@@ -84,32 +84,9 @@ export default function TerraformPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-purple-500/20 opacity-30 blur-[128px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-purple-400/20 to-pink-500/20 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-purple-500/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
+    <div className="min-h-screen overflow-x-hidden relative">
 
-      <div className="container mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-6 md:pb-12">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-14 pb-16">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

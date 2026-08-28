@@ -229,129 +229,66 @@ export default function LearningPathsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-gradient-to-r from-primary/20 to-primary/30 opacity-30 blur-[128px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-primary/20 to-primary/40 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-primary/25 to-primary/35 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
-      
+    <div className="min-h-screen overflow-x-hidden relative">
       {/* Hero Section */}
-      <section className="relative pt-16 md:pt-32 pb-6 md:pb-12">
-        <div className="container px-3 sm:px-4 mx-auto">
+      <section className="relative pt-8 md:pt-14 pb-8">
+        <div className="container max-w-7xl px-4 sm:px-6 mx-auto">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-6 md:mb-12 lg:mb-16 pt-2 md:pt-0"
+            transition={{ duration: 0.4 }}
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-            >
-              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-              Learning Paths
-              <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-            </motion.div>
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-3 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-              Master DevOps & Cloud Computing
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 border border-primary/25 text-primary mb-4">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Structured DevOps Curricula</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight mb-4">
+              Master Cloud, DevOps &{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">
+                SRE Engineering
+              </span>
             </h1>
-            <p className="text-base md:text-xl lg:text-2xl text-muted-foreground mb-4 md:mb-8 leading-relaxed">
-              Structured learning paths to guide your journey from beginner to expert
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+              Step-by-step roadmaps from Linux fundamentals and containerization to multi-cloud architecture and GitOps.
             </p>
             
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 max-w-2xl mx-auto mb-4 md:mb-8 lg:mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">9+</div>
-                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Learning Paths</div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">48+</div>
-                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Weeks of Content</div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="p-3 md:p-4 rounded-2xl md:rounded-3xl bg-background/70 backdrop-blur-xl border border-border/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out relative overflow-hidden group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/30 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1 tracking-tight">1000+</div>
-                  <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">Students Enrolled</div>
-                </div>
-              </motion.div>
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-xl mx-auto mb-8">
+              <div className="p-3.5 rounded-2xl bg-card border border-border/60 shadow-sm text-center">
+                <div className="text-xl sm:text-2xl font-extrabold text-foreground">9+</div>
+                <div className="text-[11px] sm:text-xs text-muted-foreground font-medium">Curated Paths</div>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-card border border-border/60 shadow-sm text-center">
+                <div className="text-xl sm:text-2xl font-extrabold text-foreground">48+</div>
+                <div className="text-[11px] sm:text-xs text-muted-foreground font-medium">Weeks of Content</div>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-card border border-border/60 shadow-sm text-center">
+                <div className="text-xl sm:text-2xl font-extrabold text-foreground">5,000+</div>
+                <div className="text-[11px] sm:text-xs text-muted-foreground font-medium">Active Learners</div>
+              </div>
             </div>
 
-            {/* Search and Filter */}
-            <div className="max-w-2xl mx-auto">
-              <div className="relative mb-3 md:mb-4 lg:mb-6">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            {/* Search & Filter Controls */}
+            <div className="max-w-xl mx-auto space-y-3">
+              <div className="relative">
+                <Search className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   type="text"
-                  placeholder="Search learning paths..."
-                  className="pl-10 bg-background/70 backdrop-blur-sm border-border/30 rounded-full focus:border-primary/50 transition-all duration-300"
+                  placeholder="Search by tool, topic, or keyword..."
+                  className="pl-10 h-11 bg-card border-border/70 rounded-full focus-visible:ring-primary text-xs"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
               
               <Tabs defaultValue="all" className="w-full" onValueChange={setSelectedLevel}>
-                <TabsList className="grid grid-cols-3 md:grid-cols-5 gap-2 bg-background/60 backdrop-blur-sm border-border/30 rounded-full p-1">
-                  <TabsTrigger value="all" className="rounded-full">All</TabsTrigger>
-                  <TabsTrigger value="Beginner" className="rounded-full">
-                    <span className="hidden md:inline">Beginner</span>
-                    <span className="md:hidden">Begin</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="Intermediate" className="rounded-full">
-                    <span className="hidden md:inline">Intermediate</span>
-                    <span className="md:hidden">Inter</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="Advanced" className="rounded-full">
-                    <span className="hidden md:inline">Advanced</span>
-                    <span className="md:hidden">Adv</span>
-                  </TabsTrigger>
-                  <TabsTrigger value="Specialization" className="rounded-full">
-                    <span className="hidden md:inline">Specialization</span>
-                    <span className="md:hidden">Spec</span>
-                  </TabsTrigger>
+                <TabsList className="w-full h-10 grid grid-cols-5 bg-card border border-border/60 rounded-full p-1">
+                  <TabsTrigger value="all" className="rounded-full text-xs">All</TabsTrigger>
+                  <TabsTrigger value="Beginner" className="rounded-full text-xs">Beginner</TabsTrigger>
+                  <TabsTrigger value="Intermediate" className="rounded-full text-xs">Intermediate</TabsTrigger>
+                  <TabsTrigger value="Advanced" className="rounded-full text-xs">Advanced</TabsTrigger>
+                  <TabsTrigger value="Specialization" className="rounded-full text-xs">Specialist</TabsTrigger>
                 </TabsList>
               </Tabs>
             </div>
@@ -360,88 +297,79 @@ export default function LearningPathsPage() {
       </section>
 
       {/* Learning Paths Grid */}
-      <section className="py-6 md:py-8 lg:py-16">
-        <div className="container px-3 sm:px-4 mx-auto">
-          <motion.div 
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6"
-          >
+      <section className="pb-20">
+        <div className="container max-w-7xl px-4 sm:px-6 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPaths.map((path) => (
-              <MotionCard
+              <div
                 key={path.id}
-                variants={item}
-                className={`group relative overflow-hidden border border-border/30 bg-background/70 backdrop-blur-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-out rounded-2xl md:rounded-3xl ${getPathCardClass(path.level)}`}
-                whileHover={{ y: -5 }}
+                className="rounded-3xl border border-border/60 bg-card p-6 flex flex-col justify-between hover:border-primary/40 hover:shadow-xl transition-all duration-200 group"
               >
-                <CardContent className="p-4 md:p-6 relative z-10">
-                  <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
-                    <Badge className={getLevelBadgeClass(path.level)}>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border bg-primary/10 text-primary border-primary/20">
                       {path.level}
-                    </Badge>
-                    <div className="flex items-center text-muted-foreground text-xs md:text-sm">
-                      <Clock className="h-3 w-3 md:h-4 md:w-4 mr-1" />
+                    </span>
+                    <div className="flex items-center text-muted-foreground text-xs font-mono">
+                      <Clock className="h-3.5 w-3.5 mr-1" />
                       <span>{path.duration}</span>
                     </div>
                   </div>
                   
-                  <h3 className="text-base md:text-lg font-semibold mb-2 md:mb-3 tracking-wide group-hover:text-primary transition-colors">
-                    {path.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-muted-foreground mb-4 leading-relaxed">{path.description}</p>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      {path.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                      {path.description}
+                    </p>
+                  </div>
                   
                   {/* Course Stats */}
-                  <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4 text-xs md:text-sm">
-                    <div className="flex items-center text-muted-foreground">
-                      <Users className="h-3 w-3 md:h-4 md:w-4 mr-1" />
-                      {path.enrolled.toLocaleString()} enrolled
+                  <div className="flex items-center justify-between text-xs text-muted-foreground pt-1 pb-1 border-y border-border/40 font-mono">
+                    <div className="flex items-center">
+                      <Users className="h-3.5 w-3.5 mr-1.5 text-primary" />
+                      <span>{path.enrolled.toLocaleString()} enrolled</span>
                     </div>
-                    <div className="flex items-center text-muted-foreground">
-                      <Trophy className="h-3 w-3 md:h-4 md:w-4 mr-1" />
-                      {path.completion_rate}% completion
+                    <div className="flex items-center">
+                      <Trophy className="h-3.5 w-3.5 mr-1.5 text-amber-500" />
+                      <span>{path.completion_rate}% pass</span>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-medium text-xs md:text-sm mb-2">Topics Covered:</h4>
-                    <ul className="space-y-1 text-xs md:text-sm text-muted-foreground">
+                    <h4 className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2">Syllabus Highlights:</h4>
+                    <ul className="space-y-1.5 text-xs text-foreground/80">
                       {path.topics.map((topic, index) => (
-                        <li key={index} className="flex items-center">
-                          <BookOpen className="h-3 w-3 mr-1 md:mr-2 text-primary" />
-                          {topic}
+                        <li key={index} className="flex items-center gap-2">
+                          <BookOpen className="h-3 w-3 text-primary shrink-0" />
+                          <span className="truncate">{topic}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                </CardContent>
-                <CardFooter className="p-0 relative z-10">
+                </div>
+
+                <div className="pt-5 mt-5 border-t border-border/40">
                   <Link 
                     href={path.url}
-                    className="w-full p-3 md:p-4 text-center font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-colors rounded-b-2xl flex items-center justify-center group border-t border-border/20"
+                    className="w-full h-10 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs flex items-center justify-center gap-2 transition-all"
                   >
-                    <Rocket className="h-3 w-3 md:h-4 md:w-4 mr-2" />
-                    <span className="text-sm md:text-base">Explore Path</span>
-                    <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4 transform group-hover:translate-x-1 transition-transform" />
+                    <span>Explore Curriculum</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
-                </CardFooter>
-              </MotionCard>
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {filteredPaths.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-8 md:py-12"
-            >
-              <div className="bg-background/70 backdrop-blur-xl border border-border/30 rounded-2xl p-8 shadow-lg">
-                <h3 className="text-lg md:text-xl font-semibold mb-2 tracking-wide">No learning paths found</h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  Try adjusting your search or filter criteria
-                </p>
-              </div>
-            </motion.div>
+            <div className="text-center py-16 bg-card border border-border/60 rounded-3xl p-8 max-w-lg mx-auto">
+              <h3 className="text-base font-bold text-foreground mb-1">No learning paths found</h3>
+              <p className="text-xs text-muted-foreground">
+                Try searching with a different term or resetting the skill level filter.
+              </p>
+            </div>
           )}
         </div>
       </section>

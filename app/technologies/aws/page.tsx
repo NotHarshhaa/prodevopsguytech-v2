@@ -82,127 +82,89 @@ export default function AWSPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 overflow-x-hidden relative">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full max-w-[50rem] h-[40rem] bg-orange-500/20 opacity-30 blur-[128px] rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-orange-400/20 to-red-500/20 opacity-40 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[30rem] h-[20rem] bg-gradient-to-r from-yellow-500/20 to-orange-500/20 opacity-25 blur-[80px] rounded-full animate-pulse" style={{ animationDelay: '4s' }} />
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-orange-500/30 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
+    <div className="min-h-screen overflow-x-hidden relative">
 
-      <div className="container mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-6 md:pb-12">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 pt-8 md:pt-14 pb-16">
         {/* Hero Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-16"
+          transition={{ duration: 0.4 }}
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-gradient-to-r from-orange-500/20 to-orange-500/10 border border-orange-500/30 backdrop-blur-xl shadow-lg shadow-orange-500/10 mb-4 md:mb-6">
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-orange-500" />
-            <span className="text-xs md:text-sm font-bold text-orange-500 tracking-widest uppercase">Amazon Web Services</span>
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-orange-500" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-4">
+            <Sparkles className="h-3.5 w-3.5 text-orange-500" />
+            <span className="text-xs font-bold text-orange-500 tracking-wider uppercase">Amazon Web Services</span>
           </div>
           
-          <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold tracking-tight leading-tight mb-3 md:mb-6">
-            Master the <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600">Cloud</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight mb-4">
+            Master the <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-500">AWS Cloud</span>
           </h1>
           
-          <p className="text-base md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
-            Learn AWS from the ground up with hands-on projects, real-world scenarios, and industry best practices.
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
+            Learn AWS infrastructure from scratch with battle-tested production blueprints, multi-tier VPCs, ECS microservices, and serverless architectures.
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 max-w-4xl mx-auto mb-6 md:mb-12">
-            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
-                  <Users className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
-                </div>
-                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">200+</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">Services Available</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl mx-auto mb-12">
+            <div className="bg-card rounded-2xl border border-border/60 shadow-sm p-4 text-center">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-500/10 mb-2 mx-auto">
+                <Users className="h-5 w-5 text-orange-500" />
               </div>
+              <div className="text-xl font-bold text-foreground mb-0.5">200+</div>
+              <div className="text-xs text-muted-foreground font-medium">Services Covered</div>
             </div>
-            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
-                  <TrendingUp className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
-                </div>
-                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">32%</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">Market Share</div>
+            <div className="bg-card rounded-2xl border border-border/60 shadow-sm p-4 text-center">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-500/10 mb-2 mx-auto">
+                <TrendingUp className="h-5 w-5 text-orange-500" />
               </div>
+              <div className="text-xl font-bold text-foreground mb-0.5">32%</div>
+              <div className="text-xs text-muted-foreground font-medium">Global Cloud Share</div>
             </div>
-            <div className="bg-background/70 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-border/30 shadow-lg hover:shadow-2xl p-3 md:p-6 transition-all duration-500 ease-out hover:scale-105 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-center w-8 h-8 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-2 md:mb-4 mx-auto">
-                  <Star className="h-4 w-4 md:h-6 md:w-6 text-orange-500" />
-                </div>
-                <div className="text-lg md:text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">99.99%</div>
-                <div className="text-xs md:text-sm text-muted-foreground font-medium">Uptime SLA</div>
+            <div className="bg-card rounded-2xl border border-border/60 shadow-sm p-4 text-center">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-500/10 mb-2 mx-auto">
+                <Star className="h-5 w-5 text-orange-500" />
               </div>
+              <div className="text-xl font-bold text-foreground mb-0.5">99.99%</div>
+              <div className="text-xs text-muted-foreground font-medium">High Availability SLA</div>
             </div>
           </div>
         </motion.div>
 
         {/* Core Services */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8 md:mb-16"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mb-16"
         >
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold tracking-tight leading-tight mb-3 md:mb-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight mb-2">
               Core AWS Services
             </h2>
-            <p className="text-sm md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Master the essential AWS services that power modern cloud applications
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto">
+              Master the essential building blocks powering modern enterprise applications on AWS.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, index) => (
-              <motion.div
+              <div
                 key={service.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative rounded-3xl border border-border/60 bg-card p-6 transition-all duration-200 hover:border-orange-500/40 hover:shadow-xl"
               >
-                <Card className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 rounded-2xl md:rounded-3xl transition-all duration-500 ease-out hover:border-orange-500/30 hover:shadow-2xl hover:shadow-orange-500/10 hover:scale-105">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                  <div className="relative">
-                    <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-orange-500/15 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="h-5 w-5 md:h-6 md:w-6 text-orange-500" />
-                    </div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 group-hover:text-orange-500 transition-colors tracking-wide">
-                      {service.name}
-                    </h3>
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
+                <div>
+                  <div className="flex items-center justify-center w-11 h-11 rounded-2xl bg-orange-500/10 border border-orange-500/20 mb-4 group-hover:scale-105 transition-transform">
+                    <service.icon className="h-5 w-5 text-orange-500" />
                   </div>
-                </Card>
-              </motion.div>
+                  <h3 className="text-base font-bold text-foreground mb-1.5 group-hover:text-orange-500 transition-colors">
+                    {service.name}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </motion.div>

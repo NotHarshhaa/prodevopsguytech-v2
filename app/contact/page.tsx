@@ -33,260 +33,218 @@ export default function ContactPage() {
   ];
   
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      <div className="absolute inset-0 flex items-center justify-center -z-10 bg-background">
-        <div className="absolute inset-auto w-full max-w-[50rem] h-[40rem] bg-primary/30 opacity-20 blur-[128px] rounded-full animate-pulse" />
-      </div>
-
-      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16">
-        <div className="container px-3 sm:px-4 mx-auto">
+    <div className="min-h-screen overflow-x-hidden relative">
+      <section className="relative pt-8 md:pt-14 pb-20">
+        <div className="container max-w-7xl px-4 sm:px-6 mx-auto">
+          {/* Header */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16 pt-4 md:pt-0"
+            transition={{ duration: 0.4 }}
+            className="text-center max-w-3xl mx-auto mb-12"
           >
-            <motion.span 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide"
-            >
-              GET IN TOUCH
-            </motion.span>
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 lg:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
-              Contact Us
+            <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full mb-4 border border-primary/20">
+              <Mail className="h-3.5 w-3.5" />
+              <span>Direct Developer Assistance</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-foreground leading-tight">
+              Get in Touch with{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-500">
+                Our Team
+              </span>
             </h1>
-            <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
-              Have questions or feedback? We'd love to hear from you.
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto mb-8">
+              Have questions regarding our architectural blueprints, career mentorship, or open-source repositories? We respond within 24 hours.
             </p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12">
-              {stats.map((stat, index) => {
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-3 max-w-lg mx-auto mb-4">
+              {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <motion.div
+                  <div
                     key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="p-3 md:p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out"
+                    className="p-3.5 rounded-2xl bg-card border border-border/60 shadow-sm text-center"
                   >
-                    <Icon className="h-5 w-5 md:h-6 md:w-6 mx-auto mb-2 text-primary" />
-                    <div className="text-xl md:text-2xl font-bold text-primary mb-1 tracking-tight">{stat.value}</div>
-                    <div className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{stat.label}</div>
-                  </motion.div>
-                )}
-              )}
+                    <Icon className="h-4 w-4 mx-auto mb-1 text-primary" />
+                    <div className="text-lg sm:text-xl font-bold text-foreground mb-0.5">{stat.value}</div>
+                    <div className="text-[11px] text-muted-foreground font-medium">{stat.label}</div>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
         
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12 lg:mb-16">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-2"
-            >
-              <Card className="bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300 ease-out rounded-2xl">
-                <CardContent className="p-4 md:p-6 lg:p-8">
-                  <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 tracking-wide">Send us a Message</h2>
-                  <div className="space-y-3 md:space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-                      <div>
-                        <Input
-                          placeholder="Your Name"
-                          value={formData.name}
-                          onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
-                          className="bg-background/60 backdrop-blur-sm border-border/30 rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <Input
-                          type="email"
-                          placeholder="Your Email"
-                          value={formData.email}
-                          onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
-                          className="bg-background/60 backdrop-blur-sm border-border/30 rounded-full"
-                        />
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+            {/* Contact Form */}
+            <div className="lg:col-span-7">
+              <div className="rounded-3xl border border-border/60 bg-card p-6 md:p-8 shadow-md">
+                <h2 className="text-xl font-bold text-foreground mb-2">Send an Infrastructure Query</h2>
+                <p className="text-xs text-muted-foreground mb-6">Fill out your details and we will reach back to you promptly.</p>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
+                      <label className="text-xs font-semibold text-foreground mb-1 block">Full Name</label>
                       <Input
-                        placeholder="Subject"
-                        value={formData.subject}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, subject: e.target.value })}
-                        className="bg-muted/50"
+                        placeholder="Alex Rivera"
+                        value={formData.name}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
+                        className="bg-background border-border/70 rounded-xl h-10 text-xs focus-visible:ring-primary"
                       />
                     </div>
                     <div>
-                      <Textarea
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, message: e.target.value })}
-                        className="min-h-[120px] md:min-h-[150px] bg-background/60 backdrop-blur-sm border-border/30 rounded-2xl"
+                      <label className="text-xs font-semibold text-foreground mb-1 block">Email Address</label>
+                      <Input
+                        type="email"
+                        placeholder="alex@company.com"
+                        value={formData.email}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
+                        className="bg-background border-border/70 rounded-xl h-10 text-xs focus-visible:ring-primary"
                       />
                     </div>
-                    <Button className="w-full group rounded-full text-sm md:text-base">
-                      Send Message
-                      <Send className="ml-2 h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:translate-x-0.5" />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-foreground mb-1 block">Subject</label>
+                    <Input
+                      placeholder="e.g. Terraform AWS Blueprint Inquiry"
+                      value={formData.subject}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, subject: e.target.value })}
+                      className="bg-background border-border/70 rounded-xl h-10 text-xs focus-visible:ring-primary"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs font-semibold text-foreground mb-1 block">Your Message</label>
+                    <Textarea
+                      placeholder="Provide details about your question, project, or collaboration idea..."
+                      value={formData.message}
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, message: e.target.value })}
+                      className="min-h-[140px] bg-background border-border/70 rounded-2xl text-xs focus-visible:ring-primary leading-relaxed"
+                    />
+                  </div>
+                  <Button className="w-full h-11 rounded-xl text-xs font-semibold bg-primary hover:bg-primary/90 text-primary-foreground flex items-center justify-center gap-2 shadow-md">
+                    <span>Transmit Message</span>
+                    <Send className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Contact Cards */}
+            <div className="lg:col-span-5 space-y-4">
+              <div 
+                className={cn(
+                  "p-5 rounded-3xl border transition-all cursor-pointer",
+                  preferredContact === 'email' ? "border-primary/60 bg-card shadow-md" : "border-border/60 bg-card/60 hover:bg-card"
+                )}
+                onClick={() => setPreferredContact('email')}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                    <Mail className="h-5 w-5" />
+                  </div>
+                  <div className="flex-grow min-w-0">
+                    <h3 className="text-sm font-bold text-foreground">Direct Email</h3>
+                    <p className="text-xs text-muted-foreground truncate">contact@prodevopsguy.tech</p>
+                    <span className="text-[11px] font-mono text-primary">Response: &lt; 24 hrs</span>
+                  </div>
+                  <a href="mailto:contact@prodevopsguy.tech">
+                    <Button size="sm" variant="outline" className="h-8 rounded-lg text-xs font-semibold">
+                      Email
                     </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  </a>
+                </div>
+              </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-3 md:space-y-4 lg:space-y-6"
-            >
-              <Card className="backdrop-blur-sm overflow-hidden">
-                <CardContent className="p-4 md:p-6">
-                  <div 
-                    className="flex flex-col items-center cursor-pointer transition-all duration-300 hover:transform hover:scale-[1.02]" 
-                    onClick={() => setPreferredContact('email')}
-                  >
-                    <motion.div 
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                      className={cn(
-                        "w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-primary/15 mb-3 md:mb-4",
-                        preferredContact === 'email' && "ring-2 ring-primary"
-                      )}
-                    >
-                      <Mail className="h-7 w-7 md:h-8 md:w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 tracking-wide">Email Us</h3>
-                    <p className="text-muted-foreground text-center mb-1 font-medium">contact@prodevopsguy.tech</p>
-                    <p className="text-muted-foreground text-center text-xs md:text-sm mb-3 md:mb-4">Response time: 24-48 hours</p>
-                    <Link href="mailto:contact@prodevopsguy.tech" className="w-full">
-                      <Button variant="default" className="w-full group rounded-full">
-                        Send Email
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                      </Button>
-                    </Link>
+              <div 
+                className={cn(
+                  "p-5 rounded-3xl border transition-all cursor-pointer",
+                  preferredContact === 'telegram' ? "border-primary/60 bg-card shadow-md" : "border-border/60 bg-card/60 hover:bg-card"
+                )}
+                onClick={() => setPreferredContact('telegram')}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 shrink-0">
+                    <MessageSquare className="h-5 w-5" />
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="flex-grow min-w-0">
+                    <h3 className="text-sm font-bold text-foreground">Telegram Community</h3>
+                    <p className="text-xs text-muted-foreground truncate">Live discussions & rapid help</p>
+                    <span className="text-[11px] font-mono text-emerald-500">15,000+ active engineers</span>
+                  </div>
+                  <a href="https://t.me/prodevopsguy" target="_blank" rel="noopener noreferrer">
+                    <Button size="sm" className="h-8 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white">
+                      Join
+                    </Button>
+                  </a>
+                </div>
+              </div>
 
-              <Card className="backdrop-blur-sm overflow-hidden">
-                <CardContent className="p-4 md:p-6">
-                  <div 
-                    className="flex flex-col items-center cursor-pointer transition-all duration-300 hover:transform hover:scale-[1.02]" 
-                    onClick={() => setPreferredContact('telegram')}
-                  >
-                    <motion.div 
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                      className={cn(
-                        "w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-primary/10 mb-3 md:mb-4",
-                        preferredContact === 'telegram' && "ring-2 ring-primary"
-                      )}
-                    >
-                      <MessageSquare className="h-7 w-7 md:h-8 md:w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 tracking-wide">Telegram Community</h3>
-                    <p className="text-muted-foreground text-center mb-1 font-medium">Join our Telegram community</p>
-                    <p className="text-muted-foreground text-center text-xs md:text-sm mb-3 md:mb-4">Response time: 1-24 hours</p>
-                    <a 
-                      href="https://t.me/prodevopsguy" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-full"
-                    >
-                      <Button variant="default" className="w-full group rounded-full">
-                        Join Telegram
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                      </Button>
-                    </a>
+              <div 
+                className={cn(
+                  "p-5 rounded-3xl border transition-all cursor-pointer",
+                  preferredContact === 'faq' ? "border-primary/60 bg-card shadow-md" : "border-border/60 bg-card/60 hover:bg-card"
+                )}
+                onClick={() => setPreferredContact('faq')}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-500 shrink-0">
+                    <HelpCircle className="h-5 w-5" />
                   </div>
-                </CardContent>
-              </Card>
-
-              <Card className="backdrop-blur-sm overflow-hidden">
-                <CardContent className="p-4 md:p-6">
-                  <div 
-                    className="flex flex-col items-center cursor-pointer transition-all duration-300 hover:transform hover:scale-[1.02]" 
-                    onClick={() => setPreferredContact('faq')}
-                  >
-                    <motion.div 
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                      className={cn(
-                        "w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-primary/10 mb-3 md:mb-4",
-                        preferredContact === 'faq' && "ring-2 ring-primary"
-                      )}
-                    >
-                      <HelpCircle className="h-7 w-7 md:h-8 md:w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 tracking-wide">FAQs</h3>
-                    <p className="text-muted-foreground text-center mb-1 font-medium">Check our frequently asked questions</p>
-                    <p className="text-muted-foreground text-center text-xs md:text-sm mb-3 md:mb-4">Available 24/7</p>
-                    <Link href="/resources/faqs" className="w-full">
-                      <Button variant="default" className="w-full group rounded-full">
-                        View FAQs
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                      </Button>
-                    </Link>
+                  <div className="flex-grow min-w-0">
+                    <h3 className="text-sm font-bold text-foreground">Knowledge Base FAQs</h3>
+                    <p className="text-xs text-muted-foreground truncate">Common setup & repo answers</p>
+                    <span className="text-[11px] font-mono text-purple-500">Instant answers 24/7</span>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                  <Link href="/resources">
+                    <Button size="sm" variant="outline" className="h-8 rounded-lg text-xs font-semibold">
+                      Browse
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center"
-          >
-            <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-primary to-gray-400 tracking-tight leading-tight">
-              Connect With Us
+          {/* Social Links */}
+          <div className="text-center pt-8 border-t border-border/40 max-w-xl mx-auto">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-muted-foreground mb-4">
+              Connect Across Developer Channels
             </h3>
-            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-              <motion.a 
+            <div className="flex justify-center gap-3">
+              <a 
                 href="https://twitter.com/NotHarshhaa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-background/60 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border/60 hover:border-primary/40 hover:text-primary transition-colors"
               >
-                <Twitter className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              </motion.a>
-              <motion.a 
+                <Twitter className="h-4 w-4" />
+              </a>
+              <a 
                 href="https://linkedin.com/in/NotHarshhaa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-background/60 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border/60 hover:border-primary/40 hover:text-primary transition-colors"
               >
-                <Linkedin className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              </motion.a>
-              <motion.a 
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a 
                 href="https://github.com/NotHarshhaa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-background/60 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border/60 hover:border-primary/40 hover:text-primary transition-colors"
               >
-                <Github className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              </motion.a>
-              <motion.a 
+                <Github className="h-4 w-4" />
+              </a>
+              <a 
                 href="https://youtube.com/@NotHarshhaa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-background/60 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 hover:scale-105"
+                className="w-10 h-10 rounded-xl flex items-center justify-center bg-card border border-border/60 hover:border-primary/40 hover:text-primary transition-colors"
               >
-                <Youtube className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-              </motion.a>
+                <Youtube className="h-4 w-4" />
+              </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

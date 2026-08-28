@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Link from 'next/link';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
@@ -12,305 +14,204 @@ import {
   Lock,
   CheckCircle2,
   Sparkles,
-  Heart,
-  TrendingUp
+  Layers,
+  Ship,
+  Mountain,
+  Activity,
+  GitBranch,
+  Terminal
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+
+interface ServiceItem {
+  title: string;
+  category: 'cloud' | 'containers' | 'observability';
+  icon: typeof Cloud;
+  description: string;
+  features: string[];
+  techPills: string[];
+  colorClass: string;
+  href: string;
+}
+
+const serviceList: ServiceItem[] = [
+  {
+    title: "AWS Cloud Architecture",
+    category: "cloud",
+    icon: Cloud,
+    description: "Design resilient, highly available multi-region infrastructure following the AWS Well-Architected Framework.",
+    features: ["VPC Peering & Transit Gateways", "IAM Least-Privilege Policies", "Auto-scaling EKS Clusters"],
+    techPills: ["AWS EKS", "Terraform", "S3", "CloudFront"],
+    colorClass: "text-amber-500 bg-amber-500/10 border-amber-500/20",
+    href: "/technologies/aws"
+  },
+  {
+    title: "Azure Enterprise Cloud",
+    category: "cloud",
+    icon: Network,
+    description: "Enterprise landing zones, secure networking, and continuous delivery with Azure Kubernetes Service & Azure DevOps.",
+    features: ["AKS Fleet Management", "Azure Resource Manager & Bicep", "Zero-Trust Identity with Entra"],
+    techPills: ["Azure AKS", "Virtual Networks", "Azure DevOps"],
+    colorClass: "text-blue-500 bg-blue-500/10 border-blue-500/20",
+    href: "/technologies/azure"
+  },
+  {
+    title: "Kubernetes & Microservices",
+    category: "containers",
+    icon: Layers,
+    description: "Production cluster operations, service meshes, zero-downtime rolling deployments, and self-healing systems.",
+    features: ["Helm Charts & Kustomize", "Ingress & Gateway API", "Node Auto-provisioning with Karpenter"],
+    techPills: ["Kubernetes", "Karpenter", "Helm", "Istio"],
+    colorClass: "text-indigo-500 bg-indigo-500/10 border-indigo-500/20",
+    href: "/technologies/kubernetes"
+  },
+  {
+    title: "Docker & Container Security",
+    category: "containers",
+    icon: Ship,
+    description: "Build tiny, hyper-optimized production containers with multi-stage caching and CVE security scanning.",
+    features: ["Distroless & Alpine Bases", "Trivy & Grype Image Scanning", "Rootless Container Runtimes"],
+    techPills: ["Docker", "Distroless", "Trivy", "Buildx"],
+    colorClass: "text-sky-500 bg-sky-500/10 border-sky-500/20",
+    href: "/technologies/docker"
+  },
+  {
+    title: "Terraform Infrastructure as Code",
+    category: "containers",
+    icon: Mountain,
+    description: "Modular, declarative IaC blueprints with state locking, automated plans in CI/CD, and drift detection.",
+    features: ["Reusable Module Architecture", "Remote State in S3 with DynamoDB", "TFLint & Checkov Validation"],
+    techPills: ["Terraform", "Terragrunt", "Checkov"],
+    colorClass: "text-purple-500 bg-purple-500/10 border-purple-500/20",
+    href: "/technologies/terraform"
+  },
+  {
+    title: "Observability & SRE",
+    category: "observability",
+    icon: Activity,
+    description: "Full-stack telemetry with Prometheus, Grafana, OpenTelemetry, and structured centralized log aggregation.",
+    features: ["SLO/SLI Error Budget Tracking", "Automated Slack/PagerDuty Alerts", "Distributed Tracing with Jaeger"],
+    techPills: ["Prometheus", "Grafana", "OpenTelemetry", "Loki"],
+    colorClass: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
+    href: "/learning-paths"
+  }
+];
 
 export default function CloudServices() {
-  const cloudMetrics = [
-    { label: "Cloud Projects", value: "150+", icon: Cloud },
-    { label: "Success Rate", value: "99.9%", icon: CheckCircle2 },
-    { label: "Cloud Engineers", value: "50+", icon: Database },
-    { label: "Certifications", value: "200+", icon: Shield }
-  ];
+  const [selectedFilter, setSelectedFilter] = useState<'all' | 'cloud' | 'containers' | 'observability'>('all');
 
-  const services = [
-    {
-      icon: Cloud,
-      title: "Cloud Infrastructure",
-      description: "Build scalable and resilient infrastructure on AWS and Azure with best practices.",
-      color: "blue",
-      url: "/services/cloud-infrastructure"
-    },
-    {
-      icon: Database,
-      title: "Database Solutions",
-      description: "Implement and manage cloud databases with high availability and performance.",
-      color: "green",
-      url: "/services/database-solutions"
-    },
-    {
-      icon: Shield,
-      title: "Security & Compliance",
-      description: "Ensure your cloud infrastructure meets industry security standards and compliance.",
-      color: "red",
-      url: "/services/security-compliance"
-    },
-    {
-      icon: Cpu,
-      title: "Serverless Computing",
-      description: "Deploy serverless applications with AWS Lambda and Azure Functions.",
-      color: "purple",
-      url: "/services/serverless-computing"
-    },
-    {
-      icon: Network,
-      title: "Networking",
-      description: "Design and implement secure cloud networks with VPCs and Virtual Networks.",
-      color: "orange",
-      url: "/services/cloud-networking"
-    },
-    {
-      icon: Lock,
-      title: "Identity & Access",
-      description: "Manage cloud access with IAM, Role-Based Access Control, and SSO solutions.",
-      color: "yellow",
-      url: "/services/identity-access"
-    }
-  ];
-
-  const particles = Array.from({ length: 6 }, (_, i) => ({
-    left: `${(i * 21.41 + 6.8) % 100}%`,
-    top: `${(i * 27.89 + 14.2) % 100}%`,
-    animationDelay: `${(i * 0.83) % 5}s`,
-    animationDuration: `${3 + ((i * 1.37) % 4)}s`
-  }));
-
-  const cloudProviders = [
-    {
-      name: "Amazon Web Services",
-      logo: "/images/cloud-logos/aws-logo.svg",
-      width: 120,
-      height: 48,
-      url: "https://aws.amazon.com"
-    },
-    {
-      name: "Microsoft Azure",
-      logo: "/images/cloud-logos/azure-logo.svg",
-      width: 120,
-      height: 48,
-      url: "https://azure.microsoft.com"
-    },
-    {
-      name: "Google Cloud Platform",
-      logo: "/images/cloud-logos/gcp-logo.svg",
-      width: 140,
-      height: 48,
-      url: "https://cloud.google.com"
-    },
-    {
-      name: "Alibaba Cloud",
-      logo: "/images/cloud-logos/alibaba-logo.svg",
-      width: 120,
-      height: 80,
-      url: "https://www.alibabacloud.com"
-    },
-    {
-      name: "Digital Ocean",
-      logo: "/images/cloud-logos/digitalocean-logo.svg",
-      width: 120,
-      height: 48,
-      url: "https://www.digitalocean.com"
-    },
-    {
-      name: "IBM Cloud",
-      logo: "/images/cloud-logos/ibm-logo.svg",
-      width: 120,
-      height: 48,
-      url: "https://www.ibm.com/cloud"
-    }
-  ];
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 }
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  const filteredServices = selectedFilter === 'all' 
+    ? serviceList 
+    : serviceList.filter(s => s.category === selectedFilter);
 
   return (
-    <section className="py-8 md:py-20 overflow-hidden relative">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-        <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-primary/5 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-primary/5 to-transparent" />
-      </div>
-      <div className="absolute left-0 right-0 top-1/2 -z-10 h-[400px] w-full">
-        <div className="absolute left-1/4 w-full max-w-[50rem] h-[40rem] bg-gradient-to-r from-primary/20 to-primary/30 opacity-30 blur-[128px] rounded-full animate-pulse -translate-y-1/2"></div>
-        <div className="absolute right-1/4 w-full max-w-[40rem] h-[30rem] bg-gradient-to-r from-primary/20 to-primary/40 opacity-40 blur-[100px] rounded-full animate-pulse -translate-y-1/2" style={{ animationDelay: '2s' }}></div>
-      </div>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 -z-10">
-        {particles.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-pulse"
-            style={particle}
-          />
-        ))}
-      </div>
+    <section className="py-16 md:py-24 relative overflow-hidden bg-secondary/30 dark:bg-muted/20 border-y border-border/40">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/10 border border-primary/25 text-primary mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Multi-Cloud & Toolchain Matrix</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+              Production Architectures for{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500">
+                Modern Teams.
+              </span>
+            </h2>
+            <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-xl">
+              Deep dive into specialized cloud domains with hands-on blueprints and architectures.
+            </p>
+          </div>
 
-      <div className="container px-3 sm:px-4 mx-auto">
-        {/* Enhanced Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16"
-        >
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-          >
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-            Cloud Solutions
-            <Sparkles className="h-3 w-3 md:h-4 md:w-4" />
-          </motion.div>
-          <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-            Enterprise-Grade Cloud Solutions
-          </h2>
-          <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
-            Build and deploy scalable applications with our comprehensive cloud services and expertise
-          </p>
-        </motion.div>
-
-        {/* Enhanced Metrics Grid */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-12 md:mb-16 lg:mb-20"
-        >
-          {cloudMetrics.map((metric, index) => {
-            const Icon = metric.icon;
-            return (
-              <motion.div key={metric.label} variants={fadeInUp}>
-                <Card className="group relative overflow-hidden p-3 md:p-6 text-center bg-background/70 backdrop-blur-xl border-border/30 rounded-2xl hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105 transition-all duration-500 ease-out">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                  <div className="relative">
-                    <div className="mb-2 md:mb-4 mx-auto size-8 md:size-12 rounded-full bg-primary/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="h-4 w-4 md:h-6 md:w-6 text-primary" />
-                    </div>
-                    <p className="text-xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-1 md:mb-2 tracking-tight">
-                      {metric.value}
-                    </p>
-                    <p className="text-xs md:text-sm text-muted-foreground font-medium tracking-wide">{metric.label}</p>
-                  </div>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Enhanced Services Grid */}
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-12 md:mb-16 lg:mb-20"
-        >
-          {services.map((service, index) => (
-            <motion.div key={service.title} variants={fadeInUp}>
-              <Card 
-                className="group relative overflow-hidden border-border/30 bg-background/70 backdrop-blur-xl p-4 md:p-6 lg:p-8 rounded-2xl hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:scale-105 transition-all duration-500 ease-out"
+          {/* Filter Pills */}
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-card border border-border/60 overflow-x-auto shrink-0">
+            {[
+              { id: 'all', label: 'All Services' },
+              { id: 'cloud', label: 'Cloud' },
+              { id: 'containers', label: 'Containers & IaC' },
+              { id: 'observability', label: 'Observability' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setSelectedFilter(tab.id as any)}
+                type="button"
+                className={`px-3 py-1.5 text-xs font-medium rounded-xl transition-all whitespace-nowrap ${
+                  selectedFilter === tab.id
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                <div className="relative">
-                  <div className={`size-8 md:size-12 rounded-full bg-${service.color}-500/15 flex items-center justify-center mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className={`h-4 w-4 md:h-6 md:w-6 text-${service.color}-500`} />
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredServices.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.title}
+                className="rounded-3xl border border-border/60 bg-card p-6 flex flex-col justify-between hover:border-primary/40 hover:shadow-xl transition-all duration-200 group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${service.colorClass}`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
+                      {service.category}
+                    </span>
                   </div>
-                  <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 group-hover:text-primary transition-colors tracking-wide">{service.title}</h3>
-                  <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 leading-relaxed">{service.description}</p>
-                  <Link href={service.url} className="inline-flex">
-                    <Button variant="ghost" className="group/btn p-0 hover:bg-transparent rounded-full">
-                      <span className="text-muted-foreground group-hover:text-primary transition-colors font-medium text-xs md:text-sm">Learn more</span>
-                      <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-2 transition-transform group-hover/btn:translate-x-0.5" />
-                    </Button>
+
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 text-xs md:text-sm text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Key Capabilities List */}
+                  <div className="space-y-1.5 pt-2">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-foreground/80">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Technology Pills */}
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {service.techPills.map((pill) => (
+                      <span
+                        key={pill}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-secondary/80 text-foreground border border-border/40"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-6 mt-6 border-t border-border/40">
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform"
+                  >
+                    <span>Explore Architecture</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Enhanced Cloud Platform Logos */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-12 md:mt-16"
-        >
-          <div className="text-center mb-6 md:mb-8">
-            <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-bold bg-gradient-to-r from-primary/20 to-primary/10 text-primary rounded-full mb-3 md:mb-6 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-widest uppercase"
-            >
-              <CheckCircle2 className="h-3 w-3 md:h-4 md:w-4" />
-              Trusted Partners
-              <CheckCircle2 className="h-3 w-3 md:h-4 md:w-4" />
-            </motion.div>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60 tracking-tight leading-tight">
-              Trusted Cloud Platforms
-            </h3>
-            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">We support and integrate with all major cloud providers</p>
-          </div>
-          <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-6 items-center justify-items-center"
-          >
-            {cloudProviders.map((provider, index) => (
-              <motion.div key={provider.name} variants={fadeInUp}>
-                <a 
-                  href={provider.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full no-underline"
-                >
-                  <div 
-                    className="relative group bg-background/70 backdrop-blur-xl rounded-2xl p-3 md:p-4 hover:bg-background/80 transition-all duration-500 ease-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 border border-border/30 hover:border-primary/30 w-full"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                    <div className="relative w-full flex flex-col items-center justify-center gap-2">
-                      <Image
-                        src={provider.logo}
-                        alt={provider.name}
-                        width={provider.width}
-                        height={provider.height}
-                        className="opacity-60 group-hover:opacity-100 transition-opacity"
-                      />
-                      <span className="text-xs text-muted-foreground text-center font-medium group-hover:text-primary transition-colors tracking-wide">
-                        {provider.name}
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

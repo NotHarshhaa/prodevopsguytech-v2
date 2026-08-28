@@ -67,67 +67,64 @@ export default function LearningPathPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px] -z-10" />
-      
+    <div className="min-h-screen overflow-x-hidden relative">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16">
-        <div className="container px-4 mx-auto">
-          <div className="max-w-4xl mx-auto">
+      <section className="relative pt-8 md:pt-12 pb-12">
+        <div className="container max-w-5xl px-4 sm:px-6 mx-auto">
+          <div>
             <Link 
               href="/learning-paths"
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8 group"
+              className="inline-flex items-center text-xs font-semibold text-muted-foreground hover:text-primary mb-6 group"
             >
-              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              Back to Learning Paths
+              <ArrowLeft className="mr-1.5 h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+              <span>Back to All Learning Paths</span>
             </Link>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
             >
-              <div className="inline-flex px-5 py-2.5 text-xs font-medium bg-primary/15 text-primary rounded-full mb-4 border border-primary/30 backdrop-blur-xl shadow-lg shadow-primary/10 tracking-wide">
+              <div className="inline-flex px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full mb-3 border border-primary/20">
                 {path.level}
               </div>
-              <h1 className="text-4xl font-bold mb-6 tracking-tight leading-tight">{path.title}</h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">{path.description}</p>
+              <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 tracking-tight leading-tight text-foreground">{path.title}</h1>
+              <p className="text-base sm:text-lg text-muted-foreground mb-6 leading-relaxed">{path.description}</p>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
+                <div className="p-4 rounded-2xl bg-card border border-border/60 shadow-sm">
                   <div className="flex items-center">
-                    <Clock className="h-5 w-5 mr-3 text-primary" />
+                    <Clock className="h-5 w-5 mr-3 text-primary shrink-0" />
                     <div>
-                      <div className="font-medium tracking-tight">{path.duration}</div>
-                      <div className="text-sm text-muted-foreground font-medium tracking-wide">Duration</div>
+                      <div className="font-bold text-foreground">{path.duration}</div>
+                      <div className="text-xs text-muted-foreground">Duration</div>
                     </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="p-4 rounded-2xl bg-card border border-border/60 shadow-sm">
                   <div className="flex items-center">
-                    <Users className="h-5 w-5 mr-3 text-primary" />
+                    <Users className="h-5 w-5 mr-3 text-primary shrink-0" />
                     <div>
-                      <div className="font-medium tracking-tight">{path.enrolled.toLocaleString()}</div>
-                      <div className="text-sm text-muted-foreground font-medium tracking-wide">Enrolled</div>
+                      <div className="font-bold text-foreground">{path.enrolled.toLocaleString()}</div>
+                      <div className="text-xs text-muted-foreground">Enrolled</div>
                     </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="p-4 rounded-2xl bg-card border border-border/60 shadow-sm">
                   <div className="flex items-center">
-                    <Trophy className="h-5 w-5 mr-3 text-primary" />
+                    <Trophy className="h-5 w-5 mr-3 text-amber-500 shrink-0" />
                     <div>
-                      <div className="font-medium tracking-tight">{path.completion_rate}%</div>
-                      <div className="text-sm text-muted-foreground font-medium tracking-wide">Completion</div>
+                      <div className="font-bold text-foreground">{path.completion_rate}%</div>
+                      <div className="text-xs text-muted-foreground">Completion</div>
                     </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-2xl bg-background/60 backdrop-blur-xl border border-border/20 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out">
+                <div className="p-4 rounded-2xl bg-card border border-border/60 shadow-sm">
                   <div className="flex items-center">
-                    <Target className="h-5 w-5 mr-3 text-primary" />
+                    <Target className="h-5 w-5 mr-3 text-emerald-500 shrink-0" />
                     <div>
-                      <div className="font-medium tracking-tight">{path.skills_gained.length}</div>
-                      <div className="text-sm text-muted-foreground font-medium tracking-wide">Skills Gained</div>
+                      <div className="font-bold text-foreground">{path.skills_gained.length} Skills</div>
+                      <div className="text-xs text-muted-foreground">Competencies</div>
                     </div>
                   </div>
                 </div>
